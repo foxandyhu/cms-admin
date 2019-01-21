@@ -3,7 +3,6 @@ import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
 import {
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
-  NbMenuItem,
   NbMenuService,
   NbSidebarService,
   NbThemeService,
@@ -39,16 +38,7 @@ import { StateService } from '../../../@core/utils';
       <nb-layout-footer fixed>
         <ngx-footer></ngx-footer>
       </nb-layout-footer>
-
-      <nb-sidebar class="settings-sidebar"
-                   tag="settings-sidebar"
-                   state="collapsed"
-                   fixed
-                   [end]="sidebar.id !== 'end'">
-        <ngx-theme-settings></ngx-theme-settings>
-      </nb-sidebar>
     </nb-layout>
-    <ngx-toggle-settings-button></ngx-toggle-settings-button>
   `,
 })
 export class SampleLayoutComponent implements OnDestroy {

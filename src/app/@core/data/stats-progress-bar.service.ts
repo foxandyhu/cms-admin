@@ -1,33 +1,44 @@
-import { Injectable } from '@angular/core';
-import { of as observableOf, Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {of as observableOf, Observable} from 'rxjs';
 
 export class ProgressInfo {
   title: string;
   value: number;
   activeProgress: number;
-  description: string;
+  iconColor: string;
+  icon: string;
 }
 
 @Injectable()
 export class StatsProgressBarService {
   private progressInfoData: ProgressInfo[] = [
     {
-      title: 'Today’s Profit',
+      title: '内容发布数',
       value: 572900,
       activeProgress: 70,
-      description: 'Better than last week (70%)',
+      iconColor: 'primary',
+      icon: 'nb-list'
     },
     {
-      title: 'New Orders',
+      title: '评论数',
       value: 6378,
       activeProgress: 30,
-      description: 'Better than last week (30%)',
+      iconColor: 'success',
+      icon: 'nb-compose'
     },
     {
-      title: 'New Comments',
+      title: '留言数',
       value: 200,
       activeProgress: 55,
-      description: 'Better than last week (55%)',
+      iconColor: 'info',
+      icon: 'nb-email'
+    },
+    {
+      title: '会员注册数',
+      value: 200,
+      activeProgress: 55,
+      iconColor: 'warning',
+      icon: 'nb-person'
     },
   ];
 
