@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: '工作台',
     icon: 'nb-home',
-    link: '/workbench/index',
+    link: '/workbench',
   },
   {
     title: '内容',
@@ -17,7 +17,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '专题管理',
         link: '/pages/extra-components/stepper',
-      }
+      },
     ],
   },
   {
@@ -30,77 +30,32 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-compose',
     children: [
       {
-        title: '流量统计',
-        link: '/pages/forms/inputs',
-        children: [
-          {
-            title: '趋势分析',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '栏目访问量排行',
-            link: '/pages/forms/inputs',
-          }
-        ]
-      },
-      {
-        title: '来源分析',
-        link: '/pages/forms/layouts',
-        children: [
-          {
-            title: '来源分类',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '搜索引擎',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '来访域名',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '来访地区',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '搜索词',
-            link: '/pages/forms/inputs',
-          }
-        ]
-      },
-      {
-        title: '受访分析',
-        link: '/pages/forms/buttons',
-        children: [
-          {
-            title: '受访页面',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '入口页面',
-            link: '/pages/forms/inputs',
-          }
-        ]
-      },
-      {
-        title: '忠诚度',
-        link: '/pages/forms/datepicker',
+        title: '趋势分析',
+        link: '/analysis/flow',
       }, {
-        title: '网站概况',
-        link: '/pages/forms/buttons',
-        children: [
-          {
-            title: '内容发布数',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '工作量',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '评论数',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '留言数',
-            link: '/pages/forms/inputs',
-          }, {
-            title: '会员注册数',
-            link: '/pages/forms/inputs',
-          }
-        ]
+        title: '栏目访问量排行',
+        link: '/analysis/channel',
+      }, {
+        title: '来源分类',
+        link: '/analysis/source',
+      }, {
+        title: '搜索引擎',
+        link: '/analysis/engine',
+      }, {
+        title: '浏览器',
+        link: '/analysis/browser',
+      }, {
+        title: '来访站点',
+        link: '/analysis/site',
+      }, {
+        title: '来访地区',
+        link: '/analysis/area',
+      }, {
+        title: '搜索词',
+        link: '/analysis/words',
+      }, {
+        title: '受访页面',
+        link: '/analysis/pages',
       },
     ],
   },
@@ -144,8 +99,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '实时日志',
         link: '/pages/modal-overlays/window',
-      }
-    ]
+      },
+    ],
   },
   {
     title: '运营',
@@ -185,8 +140,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
           }, {
             title: '采集进度',
             link: '/pages/modal-overlays/window',
-          }
-        ]
+          },
+        ],
       }, {
         title: '页面静态化',
         icon: 'nb-layout-default',
@@ -201,9 +156,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
           }, {
             title: '内容静态化',
             link: '/pages/modal-overlays/window',
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
   },
   {
@@ -248,9 +203,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
           }, {
             title: '热词管理',
             link: '/pages/modal-overlays/window',
-          }
-        ]
-      }
+          },
+        ],
+      },
     ],
   },
   {
@@ -264,8 +219,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '资源',
         link: '/pages/charts/chartjs',
-      }
-    ]
+      },
+    ],
   },
   {
     title: '配置',
@@ -298,9 +253,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
           {
             title: '短信记录',
             link: '/pages/charts/chartjs',
-          }
+          },
         ],
-      }
+      },
     ],
   },
   {
@@ -325,7 +280,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }, {
         title: '企业设置',
         link: '/pages/tables/smart-table',
-      }
+      },
     ],
-  }
+  },
 ];

@@ -3,13 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'ngx-visitors-area-map',
-  styleUrls: ['./visitors-area-map.component.scss'],
+  selector: 'ngx-area-map',
   template: `
     <div echarts [options]="options"></div>
   `,
 })
-export class VisitorsAreaMapComponent implements OnDestroy, OnInit {
+export class AreaMapComponent implements OnDestroy, OnInit {
 
   constructor(private http: HttpClient) {
   }
@@ -63,5 +62,4 @@ export class VisitorsAreaMapComponent implements OnDestroy, OnInit {
         };
       });
   }
-
 }

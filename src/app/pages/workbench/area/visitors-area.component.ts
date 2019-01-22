@@ -10,9 +10,7 @@ import {CountryOrderService} from '../../../@core/data/country-order.service';
     <nb-card [size]="breakpoint.width >= breakpoints.md ? 'medium' : 'xxlarge'">
       <nb-card-header>来访地区</nb-card-header>
       <nb-card-body>
-        <ngx-visitors-area-map (select)="selectCountryById($event)"
-                               countryId="USA">
-        </ngx-visitors-area-map>
+        <ngx-visitors-area-map></ngx-visitors-area-map>
         <ngx-visitors-area-chart [countryName]="countryName"
                                  [data]="countryData"
                                  [labels]="countriesCategories"
