@@ -1,0 +1,55 @@
+<nb-card>
+  <nb-card-header>
+    专题管理
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <button class="btn btn-danger">
+        <i class="nb-plus"></i> 新增
+      </button>&nbsp;&nbsp;
+      <button class="btn btn-outline-info">删除</button>&nbsp;&nbsp;
+      <div class="margin-top-2p">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>标题</th>
+          <th class="align-right">置顶</th>
+          <th class="table-arr"></th>
+          <th class="align-right">类型</th>
+          <th class="table-arr"></th>
+          <th class="align-right">发布者</th>
+          <th class="table-arr"></th>
+          <th class="align-right">点击量</th>
+          <th class="table-arr"></th>
+          <th class="align-right">发布时间</th>
+          <th class="table-arr"></th>
+          <th class="align-right">状态</th>
+          <th class="table-arr"></th>
+          <th class="align-right">操作</th>
+          <th class="table-arr"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
+          <td class="nowrap">Google Chrome</td>
+          <td class="align-right">10,392</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">3,822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </nb-list-item>
+  </nb-list>
+</nb-card>
