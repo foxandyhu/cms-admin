@@ -1,5 +1,5 @@
-import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -10,8 +10,14 @@ import {
 } from '@nebular/auth';
 
 const routes: Routes = [
-  { path: 'workbench', loadChildren: 'app/pages/workbench/workbench.module#WorkbenchModule' },
-  { path: 'analysis', loadChildren: 'app/pages/analysis/analysis.module#AnalysisModule' },
+  {path: 'workbench', loadChildren: 'app/pages/workbench/workbench.module#WorkbenchModule'},
+  {path: 'analysis', loadChildren: 'app/pages/analysis/analysis.module#AnalysisModule'},
+  {path: 'content', loadChildren: 'app/pages/content/content.module#ContentModule'},
+  {path: 'member', loadChildren: 'app/pages/member/member.module#MemberModule'},
+  {path: 'user', loadChildren: 'app/pages/user/user.module#UserModule'},
+  {path: 'logs', loadChildren: 'app/pages/logs/logs.module#LogsModule'},
+  {path: 'data', loadChildren: 'app/pages/data/data.module#DataModule'},
+  {path: 'friendlink', loadChildren: 'app/pages/friendlink/friendlink.module#FriendlinkModule'},
   {
     path: 'auth',
     component: NbAuthComponent,
@@ -42,8 +48,8 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'workbench', pathMatch: 'full' },
-  { path: '**', redirectTo: 'workbench' },
+  {path: '', redirectTo: 'workbench', pathMatch: 'full'},
+  {path: '**', redirectTo: 'workbench'},
 ];
 
 const config: ExtraOptions = {

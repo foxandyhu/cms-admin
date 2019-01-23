@@ -2,8 +2,9 @@
   <nb-card-header>
     浏览器分析
   </nb-card-header>
-  <nb-card-body class="main-container">
-    <form class="form-inline">
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
       <div class="form-group">
         <label>日期:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <div ngbRadioGroup class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
@@ -31,7 +32,7 @@
         </div>
       </div>
     </form>
-    <div class="margin-top-5p">
+      <div class="margin-top-5p">
       <div class="row">
         <div class="col-md-3">
           <ngx-browser-pie></ngx-browser-pie>
@@ -41,8 +42,9 @@
         </div>
       </div>
     </div>
-    <div class="margin-top-5p">
+      <div class="margin-top-5p">
       <ngx-browser-table></ngx-browser-table>
     </div>
-  </nb-card-body>
+    </nb-list-item>
+  </nb-list>
 </nb-card>

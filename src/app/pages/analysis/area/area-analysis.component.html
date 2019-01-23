@@ -2,8 +2,9 @@
   <nb-card-header>
     来访区域分析
   </nb-card-header>
-  <nb-card-body class="main-container">
-    <form class="form-inline">
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
       <div class="form-group">
         <label>日期:&nbsp;&nbsp;&nbsp;&nbsp;</label>
         <div ngbRadioGroup class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
@@ -31,9 +32,10 @@
         </div>
       </div>
     </form>
-    <ngx-area-map></ngx-area-map>
-    <div class="margin-top-5p">
+      <ngx-area-map></ngx-area-map>
+      <div class="margin-top-5p">
       <ngx-area-table></ngx-area-table>
     </div>
-  </nb-card-body>
+    </nb-list-item>
+  </nb-list>
 </nb-card>

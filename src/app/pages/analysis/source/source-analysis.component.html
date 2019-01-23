@@ -2,47 +2,49 @@
   <nb-card-header>
     来源分类分析
   </nb-card-header>
-  <nb-card-body class="main-container">
-    <form class="form-inline">
-      <div class="form-group">
-        <label>日期:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <div ngbRadioGroup class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='1'>今天
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='2'>昨天
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='3'>当月
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='4'>今年
-          </label>
-        </div>&nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <button class="btn btn-primary btn-icon">
-              <i class="ion-ios-calendar-outline"></i>
-            </button>
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>日期:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <div ngbRadioGroup class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
+            <label class='btn btn-outline-primary' ngbButtonLabel>
+              <input type='radio' ngbButton value='1'>今天
+            </label>
+            <label class='btn btn-outline-primary' ngbButtonLabel>
+              <input type='radio' ngbButton value='2'>昨天
+            </label>
+            <label class='btn btn-outline-primary' ngbButtonLabel>
+              <input type='radio' ngbButton value='3'>当月
+            </label>
+            <label class='btn btn-outline-primary' ngbButtonLabel>
+              <input type='radio' ngbButton value='4'>今年
+            </label>
+          </div>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-primary btn-icon">
+                <i class="ion-ios-calendar-outline"></i>
+              </button>
+            </div>
+            <input class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
+            <nb-rangepicker #rangepicker format="yyyy-MM-dd"></nb-rangepicker>
           </div>
-          <input class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
-          <nb-rangepicker #rangepicker format="yyyy-MM-dd"></nb-rangepicker>
+        </div>
+      </form>
+      <div class="margin-top-5p">
+        <div class="row">
+          <div class="col-md-3">
+            <ngx-source-pie></ngx-source-pie>
+          </div>
+          <div class="col-md-9">
+            <ngx-source-line></ngx-source-line>
+          </div>
         </div>
       </div>
-    </form>
-    <div class="margin-top-5p">
-      <div class="row">
-        <div class="col-md-3">
-          <ngx-source-pie></ngx-source-pie>
-        </div>
-        <div class="col-md-9">
-          <ngx-source-line></ngx-source-line>
-        </div>
+      <div class="margin-top-5p">
+        <ngx-source-table></ngx-source-table>
       </div>
-    </div>
-    <div class="margin-top-5p">
-      <ngx-source-table></ngx-source-table>
-    </div>
-  </nb-card-body>
+    </nb-list-item>
+  </nb-list>
 </nb-card>

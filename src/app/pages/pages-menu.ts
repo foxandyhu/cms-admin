@@ -2,32 +2,107 @@ import {NbMenuItem} from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: '工作台',
+    title: '首页',
     icon: 'nb-home',
-    link: '/workbench',
-  },
-  {
-    title: '内容',
-    icon: 'nb-star',
     children: [
       {
-        title: '内容管理',
-        link: '/pages/extra-components/calendar',
+        title: '工作台',
+        link: '/workbench',
       },
       {
-        title: '专题管理',
-        link: '/pages/extra-components/stepper',
+        title: '个人信息',
       },
     ],
   },
   {
-    title: '栏目',
-    icon: 'nb-home',
-    link: '/pages/iot-dashboard',
+    title: '运营',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: '站内信管理',
+        link: '/pages/ui-features/search-fields',
+      },
+      {
+        title: '友情链接',
+        link: '/friendlink/list',
+      },
+      {
+        title: '广告管理',
+        link: '/pages/bootstrap/buttons',
+      },
+      {
+        title: '评论管理',
+        link: '/pages/bootstrap/modal',
+      }, {
+        title: '申请职位',
+        link: '/pages/bootstrap/modal',
+      }, {
+        title: '问卷调查',
+        link: '/pages/bootstrap/modal',
+      }, {
+        title: '留言管理',
+        link: '/pages/bootstrap/modal',
+      },
+    ],
   },
   {
-    title: '数据中心',
+    title: '内容管理',
     icon: 'nb-compose',
+    children: [
+      {
+        title: '栏目管理',
+        link: '/pages/iot-dashboard',
+      },
+      {
+        title: '内容管理',
+        link: '/content/normal',
+      },
+      {
+        title: '专题管理',
+        link: '/content/topic',
+      }, {
+        title: '内容类型',
+        link: '/pages/editors/ckeditor',
+      }, {
+        title: '模型管理',
+        link: '/pages/editors/ckeditor',
+      }, {
+        title: '采集任务',
+        link: '/pages/modal-overlays/dialog',
+      },
+      {
+        title: '采集历史',
+        link: '/pages/modal-overlays/window',
+      }, {
+        title: '内容静态化',
+        link: '/pages/modal-overlays/window',
+      },
+    ],
+  },
+  {
+    title: '用户管理',
+    icon: 'ion-person',
+    children: [
+      {
+        title: '会员管理',
+        link: '/member/list',
+      }, {
+        title: '会员组管理',
+        link: '/member/group',
+      },
+      {
+        title: '角色管理',
+        link: '/user/role',
+      },
+      {
+        title: '系统管理员',
+        link: '/user/list',
+      },
+    ],
+  },
+  {
+    title: '数据分析',
+    icon: 'nb-bar-chart',
     children: [
       {
         title: '趋势分析',
@@ -60,212 +135,48 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: '用户管理',
-    icon: 'nb-keypad',
-    link: '/pages/ui-features',
+    title: '资源管理',
+    icon: 'ion-images',
     children: [
       {
-        title: '会员管理',
-        link: '/pages/ui-features/grid',
-      },
-      {
-        title: '角色管理',
-        link: '/pages/ui-features/icons',
-      },
-      {
-        title: '账户绑定',
-        link: '/pages/ui-features/typography',
-      },
-      {
-        title: '系统管理员',
-        link: '/pages/ui-features/search-fields',
-      }, {
-        title: '会员组管理',
-        link: '/pages/ui-features/search-fields',
-      }, {
-        title: '站内信管理',
-        link: '/pages/ui-features/search-fields',
-      },
-    ],
-  },
-  {
-    title: '日志管理',
-    icon: 'nb-layout-default',
-    children: [
-      {
-        title: '操作日志',
-        link: '/pages/modal-overlays/dialog',
-      },
-      {
-        title: '实时日志',
-        link: '/pages/modal-overlays/window',
-      },
-    ],
-  },
-  {
-    title: '运营',
-    icon: 'nb-gear',
-    children: [
-      {
-        title: '友情链接',
-        link: '/pages/bootstrap/inputs',
-      },
-      {
-        title: '广告管理',
-        link: '/pages/bootstrap/buttons',
-      },
-      {
-        title: '评论管理',
-        link: '/pages/bootstrap/modal',
-      }, {
-        title: '申请职位',
-        link: '/pages/bootstrap/modal',
-      }, {
-        title: '问卷调查',
-        link: '/pages/bootstrap/modal',
-      }, {
-        title: '留言管理',
-        link: '/pages/bootstrap/modal',
-      }, {
-        title: '采集管理',
-        icon: 'nb-layout-default',
-        children: [
-          {
-            title: '采集任务',
-            link: '/pages/modal-overlays/dialog',
-          },
-          {
-            title: '采集历史',
-            link: '/pages/modal-overlays/window',
-          }, {
-            title: '采集进度',
-            link: '/pages/modal-overlays/window',
-          },
-        ],
-      }, {
-        title: '页面静态化',
-        icon: 'nb-layout-default',
-        children: [
-          {
-            title: '首页静态化',
-            link: '/pages/modal-overlays/dialog',
-          },
-          {
-            title: '栏目静态化',
-            link: '/pages/modal-overlays/window',
-          }, {
-            title: '内容静态化',
-            link: '/pages/modal-overlays/window',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '辅助',
-    icon: 'nb-location',
-    children: [
-      {
-        title: '全文检索',
-        link: '/pages/maps/gmaps',
-      },
-      {
-        title: '数据字典',
-        link: '/pages/maps/leaflet',
-      },
-      {
-        title: '定时任务',
-        link: '/pages/maps/bubble',
-      },
-      {
-        title: '附件管理',
-        link: '/pages/maps/searchmap',
-      }, {
-        title: '评分组管理',
-        link: '/pages/maps/searchmap',
-      }, {
-        title: '词汇管理',
-        icon: 'nb-layout-default',
-        children: [
-          {
-            title: '标签管理',
-            link: '/pages/modal-overlays/dialog',
-          },
-          {
-            title: '敏感词管理',
-            link: '/pages/modal-overlays/window',
-          }, {
-            title: '关键词管理',
-            link: '/pages/modal-overlays/window',
-          }, {
-            title: '来源管理',
-            link: '/pages/modal-overlays/window',
-          }, {
-            title: '热词管理',
-            link: '/pages/modal-overlays/window',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '界面',
-    icon: 'nb-bar-chart',
-    children: [
-      {
-        title: '模板',
+        title: '系统模板',
         link: '/pages/charts/echarts',
       },
       {
-        title: '资源',
+        title: '系统资源',
         link: '/pages/charts/chartjs',
       },
     ],
   },
   {
-    title: '配置',
-    icon: 'nb-title',
+    title: '辅助数据',
+    icon: 'nb-location',
     children: [
       {
-        title: '站点设置',
-        link: '/pages/editors/tinymce',
+        title: '数据字典',
+        link: '/data/dictionary',
       },
       {
-        title: 'FTP管理',
-        link: '/pages/editors/ckeditor',
+        title: '敏感词管理',
+        link: '/data/sensitivewords',
       }, {
-        title: 'OSS管理',
-        link: '/pages/editors/ckeditor',
-      }, {
-        title: '内容类型',
-        link: '/pages/editors/ckeditor',
-      }, {
-        title: '模型管理',
-        link: '/pages/editors/ckeditor',
-      }, {
-        title: '短信服务',
-        link: '/pages/editors/ckeditor',
-        children: [
-          {
-            title: '短信服务管理',
-            link: '/pages/charts/echarts',
-          },
-          {
-            title: '短信记录',
-            link: '/pages/charts/chartjs',
-          },
-        ],
+        title: '热词管理',
+        link: '/data/searchwords',
       },
     ],
   },
   {
     title: '全局设置',
-    icon: 'nb-tables',
+    icon: 'ion-settings',
     children: [
       {
         title: '系统设置',
         link: '/pages/tables/smart-table',
       }, {
+        title: '站点设置',
+        link: '/pages/editors/tinymce',
+      },
+      {
         title: '登录设置',
         link: '/pages/tables/smart-table',
       }, {
@@ -280,6 +191,47 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }, {
         title: '企业设置',
         link: '/pages/tables/smart-table',
+      }, {
+        title: '定时任务',
+        link: '/pages/maps/bubble',
+      }, {
+        title: '评分组管理',
+        link: '/pages/maps/searchmap',
+      },
+    ],
+  },
+  {
+    title: '第三方服务管理',
+    icon: 'nb-cloudy',
+    children: [
+      {
+        title: 'FTP管理',
+        link: '/pages/editors/ckeditor',
+      }, {
+        title: 'OSS管理',
+        link: '/pages/editors/ckeditor',
+      },
+      {
+        title: '短信服务管理',
+        link: '/pages/charts/echarts',
+      },
+      {
+        title: '短信记录',
+        link: '/pages/charts/chartjs',
+      },
+    ],
+  },
+  {
+    title: '日志管理',
+    icon: 'ion-document',
+    children: [
+      {
+        title: '操作日志',
+        link: '/logs/list',
+      },
+      {
+        title: '服务器日志',
+        link: '/logs/file',
       },
     ],
   },
