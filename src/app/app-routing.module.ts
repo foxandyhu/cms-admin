@@ -18,6 +18,11 @@ const routes: Routes = [
   {path: 'logs', loadChildren: 'app/pages/logs/logs.module#LogsModule'},
   {path: 'data', loadChildren: 'app/pages/data/data.module#DataModule'},
   {path: 'friendlink', loadChildren: 'app/pages/friendlink/friendlink.module#FriendlinkModule'},
+  {path: 'acquisition', loadChildren: 'app/pages/acquisition/acquisition.module#AcquisitionModule'},
+  {path: 'job', loadChildren: 'app/pages/job/job.module#JobModule'},
+  {path: 'vote', loadChildren: 'app/pages/vote/vote.module#VoteModule'},
+  {path: 'message', loadChildren: 'app/pages/message/message.module#MessageModule'},
+  {path: 'ad', loadChildren: 'app/pages/ad/ad.module#AdModule'},
   {
     path: 'auth',
     component: NbAuthComponent,

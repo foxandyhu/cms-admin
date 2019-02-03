@@ -19,25 +19,24 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-gear',
     children: [
       {
-        title: '站内信管理',
-        link: '/pages/ui-features/search-fields',
-      },
-      {
         title: '友情链接',
         link: '/friendlink/list',
       },
       {
         title: '广告管理',
-        link: '/pages/bootstrap/buttons',
+        link: '/ad/list',
       },
       {
-        title: '评论管理',
-        link: '/pages/bootstrap/modal',
-      }, {
         title: '申请职位',
-        link: '/pages/bootstrap/modal',
+        link: '/job/apply',
       }, {
         title: '问卷调查',
+        link: '/vote/list',
+      }, {
+        title: '站内信管理',
+        link: '/message/list',
+      }, {
+        title: '评论管理',
         link: '/pages/bootstrap/modal',
       }, {
         title: '留言管理',
@@ -68,11 +67,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/editors/ckeditor',
       }, {
         title: '采集任务',
-        link: '/pages/modal-overlays/dialog',
+        link: '/acquisition/task',
       },
       {
         title: '采集历史',
-        link: '/pages/modal-overlays/window',
+        link: '/acquisition/history',
       }, {
         title: '内容静态化',
         link: '/pages/modal-overlays/window',
