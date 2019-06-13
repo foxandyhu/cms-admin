@@ -9,9 +9,10 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ThemeModule} from './@theme/theme.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoginComponent} from './pages/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

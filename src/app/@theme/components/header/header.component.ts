@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
-import { UserService } from '../../../@core/data/users.service';
-import { AnalyticsService } from '../../../@core/utils';
-import { LayoutService } from '../../../@core/utils';
+import {NbMenuService, NbSidebarService} from '@nebular/theme';
+import {UserService} from '../../../@core/data/users.service';
+import {AnalyticsService} from '../../../@core/utils';
+import {LayoutService} from '../../../@core/utils';
 
 @Component({
   selector: 'ngx-header',
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: '个人信息' }, { title: '退出系统' }];
+  userMenu = [{title: '个人信息'}, {title: '退出系统', link: 'login'}];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,

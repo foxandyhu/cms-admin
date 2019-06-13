@@ -1,0 +1,75 @@
+<nb-card>
+  <nb-card-header>
+    站内信管理
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
+        <div class="form-group">
+          <button class="btn btn-danger">
+            <i class="nb-plus"></i> 发送站内信
+          </button>&nbsp;&nbsp;
+          <select class="form-control">
+            <option>消息来源</option>
+            <option>收件箱</option>
+            <option>发件箱</option>
+            <option>垃圾箱</option>
+          </select>&nbsp;&nbsp;
+          <select class="form-control">
+            <option>消息状态</option>
+            <option>已读</option>
+            <option>未读</option>
+          </select>&nbsp;&nbsp;
+          <label>标题:&nbsp;&nbsp;</label>
+          <input type="text" nbInput/>&nbsp;&nbsp;
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-primary btn-icon">
+                <i class="ion-ios-calendar-outline"></i>
+              </button>
+            </div>
+            <input class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
+            <nb-rangepicker #rangepicker format="yyyy-MM-dd"></nb-rangepicker>
+          </div>
+          &nbsp;&nbsp;
+          <button nbButton status="success">
+            查询
+          </button>&nbsp;&nbsp;
+          <button nbButton status="warning">
+            清空
+          </button>
+        </div>
+      </form>
+      <div class="margin-top-2p">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th class="align-right">标题</th>
+            <th class="table-arr"></th>
+            <th class="align-right">发件人</th>
+            <th class="table-arr"></th>
+            <th class="align-right">发送时间</th>
+            <th class="table-arr"></th>
+            <th class="align-right">操作</th>
+            <th class="table-arr"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
+            <td class="nowrap">Google Chrome</td>
+            <td class="align-right">10,392</td>
+            <td class="table-arr"><i class="icon-up"></i></td>
+            <td class="align-right">3,822</td>
+            <td class="table-arr"><i class="icon-up"></i></td>
+            <td class="align-right">3,822</td>
+            <td class="table-arr"><i class="icon-up"></i></td>
+            <td class="align-right">3,822</td>
+            <td class="table-arr"><i class="icon-up"></i></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

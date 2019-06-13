@@ -66,13 +66,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: '模型管理',
         link: '/pages/editors/ckeditor',
       }, {
-        title: '采集任务',
-        link: '/acquisition/task',
-      },
-      {
-        title: '采集历史',
-        link: '/acquisition/history',
-      }, {
         title: '内容静态化',
         link: '/pages/modal-overlays/window',
       },
