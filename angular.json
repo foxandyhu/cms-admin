@@ -20,7 +20,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/favicon.png"
+              "src/favicon.png",
+              "src/login.html"
             ],
             "styles": [
               "src/styles.css",
