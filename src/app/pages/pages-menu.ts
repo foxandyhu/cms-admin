@@ -9,9 +9,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: '工作台',
         link: '/workbench',
       },
-      {
-        title: '个人信息',
-      },
     ],
   },
   {

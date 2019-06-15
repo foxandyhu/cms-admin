@@ -5,9 +5,10 @@ import {UserRoutingModule} from './user-routing.module';
 import {UserComponent} from './user.component';
 import {RoleComponent} from './role/role.component';
 import {ThemeModule} from '../../@theme/theme.module';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
-  declarations: [UserComponent, RoleComponent],
+  declarations: [UserComponent, RoleComponent, PasswordComponent],
   imports: [
     CommonModule,
     ThemeModule,

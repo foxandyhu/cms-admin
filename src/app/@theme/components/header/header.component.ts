@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{title: '个人信息'}, {title: '退出系统', link: 'login'}];
+  userMenu = [{title: '修改密码', link: 'user/password'}, {title: '退出系统', link: 'login'}];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
