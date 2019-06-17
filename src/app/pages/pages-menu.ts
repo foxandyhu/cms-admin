@@ -47,7 +47,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '栏目管理',
-        link: '/pages/iot-dashboard',
+        link: '/content/channel',
       },
       {
         title: '内容管理',
@@ -58,13 +58,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/content/topic',
       }, {
         title: '内容类型',
-        link: '/pages/editors/ckeditor',
+        link: '/content/type',
       }, {
         title: '模型管理',
-        link: '/pages/editors/ckeditor',
-      }, {
-        title: '内容静态化',
-        link: '/pages/modal-overlays/window',
+        link: '/content/model',
       },
     ],
   },
