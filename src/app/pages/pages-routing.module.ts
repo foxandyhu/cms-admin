@@ -19,6 +19,7 @@ const routes: Routes = [
       {path: 'vote', loadChildren: 'app/pages/vote/vote.module#VoteModule'},
       {path: 'message', loadChildren: 'app/pages/message/message.module#MessageModule'},
       {path: 'ad', loadChildren: 'app/pages/ad/ad.module#AdModule'},
+      {path: 'system', loadChildren: 'app/pages/system/system.module#SystemModule'},
       {path: '', redirectTo: 'workbench', pathMatch: 'full'},
       {path: '**', redirectTo: 'workbench'}],
   },

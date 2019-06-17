@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-header>
+    资源管理
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <div class="row">
+        <div class="col-md-2">
+          <ngx-system-res-tree></ngx-system-res-tree>
+        </div>
+        <div class="col-md-offset-0 col-md-10">
+          <form class="form-inline">
+            <div class="form-group">
+              当前目录:/usr/local/sdfsd/sd/fs/df/sd&nbsp;&nbsp;
+              <button class="btn btn-outline-primary">新建目录</button>&nbsp;&nbsp;
+              <button class="btn btn-outline-primary">新建文件</button>&nbsp;&nbsp;
+              <button class="btn btn-outline-primary">上传文件</button>&nbsp;&nbsp;
+              <button class="btn btn-outline-primary">批量删除</button>
+            </div>
+          </form>
+          <div class="margin-top-2p">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th>文件名</th>
+                <th class="align-right">大小</th>
+                <th class="table-arr"></th>
+                <th class="align-right">最后修改时间</th>
+                <th class="table-arr"></th>
+                <th class="align-right">操作</th>
+                <th class="table-arr"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
+                <td class="nowrap">Google Chrome</td>
+                <td class="align-right">10,392</td>
+                <td class="table-arr"><i class="icon-up"></i></td>
+                <td class="align-right">3,822</td>
+                <td class="table-arr"><i class="icon-up"></i></td>
+                <td class="align-right">3,822</td>
+                <td class="table-arr"><i class="icon-up"></i></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

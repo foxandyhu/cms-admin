@@ -125,12 +125,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'ion-images',
     children: [
       {
-        title: '系统模板',
-        link: '/pages/charts/echarts',
-      },
-      {
         title: '系统资源',
-        link: '/pages/charts/chartjs',
+        link: '/system/resource',
       },
     ],
   },

@@ -11,7 +11,8 @@ import { ChannelComponent } from './channel/channel.component';
 import { ModelComponent } from './model/model.component';
 
 @NgModule({
-  declarations: [NormalComponent, TopicComponent, ChannelTreeComponent, TypeComponent, ChannelComponent, ModelComponent],
+  declarations: [NormalComponent, TopicComponent,
+    ChannelTreeComponent, TypeComponent, ChannelComponent, ModelComponent],
   imports: [
     ThemeModule,
     TreeModule,
