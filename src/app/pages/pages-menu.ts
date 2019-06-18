@@ -31,13 +31,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/vote/list',
       }, {
         title: '站内信管理',
-        link: '/message/list',
+        link: '/message/letter',
       }, {
         title: '评论管理',
-        link: '/pages/bootstrap/modal',
+        link: '/message/comment',
       }, {
         title: '留言管理',
-        link: '/pages/bootstrap/modal',
+        link: '/message/guestbook',
       },
     ],
   },

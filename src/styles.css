@@ -1,2 +1,13 @@
 .margin-top-5p{margin-top:5%;}
 .margin-top-2p{margin-top: 2%;}
+.margin-top-1p{margin-top: 1%;}
+.margin-right-2p{margin-right: 2%;}
+.green-low{color: #00f9a6;}
+
+/*翻页条样式*/
+.ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}
+.ng2-smart-pagination .pagination {font-family: Exo;font-size: 1rem;line-height: 1.25;border: 2px solid #7659ff;border-radius: .5rem;padding-left: 0px !important;}
+.ng2-smart-pagination .pagination .page-item{border-right: 1px solid #342e73;}
+.ng2-smart-pagination  .pagination .page-item .page-link:hover {background-color: rgba(0,0,0,.2);color: #fff;}
+.ng2-smart-pagination .page-item.disabled .page-link {color: #6c757d;pointer-events: none;cursor: auto;background-color:rgb(60, 54, 127);border-color: #dee2e6;}
+.ng2-smart-pagination .pagination li a{background: 0 0;color: #fff;padding: .75rem 1.25rem;border: none;}

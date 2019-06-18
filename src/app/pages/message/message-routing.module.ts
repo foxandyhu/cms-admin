@@ -1,9 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {MessageComponent} from './message.component';
+import {LetterComponent} from './letter/letter.component';
+import {CommentComponent} from './comment/comment.component';
+import {GuestbookComponent} from './guestbook/guestbook.component';
 
 const routes: Routes = [
-  {path: 'list', component: MessageComponent},
+  {path: 'letter', component: LetterComponent},
+  {path: 'comment', component: CommentComponent},
+  {path: 'guestbook', component: GuestbookComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: '**', redirectTo: 'list'},
 ];
