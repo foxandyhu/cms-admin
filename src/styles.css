@@ -1,8 +1,12 @@
-.margin-top-5p{margin-top:5%;}
-.margin-top-2p{margin-top: 2%;}
-.margin-top-1p{margin-top: 1%;}
-.margin-right-2p{margin-right: 2%;}
-.green-low{color: #00f9a6;}
+.margin-top-5p{margin-top:5% !important;}
+.margin-top-2p{margin-top: 2% !important;}
+.margin-top-1p{margin-top: 1% !important;}
+.margin-right-2p{margin-right: 2% !important;}
+.green-low{color: #00f9a6 !important;}
+.width-10p{width: 10% !important;}
+.width-50p{width: 50% !important;}
+.vertical-center{display:flex;align-items: center !important;}
+.horizontal-center{display: flex;align-content:center !important;}
 
 /*翻页条样式*/
 .ng2-smart-pagination{display:inline-flex;font-size:.875em;padding:0}

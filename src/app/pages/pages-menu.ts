@@ -156,26 +156,26 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/tables/smart-table',
       }, {
         title: '站点设置',
-        link: '/pages/editors/tinymce',
+        link: '/system/setting/site',
       },
       {
         title: '登录设置',
-        link: '/pages/tables/smart-table',
+        link: '/system/setting/login',
       }, {
         title: '会员设置',
-        link: '/pages/tables/smart-table',
+        link: '/system/setting/member',
       }, {
         title: '水印设置',
-        link: '/pages/tables/smart-table',
+        link: '/system/setting/watermark',
       }, {
         title: '防火墙设置',
-        link: '/pages/tables/smart-table',
+        link: '/system/setting/firewall',
       }, {
         title: '企业设置',
-        link: '/pages/tables/smart-table',
+        link: '/system/setting/company',
       }, {
         title: '定时任务',
-        link: '/pages/maps/bubble',
+        link: '/system/setting/task',
       }, {
         title: '评分组管理',
         link: '/pages/maps/searchmap',
