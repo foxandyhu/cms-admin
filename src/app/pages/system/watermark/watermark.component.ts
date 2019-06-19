@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-watermark',
+  selector: 'ngx-system-watermark',
   templateUrl: './watermark.component.html',
-  styleUrls: ['./watermark.component.scss']
+  styleUrls: ['./watermark.component.scss'],
 })
 export class WatermarkComponent implements OnInit {
 

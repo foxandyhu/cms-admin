@@ -159,10 +159,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/system/setting/site',
       },
       {
-        title: '登录设置',
-        link: '/system/setting/login',
-      }, {
-        title: '会员设置',
+        title: '登录注册设置',
         link: '/system/setting/member',
       }, {
         title: '水印设置',

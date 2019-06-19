@@ -7,13 +7,19 @@ import { ResourceComponent } from './resource/resource.component';
 import { ResTreeComponent } from './res-tree/res-tree.component';
 import {TreeModule} from 'angular-tree-component';
 import { WatermarkComponent } from './watermark/watermark.component';
+import { MemberComponent } from './member/member.component';
+import { LoginComponent } from './member/login/login.component';
+import { RegisterComponent } from './member/register/register.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
 
 @NgModule({
-  declarations: [ResourceComponent, ResTreeComponent, WatermarkComponent],
+  declarations: [ResourceComponent, ResTreeComponent, WatermarkComponent,
+    MemberComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     ThemeModule,
     TreeModule,
+    EditorModule,
     SystemRoutingModule,
   ],
 })
