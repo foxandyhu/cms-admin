@@ -144,23 +144,23 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }, {
         title: '热词管理',
         link: '/data/searchwords',
+      }, {
+        title: '评分组管理',
+        link: '/data/score/group',
       },
     ],
   },
   {
-    title: '全局设置',
+    title: '系统设置',
     icon: 'ion-settings',
     children: [
       {
-        title: '系统设置',
-        link: '/pages/tables/smart-table',
-      }, {
         title: '站点设置',
         link: '/system/setting/site',
       },
       {
         title: '登录注册设置',
-        link: '/system/setting/member',
+        link: '/system/setting/member/login',
       }, {
         title: '水印设置',
         link: '/system/setting/watermark',
@@ -173,9 +173,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }, {
         title: '定时任务',
         link: '/system/setting/task',
-      }, {
-        title: '评分组管理',
-        link: '/pages/maps/searchmap',
       },
     ],
   },

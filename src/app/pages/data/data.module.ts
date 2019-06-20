@@ -5,9 +5,10 @@ import {DataRoutingModule} from './data-routing.module';
 import {ThemeModule} from '../../@theme/theme.module';
 import { SensitiveComponent } from './sensitive/sensitive.component';
 import { SearchComponent } from './search/search.component';
+import { ScoreGroupComponent } from './score-group/score-group.component';
 
 @NgModule({
-  declarations: [DictionaryComponent, SensitiveComponent, SearchComponent],
+  declarations: [DictionaryComponent, SensitiveComponent, SearchComponent, ScoreGroupComponent],
   imports: [
     CommonModule,
     ThemeModule,

@@ -1,0 +1,41 @@
+<nb-card>
+  <nb-card-header>
+    系统任务
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>任务名称</th>
+          <th class="align-right">上一次执行时间</th>
+          <th class="table-arr"></th>
+          <th class="align-right">下一次执行时间</th>
+          <th class="table-arr"></th>
+          <th class="align-right">执行次数</th>
+          <th class="table-arr"></th>
+          <th class="align-right">状态</th>
+          <th class="table-arr"></th>
+          <th class="align-right">操作</th>
+          <th class="table-arr"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
+          <td class="nowrap">定时打包</td>
+          <td class="align-right">2019-01-01 11:12:22</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">2019-01-01 11:12:22</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">822</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">正常</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right"></td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

@@ -1,0 +1,89 @@
+<nb-card>
+  <nb-card-body>
+    <form class="form-group">
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right">公司名称</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control"/>
+        </div>
+        <label class="col-md-2 col-form-label text-right">公司规模</label>
+        <div class="col-md-4">
+          <select class="form-control">
+            <option>10-20人</option>
+            <option>服务器2</option>
+            <option>服务器3</option>
+            <option>服务器4</option>
+            <option>服务器5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right">公司性质</label>
+        <div class="col-md-4">
+          <select class="form-control">
+            <option>国企</option>
+            <option>服务器2</option>
+            <option>服务器3</option>
+            <option>服务器4</option>
+            <option>服务器5</option>
+          </select>
+        </div>
+        <label class="col-md-2 col-form-label text-right">公司行业</label>
+        <div class="col-md-4">
+          <select class="form-control">
+            <option>互联网</option>
+            <option>服务器2</option>
+            <option>服务器3</option>
+            <option>服务器4</option>
+            <option>服务器5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label text-right">公司地址</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label text-right">公司电话</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label text-right">企业邮箱</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-md-4 col-form-label text-right">企业微信</label>
+            <div class="col-md-8">
+              <img src="/assets/images/add_img.png" width="120px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label text-right">公司简介</label>
+        <div class="col-md-10">
+          <editor [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+        </div>
+      </div>
+      <div class="form-group row margin-top-5p">
+        <div class="offset-sm-3">
+          <button class="btn btn-success">确 认</button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-info">取 消</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
+
