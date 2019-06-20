@@ -21,7 +21,6 @@
               "src/assets",
               "src/favicon.ico",
               "src/favicon.png",
-              "src/login.html",
               { "glob": "**/*", "input": "node_modules/tinymce/skins", "output": "/tinymce/skins/" },
               { "glob": "**/*", "input": "node_modules/tinymce/themes", "output": "/tinymce/themes/" },
               { "glob": "**/*", "input": "node_modules/tinymce/plugins", "output": "/tinymce/plugins/" }

@@ -9,6 +9,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ThemeModule} from './@theme/theme.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoginModule} from './pages/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    AppRoutingModule,
+    AppRoutingModule, LoginModule,
     NgbModule,
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
