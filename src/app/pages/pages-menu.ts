@@ -181,19 +181,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-cloudy',
     children: [
       {
-        title: 'FTP管理',
-        link: '/pages/editors/ckeditor',
-      }, {
-        title: 'OSS管理',
-        link: '/pages/editors/ckeditor',
-      },
-      {
-        title: '短信服务管理',
-        link: '/pages/charts/echarts',
+        title: '短信服务商管理',
+        link: '/provider/sms',
       },
       {
         title: '短信记录',
-        link: '/pages/charts/chartjs',
+        link: '/provider/sms/history',
+      },
+      {
+        title: '邮件服务商管理',
+        link: '/provider/email',
       },
     ],
   },

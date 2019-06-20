@@ -18,7 +18,8 @@ import { TaskComponent } from './task/task.component';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkComponent,
-    MemberComponent, LoginComponent, RegisterComponent, FirewallComponent, CompanyComponent, SiteComponent, TaskComponent],
+    MemberComponent, LoginComponent, RegisterComponent, FirewallComponent,
+    CompanyComponent, SiteComponent, TaskComponent],
   imports: [
     CommonModule,
     ThemeModule,

@@ -1,0 +1,40 @@
+<nb-card>
+  <nb-card-header>
+    邮件服务商管理
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
+        <div class="form-group">
+          <button class="btn btn-danger">
+            <i class="nb-plus"></i> 新增
+          </button>&nbsp;&nbsp;
+        </div>
+      </form>
+      <table class="margin-top-2p table table-hover">
+        <thead>
+        <tr>
+          <th>名称</th>
+          <th class="align-right">状态</th>
+          <th class="table-arr"></th>
+          <th class="align-right">描述</th>
+          <th class="table-arr"></th>
+          <th class="align-right">操作</th>
+          <th class="table-arr"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
+          <td class="nowrap">注册邮件</td>
+          <td class="align-right">启用</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right">会员注册时发送的邮件</td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+          <td class="align-right"></td>
+          <td class="table-arr"><i class="icon-up"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </nb-list-item>
+  </nb-list>
+</nb-card>
