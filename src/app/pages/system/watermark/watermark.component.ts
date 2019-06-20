@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './watermark.component.html',
   styleUrls: ['./watermark.component.scss'],
 })
-export class WatermarkComponent implements OnInit {
+export class WatermarkSettingComponent implements OnInit {
 
   constructor() { }
 

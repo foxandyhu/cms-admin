@@ -6,7 +6,7 @@ import '../../../@theme/components/editor.loader';
   templateUrl: './member.component.html',
   styleUrls: ['./member.component.scss'],
 })
-export class MemberComponent implements OnInit {
+export class MemberSettingComponent implements OnInit {
 
   tabs: any[] = [
     {

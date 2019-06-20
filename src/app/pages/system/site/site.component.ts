@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'ngx-system-site',
   templateUrl: './site.component.html',
-  styleUrls: ['./site.component.scss']
+  styleUrls: ['./site.component.scss'],
 })
-export class SiteComponent implements OnInit {
+export class SiteSettingComponent implements OnInit {
 
   constructor() { }
 

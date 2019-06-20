@@ -6,20 +6,20 @@ import {ThemeModule} from '../../@theme/theme.module';
 import { ResourceComponent } from './resource/resource.component';
 import { ResTreeComponent } from './resource/res-tree/res-tree.component';
 import {TreeModule} from 'angular-tree-component';
-import { WatermarkComponent } from './watermark/watermark.component';
-import { MemberComponent } from './member/member.component';
-import { LoginComponent } from './member/login/login.component';
-import { RegisterComponent } from './member/register/register.component';
+import { WatermarkSettingComponent } from './watermark/watermark.component';
+import { MemberSettingComponent } from './member/member.component';
+import { LoginSettingComponent } from './member/login/login.component';
+import { RegisterSettingComponent } from './member/register/register.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
-import { FirewallComponent } from './firewall/firewall.component';
-import { CompanyComponent } from './company/company.component';
-import { SiteComponent } from './site/site.component';
-import { TaskComponent } from './task/task.component';
+import { FirewallSettingComponent } from './firewall/firewall.component';
+import { CompanySettingComponent } from './company/company.component';
+import { SiteSettingComponent } from './site/site.component';
+import { TaskSettingComponent } from './task/task.component';
 
 @NgModule({
-  declarations: [ResourceComponent, ResTreeComponent, WatermarkComponent,
-    MemberComponent, LoginComponent, RegisterComponent, FirewallComponent,
-    CompanyComponent, SiteComponent, TaskComponent],
+  declarations: [ResourceComponent, ResTreeComponent, WatermarkSettingComponent,
+    MemberSettingComponent, LoginSettingComponent, RegisterSettingComponent, FirewallSettingComponent,
+    CompanySettingComponent, SiteSettingComponent, TaskSettingComponent],
   imports: [
     CommonModule,
     ThemeModule,
