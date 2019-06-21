@@ -39,7 +39,6 @@ import {
 } from '@nebular/theme';
 
 import {NbSecurityModule} from '@nebular/security';
-
 import {
   FooterComponent,
   HeaderComponent,
@@ -60,6 +59,7 @@ import {
 import {DEFAULT_THEME} from './styles/theme.default';
 import {COSMIC_THEME} from './styles/theme.cosmic';
 import {CORPORATE_THEME} from './styles/theme.corporate';
+import {NbMomentDateModule} from '@nebular/moment';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -97,6 +97,7 @@ const NB_MODULES = [
   NbChatModule,
   NbTooltipModule,
   NbCalendarKitModule,
+  NbMomentDateModule,
 ];
 
 const COMPONENTS = [
