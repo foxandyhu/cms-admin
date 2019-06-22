@@ -33,7 +33,7 @@ export class AuthService implements HttpInterceptor {
     if ('/login' !== url) {
       const key = localStorage.getItem(this.LOGIN_KEY);
       if (!key) {
-        this.router.navigate([this.LOGIN_ROUTER]);
+        // this.router.navigate([this.LOGIN_ROUTER]);
         return false;
       }
     }

@@ -1,5 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
-import { delay, withLatestFrom, takeWhile } from 'rxjs/operators';
+import {Component, OnDestroy} from '@angular/core';
+import {delay, withLatestFrom, takeWhile} from 'rxjs/operators';
 import {
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
@@ -7,8 +7,6 @@ import {
   NbSidebarService,
   NbThemeService,
 } from '@nebular/theme';
-
-import { StateService } from '../../../@core/utils';
 
 @Component({
   selector: 'ngx-sample-layout',
@@ -20,9 +18,9 @@ import { StateService } from '../../../@core/utils';
       </nb-layout-header>
 
       <nb-sidebar class="menu-sidebar"
-                   tag="menu-sidebar"
-                   responsive
-                   [end]="sidebar.id === 'end'">
+                  tag="menu-sidebar"
+                  responsive
+                  [end]="sidebar.id === 'end'">
         <nb-sidebar-header *ngIf="currentTheme !== 'corporate'">
           <a href="#" class="btn btn-hero-success main-btn">
             <i class="ion ion-social-github"></i> <span>系统菜单</span>
@@ -43,27 +41,28 @@ import { StateService } from '../../../@core/utils';
 })
 export class SampleLayoutComponent implements OnDestroy {
 
-  layout: any = {};
-  sidebar: any = {};
+  layout: any = {
+    name: 'One Column',
+    icon: 'nb-layout-default',
+    id: 'one-column',
+    selected: true
+  };
+  sidebar: any = {
+    name: 'Sidebar at layout start',
+    icon: 'nb-layout-sidebar-left',
+    id: 'start',
+    selected: true
+  };
 
   private alive = true;
 
   currentTheme: string;
 
-  constructor(protected stateService: StateService,
-              protected menuService: NbMenuService,
+  constructor(protected menuService: NbMenuService,
               protected themeService: NbThemeService,
               protected bpService: NbMediaBreakpointsService,
               protected sidebarService: NbSidebarService) {
-    this.stateService.onLayoutState()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((layout: string) => this.layout = layout);
 
-    this.stateService.onSidebarState()
-      .pipe(takeWhile(() => this.alive))
-      .subscribe((sidebar: string) => {
-        this.sidebar = sidebar;
-      });
 
     const isBp = this.bpService.getByName('is');
     this.menuService.onItemSelect()
@@ -83,7 +82,7 @@ export class SampleLayoutComponent implements OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.currentTheme = theme.name;
-    });
+      });
   }
 
   ngOnDestroy() {

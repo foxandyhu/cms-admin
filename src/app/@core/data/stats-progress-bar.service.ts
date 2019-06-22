@@ -17,28 +17,28 @@ export class StatsProgressBarService {
       value: 572900,
       activeProgress: 70,
       iconColor: 'primary',
-      icon: 'nb-list'
+      icon: 'nb-list',
     },
     {
       title: '评论数',
       value: 6378,
       activeProgress: 30,
       iconColor: 'success',
-      icon: 'nb-compose'
+      icon: 'nb-compose',
     },
     {
       title: '留言数',
       value: 200,
       activeProgress: 55,
       iconColor: 'info',
-      icon: 'nb-email'
+      icon: 'nb-email',
     },
     {
       title: '会员注册数',
       value: 200,
       activeProgress: 55,
       iconColor: 'warning',
-      icon: 'nb-person'
+      icon: 'nb-person',
     },
   ];
 

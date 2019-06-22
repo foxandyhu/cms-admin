@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AnalyticsService} from './@core/utils/analytics.service';
 import {AuthService} from './@core/auth/auth.service';
 
 @Component({
@@ -8,11 +7,10 @@ import {AuthService} from './@core/auth/auth.service';
     <router-outlet></router-outlet>`,
 })
 export class AppComponent implements OnInit {
-
-  constructor(private analytics: AnalyticsService, private authService: AuthService) {
+  
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.analytics.trackPageViews();
   }
 }
