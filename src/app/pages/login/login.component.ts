@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ngx-login',
@@ -7,14 +7,16 @@ import {AfterViewInit, Component, OnInit, Renderer2} from '@angular/core';
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
-  constructor(private render2: Renderer2) {
+  constructor() {
   }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
-    const spinner = this.render2.selectRootElement("#nb-global-spinner");
-    spinner.remove();
+    const spinner = document.getElementById('nb-global-spinner');
+    if (spinner) {
+      spinner.remove();
+    }
   }
 }

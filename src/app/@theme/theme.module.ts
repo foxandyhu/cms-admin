@@ -38,12 +38,9 @@ import {
   NbCalendarKitModule,
 } from '@nebular/theme';
 
-import {NbSecurityModule} from '@nebular/security';
 import {
   FooterComponent,
   HeaderComponent,
-  ThemeSwitcherComponent,
-  ThemeSwitcherListComponent,
 } from './components';
 import {
   CapitalizePipe,
@@ -77,7 +74,6 @@ const NB_MODULES = [
   NbPopoverModule,
   NbContextMenuModule,
   NgbModule,
-  NbSecurityModule, // *nbIsGranted directive,
   NbProgressBarModule,
   NbCalendarModule,
   NbCalendarRangeModule,
@@ -101,15 +97,9 @@ const NB_MODULES = [
 ];
 
 const COMPONENTS = [
-  ThemeSwitcherComponent,
-  ThemeSwitcherListComponent,
   HeaderComponent,
   FooterComponent,
   SampleLayoutComponent,
-];
-
-const ENTRY_COMPONENTS = [
-  ThemeSwitcherListComponent,
 ];
 
 const PIPES = [
@@ -143,7 +133,6 @@ const NB_THEME_PROVIDERS = [
   imports: [...BASE_MODULES, ...NB_MODULES],
   exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
   declarations: [...COMPONENTS, ...PIPES],
-  entryComponents: [...ENTRY_COMPONENTS],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {
