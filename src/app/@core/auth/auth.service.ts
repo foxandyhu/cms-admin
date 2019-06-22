@@ -48,7 +48,6 @@ export class AuthService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(tap(event => {
       if (event instanceof HttpResponse) {
-        console.log(11);
         if (event.body.code === 401) {
           this.router.navigate([this.LOGIN_ROUTER]);
         }
