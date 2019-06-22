@@ -9,7 +9,7 @@ export class ProgressInfo {
   icon: string;
 }
 
-@Injectable()
+@Injectable(({providedIn: 'root'}))
 export class StatsProgressBarService {
   private progressInfoData: ProgressInfo[] = [
     {

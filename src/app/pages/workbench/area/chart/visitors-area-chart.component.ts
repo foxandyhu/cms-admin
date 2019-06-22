@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
-import { LayoutService } from '../../../../@core/utils/layout.service';
-
+import { LayoutService } from '../../../../services/layout/layout.service';
 
 @Component({
   selector: 'ngx-visitors-area-chart',

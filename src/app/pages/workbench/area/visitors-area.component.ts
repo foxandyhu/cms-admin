@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {NbMediaBreakpoint, NbMediaBreakpointsService, NbThemeService} from '@nebular/theme';
 import {takeWhile} from 'rxjs/operators';
-import {CountryOrderService} from '../../../@core/data/country-order.service';
+import {CountryOrderService} from '../../../services/analysis/country-order.service';
 
 @Component({
   selector: 'ngx-visitors-area',
