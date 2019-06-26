@@ -9,6 +9,11 @@ export class AppApi {
   static ROOT_URI = 'http://127.0.0.1';
 
   /**
+   * 是否属于后台接口的标识
+   */
+  static API_FLAG = '/manage';
+
+  /**
    * 用户模块
    */
   static USERS = {
