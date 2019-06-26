@@ -23,9 +23,13 @@ export class HeaderInterceptor implements HttpInterceptor {
     return next.handle(req);
   }
 
+  /**
+   * 设置后台接口完整地址
+   * @param req
+   */
   private setApiUrl(req: HttpRequest<any>): HttpRequest<any> {
     let url = req.url;
-    if (url.startsWith('/manage')) {  // 后台接口
+    if (url.startsWith(AppApi.API_FLAG)) {  // 后台接口
       url = AppApi.ROOT_URI.concat(url);
       req.url = url;
     }
