@@ -45,13 +45,13 @@ export class SampleLayoutComponent implements OnDestroy {
     name: 'One Column',
     icon: 'nb-layout-default',
     id: 'one-column',
-    selected: true
+    selected: true,
   };
   sidebar: any = {
     name: 'Sidebar at layout start',
     icon: 'nb-layout-sidebar-left',
     id: 'start',
-    selected: true
+    selected: true,
   };
 
   private alive = true;

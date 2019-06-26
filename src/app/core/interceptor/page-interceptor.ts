@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {NavigationStart, Router} from '@angular/router';
 import {LocalStorageUtil} from '../../core/utils/local-storage';
 
+/**
+ * 页面切换拦截器,防止直接访问某个未授权的页面
+ */
 @Injectable({providedIn: 'root'})
 export class PageInterceptor {
 

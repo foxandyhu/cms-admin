@@ -35,6 +35,9 @@ export class UserService {
   login(userName: string, password: string): Promise<boolean> {
     const data = {userName: userName, password: password};
     return this.httpUtil.post(AppApi.USERS.login, data).then(response => {
+      if (!response) {
+        return Promise.resolve(false);
+      }
       LocalStorageUtil.put(UserService.USER_KEY, JSON.stringify(response));
       return Promise.resolve(true);
     });

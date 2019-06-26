@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PageInterceptor} from './services/auth/page-interceptor';
+import {PageInterceptor} from './core/interceptor';
 
 @Component({
   selector: 'ngx-app',

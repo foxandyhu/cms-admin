@@ -8,8 +8,11 @@ import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ModalService} from '../../@theme/components';
 
+/**
+ * HTTP请求拦截器用于拦截接口状态响应
+ */
 @Injectable({providedIn: 'root'})
-export class LoginInterceptor implements HttpInterceptor {
+export class RequestInterceptor implements HttpInterceptor {
 
   private LOGIN_ROUTER: string = 'login';
 
@@ -22,7 +25,8 @@ export class LoginInterceptor implements HttpInterceptor {
    * @param next
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(catchError((err: HttpErrorResponse) => this.handleError(err)));
+    return next.handle(req).pipe(catchError((err: HttpErrorResponse) =>
+      this.handleError(err)));
   }
 
   private handleError(event: HttpResponse<any> | HttpErrorResponse): Observable<any> {
@@ -30,6 +34,9 @@ export class LoginInterceptor implements HttpInterceptor {
       case 401:
         this.modalService.show('', '未登录');
         this.router.navigate([this.LOGIN_ROUTER]);
+        return of(event);
+      case 0:
+        this.modalService.show('', '请求被取消,请刷新浏览器重试!');
         return of(event);
       default:
         this.modalService.show('', event['error']['message']);

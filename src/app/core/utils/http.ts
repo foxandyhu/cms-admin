@@ -17,7 +17,10 @@ export class HttpUtil {
    */
   public post(url: string, body: any | null): Promise<any> {
     return this.httpClient.post(url, body, {withCredentials: true}).toPromise().then(response => {
-      return Promise.resolve(response['message']);
+      if (response) {
+        return Promise.resolve(response['message']);
+      }
+      return Promise.resolve();
     });
   }
 
@@ -27,8 +30,10 @@ export class HttpUtil {
    */
   public get(url: string): Promise<any> {
     return this.httpClient.get(url, {withCredentials: true}).toPromise().then(response => {
-      return Promise.resolve(response['message']);
-    }).catch(() => {
+      if (response) {
+        return Promise.resolve(response['message']);
+      }
+      return Promise.resolve();
     });
   }
 }

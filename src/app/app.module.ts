@@ -9,7 +9,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {ThemeModule} from './@theme/theme.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginModule} from './pages/login/login.module';
-import {LoginInterceptor, HeaderInterceptor} from './services/auth';
+import {RequestInterceptor, HeaderInterceptor} from './core/interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +26,7 @@ import {LoginInterceptor, HeaderInterceptor} from './services/auth';
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true},
   ],
 })
 export class AppModule {
