@@ -41,6 +41,7 @@ import {
 import {
   FooterComponent,
   HeaderComponent,
+  ModalComponent,
 } from './components';
 
 import {
@@ -93,7 +94,10 @@ const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SampleLayoutComponent,
+  ModalComponent,
 ];
+
+const ENTRY_COMPONENTS = [ModalComponent];
 
 const NB_THEME_PROVIDERS = [
   ...NbThemeModule.forRoot(
@@ -117,6 +121,7 @@ const NB_THEME_PROVIDERS = [
   imports: [...BASE_MODULES, ...NB_MODULES],
   exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS],
   declarations: [...COMPONENTS],
+  entryComponents: [...ENTRY_COMPONENTS],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {
