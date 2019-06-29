@@ -4,10 +4,10 @@ import {LogsComponent} from './logs.component';
 import {FileComponent} from './file/file.component';
 
 const routes: Routes = [
-  {path: 'list', component: LogsComponent},
+  {path: 'sys', component: LogsComponent},
   {path: 'file', component: FileComponent},
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
-  {path: '**', redirectTo: 'list'},
+  {path: '', redirectTo: 'sys', pathMatch: 'full'},
+  {path: '**', redirectTo: 'sys'},
 ];
 
 @NgModule({

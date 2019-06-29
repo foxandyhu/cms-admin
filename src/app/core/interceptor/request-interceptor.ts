@@ -6,7 +6,7 @@ import {
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ModalService} from '../../@theme/components';
+import {ModalUtil} from '../../@theme/components';
 
 /**
  * HTTP请求拦截器用于拦截接口状态响应
@@ -16,7 +16,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
   private LOGIN_ROUTER: string = 'login';
 
-  constructor(private router: Router, private modalService: ModalService) {
+  constructor(private router: Router, private modalUtil: ModalUtil) {
   }
 
   /**
@@ -32,14 +32,14 @@ export class RequestInterceptor implements HttpInterceptor {
   private handleError(event: HttpResponse<any> | HttpErrorResponse): Observable<any> {
     switch (event.status) {
       case 401:
-        this.modalService.show('', '未登录');
+        this.modalUtil.alert('', '未登录');
         this.router.navigate([this.LOGIN_ROUTER]);
         return of(event);
       case 0:
-        this.modalService.show('', '请求被取消,请刷新浏览器重试!');
+        this.modalUtil.alert('', '请求被取消,请刷新浏览器重试!');
         return of(event);
       default:
-        this.modalService.show('', event['error']['message']);
+        this.modalUtil.alert('', event['error']['message']);
     }
     return throwError(event);
   }

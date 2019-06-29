@@ -1,10 +1,10 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 
 import {NbMenuService, NbSidebarService} from '@nebular/theme';
-import {UserService} from '../../../services/user/users.service';
 import {LayoutService} from '../../../services/layout/layout.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {UserService} from '../../../pages/user/service/users.service';
 
 @Component({
   selector: 'ngx-header',

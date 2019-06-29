@@ -20,4 +20,12 @@ export class AppApi {
     login: '/manage/user/login.html',
     logout: '/manage/user/logout.html',
   };
+
+  /**
+   * 日志模块
+   */
+  static LOGS = {
+    sys_logs_list: '/manage/logs/sys/list.html',
+    sys_logs_del: '/manage/logs/sys/del.html',
+  };
 }

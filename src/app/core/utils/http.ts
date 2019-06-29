@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 /**
@@ -28,8 +28,8 @@ export class HttpUtil {
    * GET请求 返回Promise对象
    * @param url
    */
-  public get(url: string): Promise<any> {
-    return this.httpClient.get(url, {withCredentials: true}).toPromise().then(response => {
+  public get(url: string, params?: HttpParams): Promise<any> {
+    return this.httpClient.get(url, {params: params, withCredentials: true}).toPromise().then(response => {
       if (response) {
         return Promise.resolve(response['message']);
       }

@@ -5,6 +5,7 @@ import {LogsRoutingModule} from './logs-routing.module';
 import {LogsComponent} from './logs.component';
 import {FileComponent} from './file/file.component';
 import {ThemeModule} from '../../@theme/theme.module';
+import {SysLogsService} from './service/sys-logs.service';
 
 @NgModule({
   declarations: [LogsComponent, FileComponent],
@@ -13,6 +14,7 @@ import {ThemeModule} from '../../@theme/theme.module';
     ThemeModule,
     LogsRoutingModule,
   ],
+  providers: [SysLogsService],
 })
 export class LogsModule {
 }

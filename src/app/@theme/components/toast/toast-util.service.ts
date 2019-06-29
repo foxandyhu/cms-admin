@@ -3,7 +3,7 @@ import {NbGlobalPhysicalPosition, NbToastrService} from '@nebular/theme';
 import {NbToastStatus} from '@nebular/theme/components/toastr/model';
 
 @Injectable({providedIn: 'root'})
-export class ToastService {
+export class ToastUtil {
 
   constructor(private toastService: NbToastrService) {
   }

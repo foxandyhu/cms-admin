@@ -200,7 +200,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '操作日志',
-        link: '/logs/list',
+        link: '/logs/sys',
       },
       {
         title: '服务器日志',

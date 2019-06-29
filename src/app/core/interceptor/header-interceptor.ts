@@ -31,7 +31,7 @@ export class HeaderInterceptor implements HttpInterceptor {
     let url = req.url;
     if (url.startsWith(AppApi.API_FLAG)) {  // 后台接口
       url = AppApi.ROOT_URI.concat(url);
-      req.url = url;
+      req = req.clone({url: url});
     }
     return req;
   }

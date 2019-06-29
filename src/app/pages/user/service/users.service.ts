@@ -1,8 +1,8 @@
 import {of as observableOf, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {HttpUtil} from '../../core/utils/http';
-import {LocalStorageUtil} from '../../core/utils/local-storage';
-import {AppApi} from '../../core/app-api';
+import {HttpUtil} from '../../../core/utils/http';
+import {LocalStorageUtil} from '../../../core/utils/local-storage';
+import {AppApi} from '../../../core/app-api';
 
 @Injectable()
 export class UserService {
