@@ -5,8 +5,9 @@ import {
   HttpRequest, HttpResponse,
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
 import {ModalUtil} from '../../@theme/components';
+import {LoadingBarService} from '../../@theme/components/loading-bar/loading-bar.service';
 
 /**
  * HTTP请求拦截器用于拦截接口状态响应
@@ -16,7 +17,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
   private LOGIN_ROUTER: string = 'login';
 
-  constructor(private router: Router, private modalUtil: ModalUtil) {
+  constructor(private router: Router, private modalUtil: ModalUtil, private loadingBarService: LoadingBarService) {
   }
 
   /**
@@ -25,8 +26,14 @@ export class RequestInterceptor implements HttpInterceptor {
    * @param next
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(catchError((err: HttpErrorResponse) =>
-      this.handleError(err)));
+    return next.handle(req).pipe(tap(() => {
+      this.loadingBarService.open();
+    }, (err) => {
+      this.loadingBarService.close();
+      this.handleError(err);
+    }, () => {
+      this.loadingBarService.close();
+    }));
   }
 
   private handleError(event: HttpResponse<any> | HttpErrorResponse): Observable<any> {

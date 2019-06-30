@@ -42,6 +42,7 @@ import {
   FooterComponent,
   HeaderComponent,
   ModalComponent,
+  LoadingBarComponent,
 } from './components';
 
 import {
@@ -95,6 +96,7 @@ const COMPONENTS = [
   FooterComponent,
   SampleLayoutComponent,
   ModalComponent,
+  LoadingBarComponent,
 ];
 
 const ENTRY_COMPONENTS = [ModalComponent];

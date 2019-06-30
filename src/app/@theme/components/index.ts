@@ -3,3 +3,4 @@ export * from './footer/footer.component';
 export * from './modal/modal.component';
 export * from './modal/modal-util.service';
 export * from './toast/toast-util.service';
+export * from './loading-bar/loading-bar.component';

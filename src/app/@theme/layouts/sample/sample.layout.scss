@@ -46,7 +46,7 @@
   }
 
   nb-sidebar.menu-sidebar {
-
+    z-index: 9999999;
     margin-top: nb-theme(sidebar-header-gap);
 
     @include nb-for-theme(corporate) {

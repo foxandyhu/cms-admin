@@ -31,6 +31,7 @@ import {
 
       <nb-layout-column class="main-content">
         <ng-content select="router-outlet"></ng-content>
+        <ngx-loading-bar></ngx-loading-bar>
       </nb-layout-column>
 
       <nb-layout-footer fixed>
