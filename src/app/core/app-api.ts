@@ -6,7 +6,7 @@ export class AppApi {
   /**
    * 服务根域名
    */
-  static ROOT_URI = 'http://127.0.0.1';
+  static ROOT_URI = 'http://192.168.8.113';
 
   /**
    * 是否属于后台接口的标识
