@@ -19,6 +19,8 @@ export class AppApi {
   static USERS = {
     login: '/manage/user/login.html',
     logout: '/manage/user/logout.html',
+    user_list: '/manage/user/list.html',
+    user_del: '/manage/user/del.html',
   };
 
   /**

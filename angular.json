@@ -36,14 +36,16 @@
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/angular-tree-component/dist/angular-tree-component.css",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
-              "src/app/@theme/styles/styles.scss"
+              "src/app/@theme/styles/styles.scss",
+              "node_modules/bootstrapvalidator/dist/css/bootstrapValidator.css"
             ],
             "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/bootstrapvalidator/vendor/jquery/jquery.min.js"
             ]
           },
           "configurations": {
