@@ -30,13 +30,15 @@
         <label class="col-md-2 col-form-label text-right">角色</label>
         <div class="form-group col-md-10">
           <nb-checkbox #selectRole *ngFor="let role of roles" status="success" class="col-sm-4"
-                       (change)="changeRole(role.id,selectRole.value)" [value]="role.selected">{{role.name}}</nb-checkbox>
+                       (change)="changeRole(role.id,selectRole.value)">{{role.name}}</nb-checkbox>
         </div>
       </div>
       <div class="row">
         <label class="col-md-2 col-form-label text-right">头像</label>
         <div class="col-md-9 vertical-center">
-          <img src="/assets/images/add_img.png" width="120px">
+          <input type="hidden" [ngModel]="user.face" name="face"/>
+          <input type="file" class="hidden" id="imgFile" (change)="faceFileChange($event)"/>
+          <img [src]="previewFace" width="120px" height="120px" onclick="imgFile.click()">
         </div>
       </div>
       <div class="row margin-top-5p">

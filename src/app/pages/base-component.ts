@@ -3,7 +3,7 @@ import {IBaseService} from './ibase.service';
 import 'bootstrapvalidator';
 import {Injector} from '@angular/core';
 
-declare var $: any;
+declare var jQuery: any;
 
 /**
  *基本的component 封装了一些常用的方法
@@ -159,8 +159,8 @@ export class BaseComponent {
   /**
    * 表单验证
    */
-  validateForm(formId: string, fields: any) {
-    $('#' + formId).bootstrapValidator({
+  initValidateForm(formId: string, fields: any) {
+    jQuery('#' + formId).bootstrapValidator({
       feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
         invalid: 'glyphicon glyphicon-remove',
@@ -169,4 +169,15 @@ export class BaseComponent {
       fields: fields,
     });
   }
+
+  /**
+   * 表单是否验证成功
+   * @param formId
+   */
+  isValidForm(formId: string): boolean {
+    jQuery('#' + formId).data('bootstrapValidator').validate();
+    const flag = jQuery('#' + formId).data('bootstrapValidator').isValid();
+    return flag;
+  }
+
 }

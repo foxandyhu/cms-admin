@@ -21,6 +21,10 @@ export class AppApi {
     logout: '/manage/user/logout.html',
     user_list: '/manage/user/list.html',
     user_del: '/manage/user/del.html',
+    user_add: '/manage/user/add.html',
+    user_detail: '/manage/user/{}.html',
+    user_edit: '/manage/user/edit.html',
+    role_all: '/manage/user/role/all.html',
   };
 
   /**
@@ -29,5 +33,13 @@ export class AppApi {
   static LOGS = {
     sys_logs_list: '/manage/logs/sys/list.html',
     sys_logs_del: '/manage/logs/sys/del.html',
+  };
+
+  /**
+   * 文件资源模块
+   * @type {{file_upload: string}}
+   */
+  static FILES = {
+    file_upload: '/manage/file/upload.html',
   };
 }

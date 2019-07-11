@@ -1,17 +1,17 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {ModalUtil} from '../../@theme/components';
+import {AfterViewInit, Component, ElementRef, Injector, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '../user/service/users.service';
+import {BaseComponent} from '../base-component';
 
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent extends BaseComponent implements OnInit, AfterViewInit {
 
-  constructor(private router: Router, private modalUtil: ModalUtil,
-              private html: Renderer2, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, protected injector: Injector) {
+    super(userService, injector);
   }
 
   ngOnInit() {

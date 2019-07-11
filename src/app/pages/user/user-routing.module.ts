@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'detail', component: UserDetailComponent},
   {path: 'role', component: RoleComponent},
   {path: 'password', component: PasswordComponent},
+  {path: ':userId', component: UserDetailComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'},
   {path: '**', redirectTo: 'list'},
 ];

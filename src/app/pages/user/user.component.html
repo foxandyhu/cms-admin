@@ -14,8 +14,7 @@
             <option value="1">正常</option>
             <option value="0">待审核</option>
             <option value="2">已禁用</option>
-          </select>&nbsp;&nbsp;
-          &nbsp;&nbsp;
+          </select>&nbsp;&nbsp;&nbsp;&nbsp;
           <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>
@@ -48,8 +47,12 @@
           <td>{{item.loginCount}}</td>
           <td>{{item.statusName}}</td>
           <td>
+            <a href="#user/{{item.id}}" class="btn btn-info btn-smaller">
+              <i class="ion-edit"></i> 编辑
+            </a>&nbsp;&nbsp;
             <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
-              <i class="ion-trash-a"></i> 删除</button>
+              <i class="ion-trash-a"></i> 删除
+            </button>
           </td>
         </tr>
         </tbody>

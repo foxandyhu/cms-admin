@@ -1,6 +1,9 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {UserService} from '../service/users.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {RoleService} from '../service/roles.service';
 
 @Component({
   selector: 'ngx-user-add',
@@ -9,13 +12,16 @@ import {UserService} from '../service/users.service';
 })
 export class UserAddComponent extends BaseComponent implements OnInit {
 
-  constructor(private userService: UserService, protected injector: Injector) {
+  constructor(private userService: UserService, protected injector: Injector,
+              private domSanitizer: DomSanitizer, private router: Router, private roleService: RoleService) {
     super(userService, injector);
   }
 
-  user = {userName: '', password: '', confirmPassword: '', email: '', roles: []};
-  roles: Array<any>;
-  currentRoles: Array<any>;
+  user = {userName: '', password: '', confirmPassword: '', email: '', roles: [], face: ''}; //  用户对象
+  roles: Array<any>;                                  // 系统所有角色集合
+  currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
+  previewFace: any = '/assets/images/add_img.png';   //  头像预览
+  private formId: string = 'userForm';              //  表单ID
 
   ngOnInit() {
     this.initValiator();
@@ -26,7 +32,7 @@ export class UserAddComponent extends BaseComponent implements OnInit {
    * 初始化表单验证
    */
   initValiator() {
-    this.validateForm('userForm', {
+    this.initValidateForm(this.formId, {
       userName: {
         validators: {
           notEmpty: {message: '用户名不能为空!'},
@@ -84,7 +90,7 @@ export class UserAddComponent extends BaseComponent implements OnInit {
         role.selected = selected;
       }
       if (role.selected === true) {    //  选中的角色重新放到当前用户拥有的角色集合中
-        this.currentRoles.push(role);
+        this.currentRoles.push({id: role.id, name: role.name});
       }
     });
   }
@@ -93,6 +99,26 @@ export class UserAddComponent extends BaseComponent implements OnInit {
    * 保存用户信息
    */
   saveUser() {
-    console.log(this.currentRoles);
+    if (this.isValidForm(this.formId)) {
+      this.user.roles = this.currentRoles;
+      this.userService.saveUser(this.user).then(result => {
+        if (result === true) {
+          this.toastUtil.showSuccess('新增成功!');
+          this.router.navigate(['/user/list']);
+        }
+      });
+    }
+  }
+
+  /**
+   * 头像上传
+   * @param event
+   */
+  faceFileChange(event) {
+    const file = event.currentTarget.files[0];
+    this.previewFace = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+    this.userService.uploadFace(file).then(result => {
+      this.user.face = result;
+    });
   }
 }

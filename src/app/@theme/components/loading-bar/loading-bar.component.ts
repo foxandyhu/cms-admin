@@ -8,7 +8,6 @@ import {LoadingBarService} from './loading-bar.service';
 })
 export class LoadingBarComponent implements OnInit {
   show: boolean = false;
-  timer;
 
   constructor() {
     LoadingBarService.loading = this;

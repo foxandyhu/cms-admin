@@ -1,15 +1,13 @@
 import {of as observableOf, Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpUtil} from '../../../core/utils/http';
-import {LocalStorageUtil} from '../../../core/utils/local-storage';
 import {AppApi} from '../../../core/app-api';
 import {HttpParams} from '@angular/common/http';
 import {IBaseService} from '../../ibase.service';
+import {ContextUtil} from '../../../core/utils/context';
 
 @Injectable()
 export class UserService implements IBaseService {
-
-  private static USER_KEY: string = 'user';
 
   private users = {
     nick: {name: ' ', picture: 'assets/images/nick.png'},
@@ -22,7 +20,7 @@ export class UserService implements IBaseService {
    * 获得当前登录用户信息
    */
   getCurrentUser(): Observable<any> {
-    const user = LocalStorageUtil.get(UserService.USER_KEY);
+    const user = ContextUtil.getLocalUser();
     if (user) {
       this.users.nick.name = JSON.parse(user)['userName'];
     }
@@ -40,7 +38,7 @@ export class UserService implements IBaseService {
       if (!response) {
         return Promise.resolve(false);
       }
-      LocalStorageUtil.put(UserService.USER_KEY, JSON.stringify(response));
+      ContextUtil.setLocalUser(JSON.stringify(response));
       return Promise.resolve(true);
     });
   }
@@ -50,7 +48,7 @@ export class UserService implements IBaseService {
    */
   logout(): Promise<boolean> {
     return this.httpUtil.get(AppApi.USERS.logout).then(() => {
-      LocalStorageUtil.clear();
+      ContextUtil.clear();
       return Promise.resolve(true);
     });
   }
@@ -76,6 +74,47 @@ export class UserService implements IBaseService {
    */
   delData(ids: Array<number>): Promise<any> {
     return this.httpUtil.post(AppApi.USERS.user_del, ids).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 头像上传
+   */
+  uploadFace(file: any): Promise<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.httpUtil.post(AppApi.FILES.file_upload, formData).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 保存用户
+   */
+  saveUser(user: any): Promise<boolean> {
+    return this.httpUtil.post(AppApi.USERS.user_add, user).then(() => {
+      return Promise.resolve(true);
+    });
+  }
+
+  /**
+   * 编辑用户
+   * @param user
+   */
+  editUser(user: any): Promise<boolean> {
+    return this.httpUtil.post(AppApi.USERS.user_edit, user).then(() => {
+      return Promise.resolve(true);
+    });
+  }
+
+  /**
+   * 获得用户信息
+   * @param userId
+   */
+  getUser(userId: any): Promise<any> {
+    const url = AppApi.USERS.user_detail.replace('{}', userId);
+    return this.httpUtil.get(url).then(response => {
       return Promise.resolve(response);
     });
   }
