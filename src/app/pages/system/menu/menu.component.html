@@ -1,0 +1,58 @@
+<nb-card>
+  <nb-card-header>
+    菜单管理
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item>
+      <form class="form-inline">
+        <div class="form-group">
+          已选择父节点:&nbsp;&nbsp;<b class="font-red">{{selectNode.name}}</b>&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-success" (click)="showAddNode()">
+            <span class="ion-plus-round"></span> 新增节点
+          </button>&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-outline-warning" (click)="clearSelectNode()">
+            清除选中节点
+          </button>
+        </div>
+      </form>
+      <table class="table table-hover margin-top-2p">
+        <thead>
+        <tr>
+          <th>名称</th>
+          <th>地址</th>
+          <th>排序</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-template #recursiveList let-list>
+          <ng-template ngFor let-item [ngForOf]="list">
+            <tr (click)="selectNode=item;item.open=!item.open">
+              <td [ngStyle]="{'padding-left':item.level*20+'px'}">
+                <span class="icon" *ngIf="item.children.length>0">
+                  <i class="fa" [ngClass]="{'fa-minus':item.open,'fa-plus':!item.open}"></i>
+                </span>
+                {{item.name}}
+              </td>
+              <td>{{item.url}}</td>
+              <td>{{item.seq}}</td>
+              <td>
+                <button class="btn btn-info btn-smaller" (click)="showEditNode(item)">
+                  <i class="ion-edit"></i> 编辑
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
+                  <i class="ion-trash-a"></i> 删除
+                </button>
+              </td>
+            </tr>
+            <ng-container *ngIf="item.children.length>0 && item.open">
+              <ng-container *ngTemplateOutlet="recursiveList; context:{$implicit:item.children}"></ng-container>
+            </ng-container>
+          </ng-template>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{$implicit:list}"></ng-container>
+        </tbody>
+      </table>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

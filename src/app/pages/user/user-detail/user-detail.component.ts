@@ -66,7 +66,7 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
    * @param id
    */
   getUser(userId: any) {
-    return this.userService.getUser(userId).then(result => {
+    return this.userService.getData(userId).then(result => {
       this.user = result;
       this.currentRoles = this.user.roles;
       if (this.user.face) {
@@ -112,11 +112,11 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
   /**
    * 保存用户信息
    */
-  saveUser() {
+  editUser() {
     this.user.password = '***********';
     if (this.isValidForm(this.formId)) {
       this.user.roles = this.currentRoles;
-      this.userService.editUser(this.user).then(result => {
+      this.userService.editData(this.user).then(result => {
         if (result === true) {
           this.toastUtil.showSuccess('编辑成功!');
           this.router.navigate(['/user/list']);

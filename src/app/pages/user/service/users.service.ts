@@ -92,7 +92,7 @@ export class UserService implements IBaseService {
   /**
    * 保存用户
    */
-  saveUser(user: any): Promise<boolean> {
+  saveData(user: any): Promise<boolean> {
     return this.httpUtil.post(AppApi.USERS.user_add, user).then(() => {
       return Promise.resolve(true);
     });
@@ -102,7 +102,7 @@ export class UserService implements IBaseService {
    * 编辑用户
    * @param user
    */
-  editUser(user: any): Promise<boolean> {
+  editData(user: any): Promise<boolean> {
     return this.httpUtil.post(AppApi.USERS.user_edit, user).then(() => {
       return Promise.resolve(true);
     });
@@ -112,8 +112,18 @@ export class UserService implements IBaseService {
    * 获得用户信息
    * @param userId
    */
-  getUser(userId: any): Promise<any> {
+  getData(userId: any): Promise<any> {
     const url = AppApi.USERS.user_detail.replace('{}', userId);
+    return this.httpUtil.get(url).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 回收用户角色
+   */
+  recycleUserRole(userId: string, roleId: string): Promise<any> {
+    const url = AppApi.USERS.role_recycle.replace('{:userId}', userId).replace('{:roleId}', roleId);
     return this.httpUtil.get(url).then(response => {
       return Promise.resolve(response);
     });

@@ -34,4 +34,16 @@ export class SysLogsService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  editData(data: any): Promise<boolean> {
+    return undefined;
+  }
+
+  saveData(data: any): Promise<boolean> {
+    return undefined;
+  }
+
+  getData(id: any): Promise<any> {
+    return undefined;
+  }
 }

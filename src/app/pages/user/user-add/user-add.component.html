@@ -29,7 +29,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">角色</label>
         <div class="form-group col-md-10">
-          <nb-checkbox #selectRole *ngFor="let role of roles" status="success" class="col-sm-4"
+          <nb-checkbox #selectRole *ngFor="let role of roles" status="success"
                        (change)="changeRole(role.id,selectRole.value)">{{role.name}}</nb-checkbox>
         </div>
       </div>

@@ -12,4 +12,22 @@ export interface IBaseService {
    * 删除数据
    */
   delData(ids: Array<number>): Promise<any>;
+
+  /**
+   * 保存数据
+   * @param data
+   */
+  saveData(data: any): Promise<boolean>;
+
+  /**
+   * 编辑数据
+   * @param data
+   */
+  editData(data: any): Promise<boolean>;
+
+  /**
+   * 根据ID曹肇数据
+   * @param id
+   */
+  getData(id: any): Promise<any>;
 }

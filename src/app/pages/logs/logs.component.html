@@ -22,7 +22,8 @@
         <thead>
         <tr>
           <th>
-            <nb-checkbox #selectAllBox status="success" [value]="isSelectAll" (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
+            <nb-checkbox #selectAllBox status="success" [value]="isSelectAll"
+                         (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
           </th>
           <th>用户名</th>
           <th>类型</th>
@@ -36,7 +37,8 @@
         <tbody>
         <tr *ngFor="let item of pager?.data" class="{{item.success?'':'bg-low-red'}}">
           <td>
-            <nb-checkbox #selectBox status="success" [value]="isSelectAll" (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
+            <nb-checkbox #selectBox status="success" [value]="isSelectAll"
+                         (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
           </td>
           <td>{{item.userName}}</td>
           <td>{{item.categoryName}}</td>
@@ -46,7 +48,7 @@
           <td>{{item.ip}}</td>
           <td>{{item.success ? '成功' : '失败'}}</td>
           <td>
-            <button class="btn btn-danger btn-smaller" (click)="del(item.id)">删除</button>
+            <button class="btn btn-danger btn-smaller" (click)="del(item.id)"><i class="ion-trash-a"></i> 删除</button>
           </td>
         </tr>
         </tbody>

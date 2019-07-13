@@ -133,7 +133,7 @@ export class BaseComponent {
   /**
    * 分页列表
    */
-  getPager(pageNo: number) {
+  getPager(pageNo: number): Promise<any> {
     this._queryParams.forEach((value, key, map) => {
       if (!value) {     // 去掉空值
         map.delete(key);
@@ -141,10 +141,11 @@ export class BaseComponent {
     });
     this.setQueryParams('pageNo', pageNo);
     const result: Promise<any> = this.baseService.getPager(this._queryParams);
-    result.then(data => {
+    return result.then(data => {
       this.pager = data;
       this.isSelectAll = false;
       this.selectItems = new Array<number>();
+      return Promise.resolve(data);
     });
   }
 

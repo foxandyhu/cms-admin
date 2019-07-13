@@ -25,6 +25,14 @@ export class AppApi {
     user_detail: '/manage/user/{}.html',
     user_edit: '/manage/user/edit.html',
     role_all: '/manage/user/role/all.html',
+    role_list: '/manage/user/role/list.html',
+    role_del: '/manage/user/role/del.html',
+    role_add: '/manage/user/role/add.html',
+    role_edit: '/manage/user/role/edit.html',
+    role_detail: '/manage/user/role/{}.html',
+    role_recycle: '/manage/user/recycle/{:userId}-{:roleId}.html',
+    role_menu: '/manage/user/role/menu/{:roleId}.html',
+    role_grant: '/manage/user/role/menu/grant.html',
   };
 
   /**
@@ -41,5 +49,15 @@ export class AppApi {
    */
   static FILES = {
     file_upload: '/manage/file/upload.html',
+  };
+
+  /**
+   * 系统模块
+   */
+  static SYSTEM = {
+    menu_list: '/manage/menu/list.html',
+    menu_add: '/manage/menu/add.html',
+    menu_edit: '/manage/menu/edit.html',
+    menu_del: '/manage/menu/del.html',
   };
 }

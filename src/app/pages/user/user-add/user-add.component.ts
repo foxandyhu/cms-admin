@@ -66,17 +66,9 @@ export class UserAddComponent extends BaseComponent implements OnInit {
    * 获得角色集合
    */
   getRoles() {
-    this.roles = [{id: 1, name: '超级管理员'}, {id: 2, name: '客服'}, {id: 3, name: 'test'}]; // 系统所有角色集合
-    this.currentRoles = [{id: 1, name: '超级管理员'}, {id: 2, name: '客服'}];  //  当前用户拥有的角色集合
-    this.roles.forEach((role, index, array) => {
-      this.currentRoles.every((item, i, items) => {
-        if (role.id === item.id) {
-          role.selected = true;
-          return false;
-        }
-        role.selected = false;
-        return true;
-      });
+     return this.roleService.getRoles().then(result => {
+      this.roles = result;
+      return Promise.resolve(this.roles);
     });
   }
 
@@ -101,7 +93,7 @@ export class UserAddComponent extends BaseComponent implements OnInit {
   saveUser() {
     if (this.isValidForm(this.formId)) {
       this.user.roles = this.currentRoles;
-      this.userService.saveUser(this.user).then(result => {
+      this.userService.saveData(this.user).then(result => {
         if (result === true) {
           this.toastUtil.showSuccess('新增成功!');
           this.router.navigate(['/user/list']);

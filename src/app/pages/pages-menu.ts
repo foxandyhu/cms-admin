@@ -3,7 +3,7 @@ import {NbMenuItem} from '@nebular/theme';
 export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: '首页',
-    icon: 'nb-home',
+    icon: 'ion-home',
     children: [
       {
         title: '工作台',
@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '运营',
-    icon: 'nb-gear',
+    icon: 'ion-ios-cog',
     children: [
       {
         title: '友情链接',
@@ -43,7 +43,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '内容管理',
-    icon: 'nb-compose',
+    icon: 'ion-ios-book',
     children: [
       {
         title: '栏目管理',
@@ -77,6 +77,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/member/group',
       },
       {
+        title: '菜单管理',
+        link: '/system/menu',
+      },
+      {
         title: '角色管理',
         link: '/user/role',
       },
@@ -88,7 +92,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '数据分析',
-    icon: 'nb-bar-chart',
+    icon: 'ion-ios-analytics',
     children: [
       {
         title: '趋势分析',
@@ -132,7 +136,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '辅助数据',
-    icon: 'nb-location',
+    icon: 'ion-cube',
     children: [
       {
         title: '数据字典',
@@ -178,7 +182,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '第三方服务管理',
-    icon: 'nb-cloudy',
+    icon: 'ion-ios-flower',
     children: [
       {
         title: '短信服务商管理',

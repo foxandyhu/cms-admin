@@ -5,12 +5,18 @@ import {RoleComponent} from './role/role.component';
 import {PasswordComponent} from './password/password.component';
 import {UserAddComponent} from './user-add/user-add.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
+import {RoleAddComponent} from './role-add/role-add.component';
+import {RoleDetailComponent} from './role-detail/role-detail.component';
+import {RoleUserComponent} from './role-user/role-user.component';
 
 const routes: Routes = [
   {path: 'list', component: UserComponent},
   {path: 'add', component: UserAddComponent},
   {path: 'detail', component: UserDetailComponent},
   {path: 'role', component: RoleComponent},
+  {path: 'role/add', component: RoleAddComponent},
+  {path: 'role/:roleId', component: RoleDetailComponent},
+  {path: 'role/mu/:roleId', component: RoleUserComponent},
   {path: 'password', component: PasswordComponent},
   {path: ':userId', component: UserDetailComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'},

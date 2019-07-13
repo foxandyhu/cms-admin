@@ -10,14 +10,22 @@ import {UserAddComponent} from './user-add/user-add.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {UserService} from './service/users.service';
 import {RoleService} from './service/roles.service';
+import {RoleAddComponent} from './role-add/role-add.component';
+import {RoleDetailComponent} from './role-detail/role-detail.component';
+import {RoleUserComponent} from './role-user/role-user.component';
+import {RoleMenuComponent} from './role-menu/role-menu.component';
+import {NbDialogModule} from '@nebular/theme';
 
 @NgModule({
-  declarations: [UserComponent, RoleComponent, PasswordComponent, UserAddComponent, UserDetailComponent],
+  declarations: [UserComponent, RoleComponent, PasswordComponent,
+    UserAddComponent, UserDetailComponent, RoleAddComponent, RoleDetailComponent, RoleUserComponent, RoleMenuComponent],
   imports: [
     CommonModule,
     ThemeModule,
     UserRoutingModule,
+    NbDialogModule.forChild(),
   ], providers: [UserService, RoleService],
+  entryComponents: [RoleMenuComponent],
 })
 export class UserModule {
 }
