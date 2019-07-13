@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {LocalStorageUtil} from '../../core/utils/local-storage';
 import {AppApi} from '../app-api';
-import {ContextUtil} from "../utils/context";
+import {ContextUtil} from '../utils/context';
 
 /**
  * 为每个HTTP头部信息添加自定义头信息

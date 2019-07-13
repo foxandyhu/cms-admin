@@ -16,6 +16,7 @@ import {LoadingBarService} from '../../@theme/components/loading-bar/loading-bar
 export class RequestInterceptor implements HttpInterceptor {
 
   private LOGIN_ROUTER: string = 'login';
+  private NO_RIGHT: string = 'system/noright';
 
   constructor(private router: Router, private modalUtil: ModalUtil, private loadingBarService: LoadingBarService) {
   }
@@ -41,6 +42,9 @@ export class RequestInterceptor implements HttpInterceptor {
       case 401:
         this.modalUtil.alert('', '未登录');
         this.router.navigate([this.LOGIN_ROUTER]);
+        return of(event);
+      case 403:
+        this.router.navigate([this.NO_RIGHT]);
         return of(event);
       case 0:
         this.modalUtil.alert('', '请求被取消,请刷新浏览器重试!');

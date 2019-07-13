@@ -10,9 +10,11 @@ import {CompanySettingComponent} from './company/company.component';
 import {SiteSettingComponent} from './site/site.component';
 import {TaskSettingComponent} from './task/task.component';
 import {MenuComponent} from './menu/menu.component';
+import {NoRightComponent} from './noright/noright.component';
 
 const routes: Routes = [
   {path: 'resource', component: ResourceComponent},
+  {path: 'noright', component: NoRightComponent},
   {path: 'setting/watermark', component: WatermarkSettingComponent},
   {
     path: 'setting/member', component: MemberSettingComponent, children: [

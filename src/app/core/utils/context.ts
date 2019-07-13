@@ -36,7 +36,7 @@ export class ContextUtil {
   /**
    * 清空上下文
    */
-  public static clear(){
+  public static clear() {
     LocalStorageUtil.clear();
   }
 }

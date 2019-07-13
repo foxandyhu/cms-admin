@@ -5,8 +5,8 @@ import {LoginComponent} from './pages/login/login.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', loadChildren: 'app/pages/pages.module#PagesModule'},
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '**', redirectTo: ''},
 ];
 
 const config: ExtraOptions = {

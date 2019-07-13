@@ -20,12 +20,13 @@ import {MenuAddComponent} from './menu/menu-add/menu-add.component';
 import {NbDialogModule} from '@nebular/theme';
 import {MenuService} from './service/menu-service';
 import {MenuDetailComponent} from './menu/menu-detail/menu-detail.component';
+import {NoRightComponent} from './noright/noright.component';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkSettingComponent,
     MemberSettingComponent, LoginSettingComponent, RegisterSettingComponent,
     FirewallSettingComponent, CompanySettingComponent, SiteSettingComponent, TaskSettingComponent,
-    MenuComponent, MenuAddComponent, MenuDetailComponent],
+    MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent],
   imports: [
     CommonModule,
     ThemeModule,
