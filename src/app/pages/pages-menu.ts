@@ -140,17 +140,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '数据字典',
-        link: '/data/dictionary',
+        link: '/words/dictionary',
       },
       {
         title: '敏感词管理',
-        link: '/data/sensitivewords',
+        link: '/words/sensitivewords',
       }, {
         title: '热词管理',
-        link: '/data/searchwords',
+        link: '/words/searchwords',
       }, {
         title: '评分组管理',
-        link: '/data/score/group',
+        link: '/words/score/group',
       },
     ],
   },

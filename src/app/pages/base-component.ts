@@ -102,31 +102,33 @@ export class BaseComponent {
    * 删除数据
    * @param id 数据ID或数组
    */
-  del(id) {
+  del(id): Promise<boolean> {
     const ids = new Array();
     ids.push(id);
-    this.doDel(ids);
+    return this.doDel(ids);
   }
 
   /**
    * 批量删除数据
    */
-  delMutil() {
+  delMutil(): Promise<boolean> {
     if (this.selectItems.length > 0) {
-      this.doDel(this.selectItems);
-    } else {
-      this.toastUtil.showWarning('请选择要删除的数据!');
+      return this.doDel(this.selectItems);
     }
+    this.toastUtil.showWarning('请选择要删除的数据!');
+    return Promise.resolve(false);
   }
 
-  private doDel(ids: Array<number>) {
-    this.modalUtil.confirm('删除提示', '您确认要删除该数据吗?').then(result => {
+  private doDel(ids: Array<number>): Promise<boolean> {
+    return this.modalUtil.confirm('删除提示', '您确认要删除该数据吗?').then(result => {
       if (result) {
-        this.baseService.delData(ids).then(() => {
+        return this.baseService.delData(ids).then(() => {
           this.toastUtil.showSuccess('删除成功!');
           this.getPager(this.pager.pageNo);
+          return Promise.resolve(true);
         });
       }
+      return Promise.resolve(false);
     });
   }
 

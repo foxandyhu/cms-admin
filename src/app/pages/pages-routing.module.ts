@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: 'member', loadChildren: 'app/pages/member/member.module#MemberModule'},
       {path: 'user', loadChildren: 'app/pages/user/user.module#UserModule'},
       {path: 'logs', loadChildren: 'app/pages/logs/logs.module#LogsModule'},
-      {path: 'data', loadChildren: 'app/pages/data/data.module#DataModule'},
+      {path: 'words', loadChildren: 'app/pages/words/words.module#WordsModule'},
       {path: 'friendlink', loadChildren: 'app/pages/friendlink/friendlink.module#FriendlinkModule'},
       {path: 'job', loadChildren: 'app/pages/job/job.module#JobModule'},
       {path: 'vote', loadChildren: 'app/pages/vote/vote.module#VoteModule'},

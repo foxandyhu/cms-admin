@@ -60,4 +60,13 @@ export class AppApi {
     menu_edit: '/manage/menu/edit.html',
     menu_del: '/manage/menu/del.html',
   };
+
+  static WORDS = {
+    dictionary_list: '/manage/dictionary/list.html',
+    dictionary_add: '/manage/dictionary/add.html',
+    dictionary_edit: '/manage/dictionary/edit.html',
+    dictionary_del: '/manage/dictionary/del.html',
+    dictionary_detail: '/manage/dictionary/{:dictionaryId}.html',
+    dictionary_types: '/manage/dictionary/types.html',
+  };
 }

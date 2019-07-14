@@ -36,4 +36,18 @@ export class HttpUtil {
       return Promise.resolve();
     });
   }
+
+  /**
+   *参数转化为HttpParams
+   * @param params
+   */
+  public getHttpParams(params: Map<string, string>): HttpParams {
+    let httpParams: HttpParams = new HttpParams();
+    if (params) {
+      params.forEach((value, key, map) => {
+        httpParams = httpParams.set(key, value);
+      });
+    }
+    return httpParams;
+  }
 }

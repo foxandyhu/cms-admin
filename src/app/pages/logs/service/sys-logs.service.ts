@@ -14,12 +14,7 @@ export class SysLogsService implements IBaseService {
    * 日志列表
    */
   getPager(params: Map<string, string>): Promise<any> {
-    let httpParams: HttpParams = new HttpParams();
-    if (params && params.size > 0) {
-      params.forEach((value, key, map) => {
-        httpParams = httpParams.set(key, value);
-      });
-    }
+    const httpParams: HttpParams = this.httpUtil.getHttpParams(params);
     const result: Promise<any> = this.httpUtil.get(AppApi.LOGS.sys_logs_list, httpParams).then(response => {
       return Promise.resolve(response);
     });

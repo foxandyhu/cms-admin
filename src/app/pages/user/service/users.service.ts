@@ -57,12 +57,7 @@ export class UserService implements IBaseService {
    * 用户列表
    */
   getPager(params: Map<string, string>): Promise<any> {
-    let httpParams: HttpParams = new HttpParams();
-    if (params) {
-      params.forEach((value, key, map) => {
-        httpParams = httpParams.set(key, value);
-      });
-    }
+    const httpParams: HttpParams = this.httpUtil.getHttpParams(params);
     const result: Promise<any> = this.httpUtil.get(AppApi.USERS.user_list, httpParams).then(response => {
       return Promise.resolve(response);
     });
