@@ -31,6 +31,7 @@
           <th>电子邮箱</th>
           <th>最后登录时间</th>
           <th>登录次数</th>
+          <th>是否超级管理员</th>
           <th>状态</th>
           <th>操作</th>
         </tr>
@@ -45,6 +46,7 @@
           <td>{{item.email}}</td>
           <td>{{item.lastLoginTime}}</td>
           <td>{{item.loginCount}}</td>
+          <td>{{item.superAdmin ? "是" : "否"}}</td>
           <td>{{item.statusName}}</td>
           <td>
             <a href="#user/{{item.id}}" class="btn btn-info btn-smaller">

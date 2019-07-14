@@ -34,6 +34,12 @@
         </div>
       </div>
       <div class="row">
+        <label class="col-md-2 col-form-label text-right">超级管理员</label>
+        <div class="form-group col-md-10">
+          <nb-checkbox status="success" name="superAdmin" [(ngModel)]="user.superAdmin">是</nb-checkbox>
+        </div>
+      </div>
+      <div class="row">
         <label class="col-md-2 col-form-label text-right">头像</label>
         <div class="col-md-9 vertical-center">
           <input type="hidden" [ngModel]="user.face" name="face"/>

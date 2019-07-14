@@ -19,7 +19,8 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
     super(userService, injector);
   }
 
-  user = {userName: '', password: '', confirmPassword: '', email: '', roles: [], face: '', status: ''}; //  用户对象
+  user = {userName: '', password: '', confirmPassword: '', email: '', roles: [],
+    face: '', status: '', superAdmin: false}; //  用户对象
   roles: Array<any> = new Array<any>();               // 系统所有角色集合
   currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
   previewFace: any = '/assets/images/add_img.png';   //  头像预览
