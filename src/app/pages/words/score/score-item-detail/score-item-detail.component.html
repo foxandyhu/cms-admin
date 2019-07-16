@@ -1,0 +1,50 @@
+<nb-card style="width:120%">
+  <nb-card-header>
+    编辑评分项
+  </nb-card-header>
+  <nb-card-body>
+    <form id="scoreItemForm" class="form-horizontal" onSubmit="return false;">
+      <div class="row">
+        <label class="col-md-3 col-form-label text-right">评分组</label>
+        <div class="form-group col-md-9">{{scoreGroup.name}}</div>
+      </div>
+      <div class="row">
+        <label class="col-md-3 col-form-label text-right">名称</label>
+        <div class="form-group col-md-9">
+          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="scoreItem.name"
+                 name="name"/>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-3 col-form-label text-right">分值</label>
+        <div class="form-group col-md-9">
+          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="scoreItem.score"
+                 name="score"/>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-3 col-form-label text-right">排序</label>
+        <div class="form-group col-md-9">
+          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="scoreItem.seq"
+                 name="seq"/>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-3 col-form-label text-right">图片</label>
+        <div class="form-group col-md-9">
+          <input type="hidden" [ngModel]="scoreItem.url" name="face"/>
+          <input type="file" class="hidden" id="imgFile" (change)="fileChange($event)"/>
+          <img [src]="preview" width="120px" height="120px" onclick="imgFile.click()">
+        </div>
+      </div>
+    </form>
+    <nb-card-footer>
+      <button type="buttom" class="btn btn-success" (click)="submit()">
+        <i class="ion-checkmark"></i> 确 认
+      </button>&nbsp;&nbsp;&nbsp;
+      <button type="buttom" class="btn btn-default" (click)="cancel()">
+        <i class="ion-checkmark"></i> 取 消
+      </button>
+    </nb-card-footer>
+  </nb-card-body>
+</nb-card>

@@ -1,22 +1,19 @@
 <nb-card>
   <nb-card-header>
-    敏感词管理
+    评分项管理 &nbsp;--&nbsp;&nbsp;{{scoreGroup.name}}
   </nb-card-header>
   <nb-list>
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <button class="btn btn-success" (click)="showAddSensitive()">
+          <button class="btn btn-success" (click)="showAddScoreItem()">
             <span class="ion-plus-round"></span> 新增
-          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="text" autocomplete="off" required="true" class="form-control" name="word" [(ngModel)]="searchWord" placeholder="请输入要搜索的敏感词"/>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-info" (click)="search()">
-            <span class="ion-ios-search"></span> 搜索
           </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
             批量删除
-          </button>
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="#words/score/group" class="btn btn-info">
+            <i class="ion-arrow-return-left"></i> 返回评分组列表</a>
         </div>
       </form>
       <div class="margin-top-2p">
@@ -27,8 +24,11 @@
               <nb-checkbox #selectAllBox status="success" [value]="isSelectAll"
                            (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
             </th>
-            <th>敏感词</th>
-            <th>替换词</th>
+            <th>分组名</th>
+            <th>名称</th>
+            <th>分值</th>
+            <th>排列顺序</th>
+            <th>图片</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -38,10 +38,13 @@
               <nb-checkbox #selectBox status="success" [value]="isSelectAll"
                            (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
             </td>
-            <td>{{item.word}}</td>
-            <td>{{item.replace}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.score}}</td>
+            <td>{{item.seq}}</td>
+            <td>{{item.url}}</td>
             <td>
-              <button class="btn btn-info btn-smaller" (click)="showEditSensitive(item.id)">
+              <button class="btn btn-info btn-smaller" (click)="showEditScoreItem(item.id)">
                 <i class="ion-edit"></i> 编辑
               </button>&nbsp;&nbsp;
               <button class="btn btn-danger btn-smaller" (click)="del(item.id)">

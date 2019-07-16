@@ -3,7 +3,7 @@ import {NbDialogRef} from '@nebular/theme';
 import {BaseComponent} from '../../../base-component';
 
 @Component({
-  selector: 'ngx-dictionary-add',
+  selector: 'ngx-words-dictionary-add',
   templateUrl: './dictionary-add.component.html',
   styleUrls: ['./dictionary-add.component.scss'],
 })

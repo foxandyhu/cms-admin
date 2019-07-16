@@ -86,15 +86,10 @@ export class MenuComponent extends BaseComponent implements OnInit {
    * 删除菜单
    * @param id
    */
-  del(id) {
-    const ids = new Array();
-    ids.push(id);
-    this.modalUtil.confirm('删除提示', '删除系统菜单会回收对应角色的权限是否继续?').then(result => {
+  delMenu(id) {
+    super.del(id).then(result => {
       if (result) {
-        this.menuService.delData(ids).then(() => {
-          this.toastUtil.showSuccess('删除成功!');
-          this.getMenus();
-        });
+        this.getMenus();
       }
       this.clearSelectNode();
     });

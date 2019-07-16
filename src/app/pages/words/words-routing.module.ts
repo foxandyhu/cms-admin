@@ -3,7 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {DictionaryComponent} from './dictionary/dictionary.component';
 import {SensitiveComponent} from './sensitive/sensitive.component';
 import {SearchComponent} from './search/search.component';
-import {ScoreGroupComponent} from './score-group/score-group.component';
+import {ScoreGroupComponent} from './score/score-group.component';
+import {ScoreItemComponent} from './score/score-item.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dictionary', pathMatch: 'full'},
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'sensitivewords', component: SensitiveComponent},
   {path: 'searchwords', component: SearchComponent},
   {path: 'score/group', component: ScoreGroupComponent},
+  {path: 'score/item/group/:groupId', component: ScoreItemComponent},
   {path: '**', redirectTo: 'dictionary'},
 ];
 

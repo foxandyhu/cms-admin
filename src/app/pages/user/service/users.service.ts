@@ -9,9 +9,7 @@ import {ContextUtil} from '../../../core/utils/context';
 @Injectable()
 export class UserService implements IBaseService {
 
-  private users = {
-    nick: {name: ' ', picture: 'assets/images/nick.png'},
-  };
+  private users = {userName: ' ', face: 'assets/images/nick.png'};
 
   constructor(private httpUtil: HttpUtil) {
   }
@@ -22,7 +20,7 @@ export class UserService implements IBaseService {
   getCurrentUser(): Observable<any> {
     const user = ContextUtil.getLocalUser();
     if (user) {
-      this.users.nick.name = JSON.parse(user)['userName'];
+      this.users = JSON.parse(user);
     }
     return observableOf(this.users);
   }
