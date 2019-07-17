@@ -186,15 +186,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '短信服务商管理',
-        link: '/provider/sms',
+        link: '/system/sms/provider',
       },
       {
         title: '短信记录',
-        link: '/provider/sms/history',
+        link: '/system/sms/record',
       },
       {
         title: '邮件服务商管理',
-        link: '/provider/email',
+        link: '/system/email/provider',
       },
     ],
   },

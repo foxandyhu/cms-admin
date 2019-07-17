@@ -11,6 +11,9 @@ import {SiteSettingComponent} from './site/site.component';
 import {TaskSettingComponent} from './task/task.component';
 import {MenuComponent} from './menu/menu.component';
 import {NoRightComponent} from './noright/noright.component';
+import {SmsProviderComponent} from './sms/provider/provider.component';
+import {SmsRecordComponent} from './sms/record/record.component';
+import {EmailProviderComponent} from './email/email.component';
 
 const routes: Routes = [
   {path: 'resource', component: ResourceComponent},
@@ -38,6 +41,9 @@ const routes: Routes = [
   {path: 'setting/site', component: SiteSettingComponent},
   {path: 'setting/task', component: TaskSettingComponent},
   {path: 'menu', component: MenuComponent},
+  {path: 'sms/provider', component: SmsProviderComponent},
+  {path: 'sms/record', component: SmsRecordComponent},
+  {path: 'email/provider', component: EmailProviderComponent},
 ];
 
 @NgModule({

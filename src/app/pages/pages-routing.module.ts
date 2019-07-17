@@ -20,7 +20,6 @@ const routes: Routes = [
       {path: 'message', loadChildren: 'app/pages/message/message.module#MessageModule'},
       {path: 'ad', loadChildren: 'app/pages/ad/ad.module#AdModule'},
       {path: 'system', loadChildren: 'app/pages/system/system.module#SystemModule'},
-      {path: 'provider', loadChildren: 'app/pages/provider/provider.module#ProviderModule'},
       {path: '', redirectTo: 'workbench', pathMatch: 'full'},
       {path: '**', redirectTo: 'workbench'}],
   },

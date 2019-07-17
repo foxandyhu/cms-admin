@@ -21,12 +21,25 @@ import {NbDialogModule} from '@nebular/theme';
 import {MenuService} from './service/menu-service';
 import {MenuDetailComponent} from './menu/menu-detail/menu-detail.component';
 import {NoRightComponent} from './noright/noright.component';
+import {SmsProviderComponent} from './sms/provider/provider.component';
+import {SmsRecordComponent} from './sms/record/record.component';
+import {SmsProviderService} from './service/sms-provider-service';
+import {SmsProviderAddComponent} from './sms/provider/provider-add/provider-add.component';
+import {SmsProviderDetailComponent} from './sms/provider/provider-detail/provider-detail.component';
+import {EmailProviderComponent} from './email/email.component';
+import {EmailProviderAddComponent} from './email/email-add/email-add.component';
+import {EmailProviderDetailComponent} from './email/email-detail/email-detail.component';
+import {EmailProviderService} from './service/email-provider-service';
+import {SmsRecordService} from './service/sms-record-service';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkSettingComponent,
     MemberSettingComponent, LoginSettingComponent, RegisterSettingComponent,
     FirewallSettingComponent, CompanySettingComponent, SiteSettingComponent, TaskSettingComponent,
-    MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent],
+    MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent,
+    SmsProviderComponent, SmsRecordComponent, SmsProviderAddComponent,
+    SmsProviderDetailComponent, EmailProviderComponent,
+    EmailProviderAddComponent, EmailProviderDetailComponent],
   imports: [
     CommonModule,
     ThemeModule,
@@ -35,8 +48,9 @@ import {NoRightComponent} from './noright/noright.component';
     SystemRoutingModule,
     NbDialogModule.forChild(),
   ],
-  entryComponents: [MenuAddComponent, MenuDetailComponent],
-  providers: [MenuService],
+  entryComponents: [MenuAddComponent, MenuDetailComponent, SmsProviderAddComponent,
+    SmsProviderDetailComponent, EmailProviderAddComponent, EmailProviderDetailComponent],
+  providers: [MenuService, SmsProviderService, EmailProviderService, SmsRecordService],
 })
 export class SystemModule {
 }

@@ -61,6 +61,9 @@ export class AppApi {
     menu_del: '/manage/menu/del.html',
   };
 
+  /**
+   * 基础数据模块
+   */
   static WORDS = {
     dictionary_list: '/manage/dictionary/list.html',
     dictionary_add: '/manage/dictionary/add.html',
@@ -87,5 +90,30 @@ export class AppApi {
     score_item_edit: '/manage/score/item/edit.html',
     score_item_del: '/manage/score/item/del.html',
     score_item_detail: '/manage/score/item/{:groupId}.html',
+  };
+
+  /**
+   * 短信模块
+   */
+  static SMS = {
+    provider_list: '/manage/sms/provider/list.html',
+    provider_add: '/manage/sms/provider/add.html',
+    provider_edit: '/manage/sms/provider/edit.html',
+    provider_del: '/manage/sms/provider/del.html',
+    provider_detail: '/manage/sms/provider/{:providerId}.html',
+    provider_all: '/manage/sms/provider/all.html',
+    record_list: '/manage/sms/record/list.html',
+    record_resend: '/manage/sms/record/resend-{:recordId}.html',
+  };
+
+  /**
+   * 邮件模块
+   */
+  static EMAIL = {
+    provider_list: '/manage/email/provider/list.html',
+    provider_add: '/manage/email/provider/add.html',
+    provider_edit: '/manage/email/provider/edit.html',
+    provider_del: '/manage/email/provider/del.html',
+    provider_detail: '/manage/email/provider/{:providerId}.html',
   };
 }
