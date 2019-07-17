@@ -44,15 +44,4 @@ export class ScoreItemService implements IBaseService {
       return Promise.resolve(true);
     });
   }
-
-  /**
-   * 图片上传
-   */
-  uploadPic(file: any): Promise<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.httpUtil.post(AppApi.FILES.file_upload, formData).then(response => {
-      return Promise.resolve(response);
-    });
-  }
 }

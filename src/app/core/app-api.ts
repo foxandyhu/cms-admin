@@ -116,4 +116,22 @@ export class AppApi {
     provider_del: '/manage/email/provider/del.html',
     provider_detail: '/manage/email/provider/{:providerId}.html',
   };
+
+  /**
+   * 友情链接
+   */
+  static FRIENDLINK = {
+    friendlink_list: '/manage/friendlink/list.html',
+    friendlink_add: '/manage/friendlink/add.html',
+    friendlink_edit: '/manage/friendlink/edit.html',
+    friendlink_del: '/manage/friendlink/del.html',
+    friendlink_detail: '/manage/friendlink/{:linkId}.html',
+
+    type_list: '/manage/friendlink/type/list.html',
+    type_add: '/manage/friendlink/type/add.html',
+    type_edit: '/manage/friendlink/type/edit.html',
+    type_del: '/manage/friendlink/type/del.html',
+    type_detail: '/manage/friendlink/type/{:type}.html',
+    type_all: '/manage/friendlink/type/all.html',
+  };
 }

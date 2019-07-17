@@ -72,17 +72,6 @@ export class UserService implements IBaseService {
   }
 
   /**
-   * 头像上传
-   */
-  uploadFace(file: any): Promise<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.httpUtil.post(AppApi.FILES.file_upload, formData).then(response => {
-      return Promise.resolve(response);
-    });
-  }
-
-  /**
    * 保存用户
    */
   saveData(user: any): Promise<boolean> {

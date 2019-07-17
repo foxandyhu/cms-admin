@@ -1,24 +1,19 @@
 <nb-card>
   <nb-card-header>
-    友情链接管理
+    友情链接类型
   </nb-card-header>
   <nb-list>
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <button class="btn btn-success" (click)="showAddFriendLink()">
+          <button class="btn btn-success" (click)="showAddFriendLinkType()">
             <span class="ion-plus-round"></span> 新增
           </button>&nbsp;&nbsp;
-          <select class="form-control" [(ngModel)]="type" name="name" (change)="changeType()">
-            <option value="">所有类型</option>
-            <option *ngFor="let item of types" [value]="item.id">{{item.name}}</option>
-          </select>&nbsp;&nbsp;&nbsp;
-          <a href="#friendlink/type/list" class="btn btn-outline-info">
-            <i class="ion-navicon"></i> 类型管理
-          </a>&nbsp;&nbsp;&nbsp;
           <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
-          </button>
+          </button>&nbsp;&nbsp;
+          <a href="#friendlink/list" class="btn btn-info">
+            <i class="ion-arrow-return-left"></i> 返回友情链接列表</a>
         </div>
       </form>
       <table class="table table-hover margin-top-2p">
@@ -29,31 +24,22 @@
                          (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
           </th>
           <th>名称</th>
-          <th>类型</th>
-          <th>链接</th>
-          <th>顺序</th>
-          <th>显示</th>
+          <td>排序</td>
           <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of pager?.data" nbPopover="{{item.remark}}" nbPopoverMode="hint" nbPopoverPlacement="top">
+        <tr *ngFor="let item of pager?.data">
           <td>
             <nb-checkbox #selectBox status="success" [value]="isSelectAll"
                          (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
           </td>
           <td>
-            <a href="{{item.url}}" target="_blank">
-              <div class="text-center">{{item.name}}</div>
-              <img width="90" height="60" [src]="item.logo?item.logo:'assets/images/no-pic.gif'"/>
-            </a>
+            {{item.name}}
           </td>
-          <td>{{item.type?.name}}</td>
-          <td>{{item.url}}</td>
           <td>{{item.seq}}</td>
-          <td>{{item.enabled ? "是" : "否"}}</td>
           <td>
-            <button class="btn btn-info btn-smaller" (click)="showEditFriendLink(item.id)">
+            <button class="btn btn-info btn-smaller" (click)="showEditFriendLinkType(item.id)">
               <i class="ion-edit"></i> 编辑
             </button>&nbsp;&nbsp;
             <button class="btn btn-danger btn-smaller" (click)="del(item.id)">

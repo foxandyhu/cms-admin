@@ -3,6 +3,7 @@ import {NbDialogRef} from '@nebular/theme';
 import {BaseComponent} from '../../../base-component';
 import {ScoreItemService} from '../../service/score-item-service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {CommonService} from '../../../common-service';
 
 @Component({
   selector: 'ngx-score-item-detail',
@@ -18,7 +19,7 @@ export class ScoreItemDetailComponent extends BaseComponent implements OnInit {
 
   constructor(private scoreItemService: ScoreItemService, protected injector: Injector,
               private ref: NbDialogRef<ScoreItemDetailComponent>,
-              private domSanitizer: DomSanitizer) {
+              private domSanitizer: DomSanitizer, private commonService: CommonService) {
     super(null, injector);
   }
 
@@ -72,7 +73,7 @@ export class ScoreItemDetailComponent extends BaseComponent implements OnInit {
   fileChange(event) {
     const file = event.currentTarget.files[0];
     this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.scoreItemService.uploadPic(file).then(result => {
+    this.commonService.uploadFile(file).then(result => {
       this.scoreItem.url = result;
     });
   }

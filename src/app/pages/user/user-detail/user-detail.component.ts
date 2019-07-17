@@ -5,6 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoleService} from '../service/roles.service';
 import {forkJoin} from 'rxjs';
+import {CommonService} from '../../common-service';
 
 @Component({
   selector: 'ngx-user-detail',
@@ -15,12 +16,14 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
 
   constructor(private userService: UserService, protected injector: Injector,
               private domSanitizer: DomSanitizer, private router: Router, private roleService: RoleService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private commonService: CommonService) {
     super(userService, injector);
   }
 
-  user = {userName: '', password: '', confirmPassword: '', email: '', roles: [],
-    face: '', status: '', superAdmin: false}; //  用户对象
+  user = {
+    userName: '', password: '', confirmPassword: '', email: '', roles: [],
+    face: '', status: '', superAdmin: false,
+  }; //  用户对象
   roles: Array<any> = new Array<any>();               // 系统所有角色集合
   currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
   previewFace: any = '/assets/images/add_img.png';   //  头像预览
@@ -133,7 +136,7 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
   faceFileChange(event) {
     const file = event.currentTarget.files[0];
     this.previewFace = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.userService.uploadFace(file).then(result => {
+    this.commonService.uploadFile(file).then(result => {
       this.user.face = result;
     });
   }

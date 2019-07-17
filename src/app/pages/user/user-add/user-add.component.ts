@@ -4,6 +4,7 @@ import {UserService} from '../service/users.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {RoleService} from '../service/roles.service';
+import {CommonService} from '../../common-service';
 
 @Component({
   selector: 'ngx-user-add',
@@ -13,7 +14,8 @@ import {RoleService} from '../service/roles.service';
 export class UserAddComponent extends BaseComponent implements OnInit {
 
   constructor(private userService: UserService, protected injector: Injector,
-              private domSanitizer: DomSanitizer, private router: Router, private roleService: RoleService) {
+              private domSanitizer: DomSanitizer, private router: Router, private roleService: RoleService,
+              private commonService: CommonService) {
     super(userService, injector);
   }
 
@@ -109,7 +111,7 @@ export class UserAddComponent extends BaseComponent implements OnInit {
   faceFileChange(event) {
     const file = event.currentTarget.files[0];
     this.previewFace = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.userService.uploadFace(file).then(result => {
+    this.commonService.uploadFile(file).then(result => {
       this.user.face = result;
     });
   }
