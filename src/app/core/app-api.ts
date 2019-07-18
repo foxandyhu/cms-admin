@@ -134,4 +134,22 @@ export class AppApi {
     type_detail: '/manage/friendlink/type/{:type}.html',
     type_all: '/manage/friendlink/type/all.html',
   };
+
+  /**
+   * 广告模块
+   */
+  static AD = {
+    ad_list: '/manage/advertising/list.html',
+    ad_add: '/manage/advertising/add.html',
+    ad_edit: '/manage/advertising/edit.html',
+    ad_del: '/manage/advertising/del.html',
+    ad_detail: '/manage/advertising/{:adId}.html',
+
+    space_list: '/manage/advertising/space/list.html',
+    space_add: '/manage/advertising/space/add.html',
+    space_edit: '/manage/advertising/space/edit.html',
+    space_del: '/manage/advertising/space/del.html',
+    space_detail: '/manage/advertising/space/{:spaceId}.html',
+    space_all: '/manage/advertising/space/all.html',
+  };
 }

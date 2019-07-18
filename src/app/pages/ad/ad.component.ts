@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
+import {BaseComponent} from '../base-component';
+import {AdService} from './service/ad.service';
 
 @Component({
   selector: 'ngx-ad',
   templateUrl: './ad.component.html',
 })
-export class AdComponent implements OnInit {
+export class AdComponent extends BaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adService: AdService, protected injector: Injector) {
+    super(adService, injector);
+  }
 
   ngOnInit() {
+    this.getPager(1);
   }
 
 }

@@ -1,34 +1,27 @@
 <nb-card>
   <nb-card-header>
-    广告管理
+    广告位管理
   </nb-card-header>
   <nb-list>
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <a href="#ad/add" class="btn btn-success">
+          <button class="btn btn-success" (click)="showAddAdSpace()">
             <span class="ion-plus-round"></span> 新增
-          </a>&nbsp;&nbsp;
-          <a href="#ad/space/list" class="btn btn-outline-info">
-            <i class="ion-navicon"></i> 广告位管理
-          </a>&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
-            <i class="ion-trash-b"></i> 批量删除
-          </button>
+          </button>&nbsp;&nbsp;
+          <a href="#ad/list" class="btn btn-info">
+            <i class="ion-arrow-return-left"></i> 返回广告列表</a>
         </div>
       </form>
       <table class="table table-hover margin-top-2p">
         <thead>
         <tr>
           <th>
-            <nb-checkbox #selectAllBox status="success" [value]="isSelectAll"
-                         (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
+            <nb-checkbox #selectBox status="success" [value]="isSelectAll"
+                         (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
           </th>
           <th>名称</th>
-          <th>版位</th>
-          <th>类型</th>
-          <th>点击/展现=点击率</th>
-          <th>展示时间</th>
+          <th>描述</th>
           <th>是否启用</th>
           <th>操作</th>
         </tr>
@@ -40,17 +33,12 @@
                          (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
           </td>
           <td>{{item.name}}</td>
-          <td>{{item.space?.name}}</td>
-          <td>{{item.typeName}}</td>
-          <td>{{item.clickRate}}</td>
+          <td>{{item.remark}}</td>
+          <td>{{item.enabled?"是":"否"}}</td>
           <td>
-            {{item.startTime}}&nbsp;&nbsp;至&nbsp;&nbsp;{{item.endTime}}
-          </td>
-          <td>{{item.enabled ? "是" : "否"}}</td>
-          <td>
-            <a href="#ad/{{item.id}}" class="btn btn-info btn-smaller">
+            <button class="btn btn-info btn-smaller" (click)="showEditAdSpace(item.id)">
               <i class="ion-edit"></i> 编辑
-            </a>&nbsp;&nbsp;
+            </button>&nbsp;&nbsp;
             <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
               <i class="ion-trash-a"></i> 删除
             </button>
