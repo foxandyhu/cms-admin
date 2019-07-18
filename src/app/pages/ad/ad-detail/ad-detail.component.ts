@@ -1,4 +1,4 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {AdService} from '../service/ad.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -6,12 +6,13 @@ import {AdSpaceService} from '../service/ad-space.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
 import * as moment from 'moment';
+
 @Component({
   selector: 'ngx-ad-detail',
   templateUrl: './ad-detail.component.html',
   styleUrls: ['./ad-detail.component.scss'],
 })
-export class AdDetailComponent extends BaseComponent implements OnInit {
+export class AdDetailComponent extends BaseComponent implements OnInit, AfterViewChecked {
 
   ad: any = {
     name: '', space: {id: ''}, type: '', clickCount: 0, displayCount: 0, enabled: false, startTime: '', endTime: '',
@@ -21,7 +22,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit {
   spaces: any; //  广告位
   private formId: string = 'adForm';     //   表单ID
   preview: any = '/assets/images/add_img.png';   //  预览
-  date: string;    //  展示时间
+  date: string = '';    //  展示时间
 
   constructor(private adService: AdService, protected injector: Injector,
               private domSanitizer: DomSanitizer,
@@ -36,6 +37,29 @@ export class AdDetailComponent extends BaseComponent implements OnInit {
     this.initValiator();
   }
 
+  ngAfterViewChecked(): void {
+    const typeId = parseInt(this.ad.type, 0);
+    if (typeId === 1) {
+      this.formValid.addField('picUrl', {
+        validators: {
+          notEmpty: {message: '图片不能为空!'},
+        },
+      });
+    } else if (typeId === 2) {
+      this.formValid.addField('textTitle', {
+        validators: {
+          notEmpty: {message: '文字内容不能为空!'},
+        },
+      });
+    } else if (typeId === 3) {
+      this.formValid.addField('codeContent', {
+        validators: {
+          notEmpty: {message: '代码内容不能为空!'},
+        },
+      });
+    }
+  }
+
   /**
    * 加载数据
    */
@@ -48,9 +72,9 @@ export class AdDetailComponent extends BaseComponent implements OnInit {
           this.preview = this.ad.attr['pic_url'];
         }
         if (this.ad && this.ad.startTime) {
-          this.date = moment(this.ad.startTime).format('YYYY-MM-DD') ;
+          this.date = moment(this.ad.startTime).format('YYYY-MM-DD');
           if (this.ad.endTime) {
-            this.date += ' - ' + moment(this.ad.endTime).format('YYYY-MM-DD') ;
+            this.date += ' - ' + moment(this.ad.endTime).format('YYYY-MM-DD');
           }
         }
       });
@@ -133,5 +157,14 @@ export class AdDetailComponent extends BaseComponent implements OnInit {
     if (event.end) {
       this.ad.endTime = event.end.format('YYYY-MM-DD');
     }
+  }
+
+
+  /**
+   * 颜色选择
+   * @param color
+   */
+  pickColor(color) {
+    this.ad.attr.text_color = color;
   }
 }

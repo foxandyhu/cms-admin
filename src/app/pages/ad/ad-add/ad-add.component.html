@@ -7,7 +7,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">名称</label>
         <div class="form-group col-md-4">
-          <input type="text" required="required" class="form-control" [(ngModel)]="ad.name" name="name"/>
+          <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.name" name="name"/>
         </div>
         <label class="col-md-2 col-form-label text-right">广告位</label>
         <div class="form-group col-md-4">
@@ -20,11 +20,11 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">点击次数</label>
         <div class="form-group col-md-4">
-          <input type="text" required="required" class="form-control" [(ngModel)]="ad.clickCount" name="clickCount"/>
+          <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.clickCount" name="clickCount"/>
         </div>
         <label class="col-md-2 col-form-label text-right">展现次数</label>
         <div class="form-group col-md-4">
-          <input type="text" required="required" class="form-control" [(ngModel)]="ad.displayCount"
+          <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.displayCount"
                  name="displayCount"/>
         </div>
       </div>
@@ -50,33 +50,35 @@
         <label class="col-md-2 col-form-label text-right">类型</label>
         <div class="form-group col-md-8">
           <nb-radio-group [(ngModel)]="ad.type" name="type">
-            <nb-radio class="float-left" *ngFor="let item of types" value="{{item.id}}" (valueChange)="changeType(item.id)">
+            <nb-radio class="float-left" *ngFor="let item of types" value="{{item.id}}">
               {{item.name}}
             </nb-radio>
           </nb-radio-group>
         </div>
       </div>
-      <div [ngSwitch]="ad.type">
+      <div #aa [ngSwitch]="ad.type">
         <!--图片-->
         <div *ngSwitchCase="1">
           <div class="row">
             <label class="col-md-2 col-form-label text-right">链接地址</label>
             <div class="form-group col-md-4">
-              <input type="text" required="required" class="form-control" [(ngModel)]="ad.attr.pic_href"
+              <input type="text" autocomplete="off" required="required" class="form-control"
+                     [(ngModel)]="ad.attr.pic_href"
                      name="picHref"/>
             </div>
             <label class="col-md-2 col-form-label text-right">链接提示</label>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" [(ngModel)]="ad.attr.pic_tip"
+              <input type="text" autocomplete="off" class="form-control" [(ngModel)]="ad.attr.pic_tip"
                      name="picTip"/>
             </div>
           </div>
           <div class="row">
             <label class="col-md-2 col-form-label text-right">图片</label>
             <div class="form-group col-md-4">
-              <input type="hidden" [(ngModel)]="ad.attr.pic_url" name="picUrl"/>
+              <input type="text" readonly="readonly" class="img_input form-control" [(ngModel)]="ad.attr.pic_url"
+                     name="picUrl"/>
               <input type="file" class="hidden" id="imgFile" (change)="adFileChange($event)"/>
-              <img [src]="preview" width="120px" height="120px" onclick="imgFile.click()">
+              <img [src]="preview" class="preview" width="120px" height="120px" onclick="imgFile.click()">
             </div>
             <label class="col-md-2 col-form-label text-right">图片尺寸</label>
             <div class="col-md-4">
@@ -109,21 +111,21 @@
           <div class="row">
             <label class="col-md-2 col-form-label text-right">文字内容</label>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" [(ngModel)]="ad.attr.text_title" name="textTitle"/>
+              <input type="text" autocomplete="off" class="form-control" [(ngModel)]="ad.attr.text_title" name="textTitle"/>
             </div>
             <label class="col-md-2 col-form-label text-right">文字链接</label>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" [(ngModel)]="ad.attr.text_link" name="textLink"/>
+              <input type="text" autocomplete="off" class="form-control" [(ngModel)]="ad.attr.text_link" name="textLink"/>
             </div>
           </div>
           <div class="row">
             <label class="col-md-2 col-form-label text-right">文字颜色</label>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" [(ngModel)]="ad.attr.text_color" name="textColor"/>
+              <input type="text" autocomplete="off" [(colorPicker)]="color" (colorPickerChange)="pickColor(color)" class="form-control" [(ngModel)]="ad.attr.text_color" name="textColor"/>
             </div>
             <label class="col-md-2 col-form-label text-right">文字大小</label>
             <div class="form-group col-md-4">
-              <input type="text" class="form-control" [(ngModel)]="ad.attr.text_size" name="textSize"/>
+              <input type="text" autocomplete="off" class="form-control" [(ngModel)]="ad.attr.text_size" name="textSize"/>
             </div>
           </div>
           <div class="row">

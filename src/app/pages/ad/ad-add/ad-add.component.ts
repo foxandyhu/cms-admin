@@ -1,10 +1,11 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {AdService} from '../service/ad.service';
 import {AdSpaceService} from '../service/ad-space.service';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
+import {toInteger} from '@ng-bootstrap/ng-bootstrap/util/util';
 
 declare var jQuery: any;
 
@@ -13,10 +14,10 @@ declare var jQuery: any;
   templateUrl: './ad-add.component.html',
   styleUrls: ['./ad-add.component.scss'],
 })
-export class AdAddComponent extends BaseComponent implements OnInit {
+export class AdAddComponent extends BaseComponent implements OnInit, AfterViewChecked {
 
   ad: any = {
-    name: '', space: {id: ''}, type: '1', clickCount: 0, displayCount: 0, enabled: false, startTime: '', endTime: '',
+    name: '', space: {id: ''}, type: '1', clickCount: 0, displayCount: 0, enabled: true, startTime: '', endTime: '',
     attr: {},
   };  //  广告对象
   types: any = [{id: 1, name: '图片'}, {id: 2, name: '文字'}, {id: 3, name: '代码'}]; // 类型集合
@@ -33,6 +34,29 @@ export class AdAddComponent extends BaseComponent implements OnInit {
   ngOnInit() {
     this.initValiator();
     this.getAllSpaces();
+  }
+
+  ngAfterViewChecked(): void {
+    const typeId = parseInt(this.ad.type, 0);
+    if (typeId === 1) {
+      this.formValid.addField('picUrl', {
+        validators: {
+          notEmpty: {message: '图片不能为空!'},
+        },
+      });
+    } else if (typeId === 2) {
+      this.formValid.addField('textTitle', {
+        validators: {
+          notEmpty: {message: '文字内容不能为空!'},
+        },
+      });
+    } else if (typeId === 3) {
+      this.formValid.addField('codeContent', {
+        validators: {
+          notEmpty: {message: '代码内容不能为空!'},
+        },
+      });
+    }
   }
 
   /**
@@ -114,13 +138,10 @@ export class AdAddComponent extends BaseComponent implements OnInit {
   }
 
   /**
-   * 类型选择
-   * @param type
+   * 颜色选择
+   * @param color
    */
-  changeType(type) {
-    if (type === 1) {
-      jQuery('#' + this.formId).bootstrapValidator('addField', jQuery('#picHref'));
-      console.log(2);
-    }
+  pickColor(color) {
+    this.ad.attr.text_color = color;
   }
 }

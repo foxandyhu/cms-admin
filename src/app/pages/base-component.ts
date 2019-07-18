@@ -9,6 +9,9 @@ declare var jQuery: any;
  *基本的component 封装了一些常用的方法
  */
 export class BaseComponent {
+  get formValid(): any {
+    return this._formValid;
+  }
 
   constructor(private baseService: IBaseService, protected injector: Injector) {
     this._modalUtil = injector.get(ModalUtil);
@@ -22,6 +25,7 @@ export class BaseComponent {
   private _isSelectAll: boolean = false; // 是否全部选中
   private _selectItems: Array<number> = new Array<number>(); // 选中的ID
   private _queryParams = new Map();   // 查询条件
+  private _formValid: any;    // form对象
 
   get modalUtil(): ModalUtil {
     return this._modalUtil;
@@ -171,6 +175,7 @@ export class BaseComponent {
       },
       fields: fields,
     });
+    this._formValid = jQuery('#' + formId).data('bootstrapValidator');
   }
 
   /**

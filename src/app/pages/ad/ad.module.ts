@@ -12,6 +12,7 @@ import {SpaceDetailComponent} from './space-detail/space-detail.component';
 import {SpaceAddComponent} from './space-add/space-add.component';
 import {AdSpaceComponent} from './ad-space.component';
 import {NbDialogModule} from '@nebular/theme';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 @NgModule({
   declarations: [AdComponent, AdAddComponent, AdDetailComponent,
@@ -20,6 +21,7 @@ import {NbDialogModule} from '@nebular/theme';
     CommonModule,
     ThemeModule,
     AdRoutingModule,
+    ColorPickerModule,
     NbDialogModule.forChild(),
   ],
   entryComponents: [SpaceDetailComponent, SpaceAddComponent],
