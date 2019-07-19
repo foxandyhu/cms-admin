@@ -5,11 +5,11 @@
   <nb-card-body>
     <form id="adForm" class="form-horizontal" onSubmit="return false;">
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">名称</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 名称</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.name" name="name"/>
         </div>
-        <label class="col-md-2 col-form-label text-right">广告位</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 广告位</label>
         <div class="form-group col-md-4">
           <select class="form-control" [(ngModel)]="ad.space.id" name="spaceId">
             <option value="">选择广告位</option>
@@ -18,11 +18,11 @@
         </div>
       </div>
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">点击次数</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 点击次数</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.clickCount" name="clickCount"/>
         </div>
-        <label class="col-md-2 col-form-label text-right">展现次数</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 展现次数</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" required="required" class="form-control" [(ngModel)]="ad.displayCount"
                  name="displayCount"/>
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">类型</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 类型</label>
         <div class="form-group col-md-8">
           <nb-radio-group [(ngModel)]="ad.type" name="type">
             <nb-radio class="float-left" *ngFor="let item of types" value="{{item.id}}">
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="row">
-            <label class="col-md-2 col-form-label text-right">图片</label>
+            <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 图片</label>
             <div class="form-group col-md-4">
               <input type="text" readonly="readonly" class="img_input form-control" [(ngModel)]="ad.attr.pic_url"
                      name="picUrl"/>
@@ -109,7 +109,7 @@
         <!--文字-->
         <div *ngSwitchCase="2">
           <div class="row">
-            <label class="col-md-2 col-form-label text-right">文字内容</label>
+            <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 文字内容</label>
             <div class="form-group col-md-4">
               <input type="text" autocomplete="off" class="form-control" [(ngModel)]="ad.attr.text_title" name="textTitle"/>
             </div>
@@ -142,7 +142,7 @@
         <!--代码-->
         <div *ngSwitchCase="3">
           <div class="row">
-            <label class="col-md-2 col-form-label text-right">代码</label>
+            <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 代码</label>
             <div class="form-group col-md-10">
               <textarea class="form-control" rows="5" [(ngModel)]="ad.attr.code_content" name="codeContent"></textarea>
             </div>

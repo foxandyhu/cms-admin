@@ -5,9 +5,6 @@ import {AdSpaceService} from '../service/ad-space.service';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
-import {toInteger} from '@ng-bootstrap/ng-bootstrap/util/util';
-
-declare var jQuery: any;
 
 @Component({
   selector: 'ngx-ad-add',
