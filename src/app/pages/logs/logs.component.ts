@@ -12,7 +12,8 @@ export class LogsComponent extends BaseComponent implements OnInit {
     super(sysLogsService, injector);
   }
 
-  category: string;
+  category: string = '';
+  types: any = [{id: 1, name: '操作日志'}, {id: 2, name: '登录日志'}, {id: 3, name: '登出日志'}]; // 日志类型
 
   ngOnInit() {
     this.getPager(1);
@@ -21,8 +22,8 @@ export class LogsComponent extends BaseComponent implements OnInit {
   /**
    * 根据不同日志类型查询
    */
-  changeCategory(category: string) {
-    this.setQueryParams('category', category);
+  changeCategory() {
+    this.setQueryParams('category', this.category);
     this.getPager(1);
   }
 }

@@ -12,12 +12,12 @@
           <select class="form-control" (change)="search()" [(ngModel)]="params.status" name="status">
             <option value="">所有状态</option>
             <option *ngFor="let item of statuss" [value]="item.id">{{item.name}}</option>
-          </select>&nbsp;&nbsp;
+          </select>&nbsp;&nbsp;&nbsp;
           <label>用户名:&nbsp;&nbsp;</label>
-          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.userName" name="userName"/>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.userName" name="userName" placeholder="用户名搜索"/>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <label>Email:&nbsp;&nbsp;</label>
-          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.email" name="email"/>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.email" name="email" placeholder="邮件搜索"/>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <button nbButton status="success" (click)="search()">
             查询

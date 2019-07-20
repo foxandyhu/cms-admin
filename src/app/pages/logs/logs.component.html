@@ -6,11 +6,9 @@
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <select class="form-control" #category (change)="changeCategory(category.value)">
+          <select class="form-control" (change)="changeCategory()" [(ngModel)]="category" name="category">
             <option value="">所有分类</option>
-            <option value="1">操作日志</option>
-            <option value="2">登录日志</option>
-            <option value="3">登出日志</option>
+            <option *ngFor="let item of types" [value]="item.id">{{item.name}}</option>
           </select>&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;
           <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
