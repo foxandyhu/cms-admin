@@ -152,4 +152,27 @@ export class AppApi {
     space_detail: '/manage/advertising/space/{:spaceId}.html',
     space_all: '/manage/advertising/space/all.html',
   };
+
+  /**
+   * 会员模块
+   */
+  static MEMBER = {
+    member_list: '/manage/member/list',
+    member_add: '/manage/member/add.html',
+    member_edit: '/manage/member/edit.html',
+    member_del: '/manage/member/del.html',
+    member_detail: '/manage/member/{:memberId}.html',
+    member_check: '/manage/member/check.html',
+    member_config: '/manage/member/config/info.html',
+    member_config_edit: '/manage/member/config/edit.html',
+    member_edit_status: '/manage/member/edit/{:memberId}-{:status}.html',
+    member_edit_password: '/manage/member/editpwd.html',
+
+    group_list: '/manage/member/group/list.html',
+    group_add: '/manage/member/group/add.html',
+    group_edit: '/manage/member/group/edit.html',
+    group_del: '/manage/member/group/del.html',
+    group_detail: '/manage/member/group/{:groupId}.html',
+    group_all: '/manage/member/group/all.html',
+  };
 }

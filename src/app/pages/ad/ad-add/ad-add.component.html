@@ -56,7 +56,7 @@
           </nb-radio-group>
         </div>
       </div>
-      <div #aa [ngSwitch]="ad.type">
+      <div [ngSwitch]="ad.type">
         <!--图片-->
         <div *ngSwitchCase="1">
           <div class="row">

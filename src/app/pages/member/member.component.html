@@ -6,68 +6,94 @@
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <button class="btn btn-danger">
-            <i class="nb-plus"></i> 新增
-          </button>&nbsp;&nbsp;
-          <select class="form-control">
-            <option>所有状态</option>
-            <option>已审核</option>
-            <option>未审核</option>
-            <option>禁用</option>
+          <a class="btn btn-success" href="#member/add">
+            <span class="ion-plus-round"></span> 新增
+          </a>&nbsp;&nbsp;
+          <select class="form-control" (change)="search()" [(ngModel)]="params.status" name="status">
+            <option value="">所有状态</option>
+            <option *ngFor="let item of statuss" [value]="item.id">{{item.name}}</option>
           </select>&nbsp;&nbsp;
           <label>用户名:&nbsp;&nbsp;</label>
-          <input type="text" nbInput/>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.userName" name="userName"/>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <button nbButton status="success">
+          <label>Email:&nbsp;&nbsp;</label>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="params.email" name="email"/>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button nbButton status="success" (click)="search()">
             查询
           </button>&nbsp;&nbsp;
-          <button nbButton status="warning">
-            清空
+          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+            批量删除
           </button>
         </div>
       </form>
-      <div class="margin-top-2p">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th class="align-right">用户名</th>
-            <th class="table-arr"></th>
-            <th class="align-right">电子邮箱</th>
-            <th class="table-arr"></th>
-            <th class="align-right">会员组</th>
-            <th class="table-arr"></th>
-            <th class="align-right">最后登录时间</th>
-            <th class="table-arr"></th>
-            <th class="align-right">登录次数</th>
-            <th class="table-arr"></th>
-            <th class="align-right">状态</th>
-            <th class="table-arr"></th>
-            <th class="align-right">操作</th>
-            <th class="table-arr"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]">
-            <td class="nowrap">Google Chrome</td>
-            <td class="align-right">10,392</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-            <td class="align-right">3,822</td>
-            <td class="table-arr"><i class="icon-up"></i></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table table-hover margin-top-2p">
+        <thead>
+        <tr>
+          <th>
+            <nb-checkbox #selectAllBox status="success" [value]="isSelectAll"
+                         (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
+          </th>
+          <th>用户名</th>
+          <th>电子邮箱</th>
+          <th>会员组</th>
+          <th>最后登录时间</th>
+          <th>登录次数</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of pager?.data">
+          <td>
+            <nb-checkbox #selectBox status="success" [value]="isSelectAll"
+                         (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
+          </td>
+          <td>{{item.userName}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.group?.name}}</td>
+          <td>{{item.lastLoginTime}}</td>
+          <td>{{item.loginCount}}</td>
+          <td>
+            <div [ngSwitch]="item.status">
+              <div *ngSwitchCase="0">
+                <button class="btn btn-outline-primary btn-smaller" (click)="editStatus(item.id,1)">
+                  &nbsp;&nbsp;正常&nbsp;&nbsp;
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-outline-primary btn-smaller" (click)="editStatus(item.id,2)">
+                  &nbsp;&nbsp;禁用&nbsp;&nbsp;
+                </button>
+              </div>
+              <div *ngSwitchCase="1">
+                <button class="btn btn-success btn-smaller" (click)="editStatus(item.id,2)">
+                  &nbsp;&nbsp;正常&nbsp;&nbsp;
+                </button>
+              </div>
+              <div *ngSwitchCase="2">
+                <button class="btn btn-danger btn-smaller" (click)="editStatus(item.id,1)">
+                  &nbsp;&nbsp;禁用&nbsp;&nbsp;
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-warning btn-smaller" (click)="showEditPassword(item.id)">
+              <i class="ion-edit"></i> 修改密码
+            </button>&nbsp;&nbsp;
+            <a class="btn btn-info btn-smaller" href="#member/{{item.id}}">
+              <i class="ion-edit"></i> 编辑
+            </a>&nbsp;&nbsp;
+            <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
+              <i class="ion-trash-a"></i> 删除
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </nb-list-item>
   </nb-list>
+  <nb-card-footer class="text-right">
+    <ngb-pagination ngClass="ng2-smart-pagination" maxSize="10" [collectionSize]="pager?.totalCount"
+                    [pageSize]="pager?.pageSize" (pageChange)="changePager($event)"></ngb-pagination>
+  </nb-card-footer>
 </nb-card>
