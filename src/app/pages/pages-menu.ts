@@ -164,7 +164,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: '登录注册设置',
-        link: '/system/setting/member/login',
+        link: '/member/config',
       }, {
         title: '水印设置',
         link: '/system/setting/watermark',

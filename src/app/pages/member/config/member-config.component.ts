@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import '../../../@theme/components/editor.loader';
 
 @Component({
-  selector: 'ngx-system-member',
-  templateUrl: './member.component.html',
-  styleUrls: ['./member.component.scss'],
+  selector: 'ngx-member-config',
+  templateUrl: './member-config.component.html',
+  styleUrls: ['./member-config.component.scss'],
 })
-export class MemberSettingComponent implements OnInit {
+export class MemberConfigComponent implements OnInit {
 
   tabs: any[] = [
     {
       title: '登录设置',
-      route: '/system/setting/member/login',
+      route: '/member/config/login',
     },
     {
       title: '注册设置',
-      route: '/system/setting/member/register',
+      route: '/member/config/register',
     },
   ];
 

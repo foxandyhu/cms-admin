@@ -115,6 +115,7 @@ export class AppApi {
     provider_edit: '/manage/email/provider/edit.html',
     provider_del: '/manage/email/provider/del.html',
     provider_detail: '/manage/email/provider/{:providerId}.html',
+    provider_all: '/manage/email/provider/all.html',
   };
 
   /**
@@ -163,10 +164,11 @@ export class AppApi {
     member_del: '/manage/member/del.html',
     member_detail: '/manage/member/{:memberId}.html',
     member_check: '/manage/member/check.html',
-    member_config: '/manage/member/config/info.html',
-    member_config_edit: '/manage/member/config/edit.html',
     member_edit_status: '/manage/member/edit/{:memberId}-{:status}.html',
     member_edit_password: '/manage/member/editpwd.html',
+    member_config: '/manage/member/config/info.html',
+    member_login_config_edit: '/manage/member/config/login/edit.html',
+    member_regist_config_edit: '/manage/member/config/regist/edit.html',
 
     group_list: '/manage/member/group/list.html',
     group_add: '/manage/member/group/add.html',

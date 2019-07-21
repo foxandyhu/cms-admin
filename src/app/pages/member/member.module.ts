@@ -13,18 +13,25 @@ import {NbDialogModule} from '@nebular/theme';
 import {MemberAddComponent} from './member-add/member-add.component';
 import {MemberDetailComponent} from './member-detail/member-detail.component';
 import {MemberEditPasswordComponent} from './edit-password/edit-password.component';
+import {MemberConfigComponent} from '../member/config/member-config.component';
+import {LoginConfigComponent} from '../member/config/login/login.component';
+import {RegisterConfigComponent} from '../member/config/register/register.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {MemberConfigService} from './service/member-config-service';
 
 @NgModule({
   declarations: [MemberComponent, MemberGroupComponent, MemberGroupAddComponent,
-    MemberGroupDetailComponent, MemberAddComponent, MemberDetailComponent, MemberEditPasswordComponent],
+    MemberGroupDetailComponent, MemberAddComponent, MemberDetailComponent, MemberEditPasswordComponent,
+    MemberConfigComponent, LoginConfigComponent, RegisterConfigComponent],
   imports: [
     ThemeModule,
     CommonModule,
     MemberRoutingModule,
+    EditorModule,
     NbDialogModule.forChild(),
   ],
   entryComponents: [MemberGroupAddComponent, MemberGroupDetailComponent, MemberEditPasswordComponent],
-  providers: [MemberService, MemberGroupService],
+  providers: [MemberService, MemberGroupService, MemberConfigService],
 })
 export class MemberModule {
 }

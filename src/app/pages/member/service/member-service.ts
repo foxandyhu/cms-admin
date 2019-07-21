@@ -59,24 +59,6 @@ export class MemberService implements IBaseService {
   }
 
   /**
-   * 获得会员配置信息
-   */
-  getMemberConfig(): Promise<any> {
-    return this.httpUtil.get(AppApi.MEMBER.member_config).then(response => {
-      return Promise.resolve(response);
-    });
-  }
-
-  /**
-   * 编辑会员配置西乡
-   */
-  editMemberConfig(data: boolean): Promise<boolean> {
-    return this.httpUtil.post(AppApi.MEMBER.member_config_edit, data).then(() => {
-      return Promise.resolve(true);
-    });
-  }
-
-  /**
    * 修改密码
    * @param memberId
    * @param password
