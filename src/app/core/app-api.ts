@@ -59,6 +59,12 @@ export class AppApi {
     menu_add: '/manage/menu/add.html',
     menu_edit: '/manage/menu/edit.html',
     menu_del: '/manage/menu/del.html',
+
+    site_config: '/manage/site/info.html',
+    site_config_edit: '/manage/site/edit.html',
+
+    watermark_config: '/manage/watermark/info.html',
+    watermark_config_edit: '/manage/watermark/edit.html',
   };
 
   /**
