@@ -5,12 +5,11 @@ import {SystemRoutingModule} from './system-routing.module';
 import {ThemeModule} from '../../@theme/theme.module';
 import {ResourceComponent} from './resource/resource.component';
 import {ResTreeComponent} from './resource/res-tree/res-tree.component';
-import {TreeModule} from 'angular-tree-component';
 import {WatermarkConfigComponent} from './watermark/watermark.component';
 import {FirewallSettingComponent} from './firewall/firewall.component';
-import {CompanySettingComponent} from './company/company.component';
+import {CompanyComponent} from './company/company.component';
 import {SiteConfigComponent} from './site/site.component';
-import {TaskSettingComponent} from './task/task.component';
+import {TaskComponent} from './task/task.component';
 import {MenuComponent} from './menu/menu.component';
 import {MenuAddComponent} from './menu/menu-add/menu-add.component';
 import {NbDialogModule} from '@nebular/theme';
@@ -31,27 +30,34 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {SiteConfigService} from './service/site-config-service';
 import {WatermarkConfigService} from './service/watermark-config-service';
 import {ColorPickerModule} from 'ngx-color-picker';
+import {FirewallConfigService} from './service/firewall-config-service';
+import {CompanyService} from './service/company-service';
+import {DictionaryService} from '../words/service/dictionary-service';
+import {TaskService} from './service/task-service';
+import {ResourceService} from './service/resource-service';
+import {ResDirAddComponent} from './resource/res-dir-add/res-dir-add.component';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkConfigComponent,
-    FirewallSettingComponent, CompanySettingComponent, SiteConfigComponent, TaskSettingComponent,
+    FirewallSettingComponent, CompanyComponent, SiteConfigComponent, TaskComponent,
     MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent,
     SmsProviderComponent, SmsRecordComponent, SmsProviderAddComponent,
-    SmsProviderDetailComponent, EmailProviderComponent,
+    SmsProviderDetailComponent, EmailProviderComponent, ResDirAddComponent,
     EmailProviderAddComponent, EmailProviderDetailComponent],
   imports: [
     CommonModule,
     ThemeModule,
-    TreeModule,
-    EditorModule,
     SystemRoutingModule,
     ColorPickerModule,
+    EditorModule,
     NbDialogModule.forChild(),
   ],
   entryComponents: [MenuAddComponent, MenuDetailComponent, SmsProviderAddComponent,
-    SmsProviderDetailComponent, EmailProviderAddComponent, EmailProviderDetailComponent],
+    SmsProviderDetailComponent, EmailProviderAddComponent, EmailProviderDetailComponent,
+    ResDirAddComponent],
   providers: [MenuService, SmsProviderService, EmailProviderService, SmsRecordService, SiteConfigService,
-    WatermarkConfigService],
+    WatermarkConfigService, FirewallConfigService, CompanyService, DictionaryService, TaskService,
+    ResourceService],
 })
 export class SystemModule {
 }

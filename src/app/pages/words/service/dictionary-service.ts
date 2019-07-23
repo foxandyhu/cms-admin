@@ -54,4 +54,15 @@ export class DictionaryService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  /**
+   * 根据类型获得数据字典
+   * @param type
+   */
+  getDictionaryByType(type: string): Promise<any> {
+    const url = AppApi.WORDS.dictionary_type_by.replace('{:type}', type);
+    return this.httpUtil.get(url).then(response => {
+      return Promise.resolve(response);
+    });
+  }
 }

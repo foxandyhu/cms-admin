@@ -1,89 +1,72 @@
 <nb-card>
+  <nb-card-header>
+    水印设置
+  </nb-card-header>
   <nb-card-body>
-    <form class="form-group">
-      <div class="form-group row">
+    <form id="firewallConfigForm" class="form-horizontal" onSubmit="return false;">
+      <div class="row">
         <label class="col-md-2 col-form-label text-right">公司名称</label>
-        <div class="col-md-4">
-          <input type="text" class="form-control"/>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="company.name" name="name" maxlength="50"/>
         </div>
         <label class="col-md-2 col-form-label text-right">公司规模</label>
-        <div class="col-md-4">
-          <select class="form-control">
-            <option>10-20人</option>
-            <option>服务器2</option>
-            <option>服务器3</option>
-            <option>服务器4</option>
-            <option>服务器5</option>
+        <div class="form-group col-md-4">
+          <select class="form-control" [(ngModel)]="company.scale" name="scale">
+            <option value="">请选择公司规模</option>
+            <option *ngFor="let item of scales" [value]="item.value">{{item.name}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="row">
         <label class="col-md-2 col-form-label text-right">公司性质</label>
-        <div class="col-md-4">
-          <select class="form-control">
-            <option>国企</option>
-            <option>服务器2</option>
-            <option>服务器3</option>
-            <option>服务器4</option>
-            <option>服务器5</option>
+        <div class="form-group col-md-4">
+          <select class="form-control" [(ngModel)]="company.nature" name="nature">
+            <option value="">请选择公司性质</option>
+            <option *ngFor="let item of natures" [value]="item.value">{{item.name}}</option>
           </select>
         </div>
         <label class="col-md-2 col-form-label text-right">公司行业</label>
-        <div class="col-md-4">
-          <select class="form-control">
-            <option>互联网</option>
-            <option>服务器2</option>
-            <option>服务器3</option>
-            <option>服务器4</option>
-            <option>服务器5</option>
+        <div class="form-group col-md-4">
+          <select class="form-control" [(ngModel)]="company.industry" name="industry">
+            <option value="">请选择公司行业</option>
+            <option *ngFor="let item of industrys" [value]="item.value">{{item.name}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label class="col-md-4 col-form-label text-right">公司地址</label>
-            <div class="col-md-8">
-              <input type="text" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-md-4 col-form-label text-right">公司电话</label>
-            <div class="col-md-8">
-              <input type="text" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-md-4 col-form-label text-right">企业邮箱</label>
-            <div class="col-md-8">
-              <input type="text" class="form-control"/>
-            </div>
-          </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label text-right">公司地址</label>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="company.address" name="address" maxlength="100"/>
         </div>
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label class="col-md-4 col-form-label text-right">企业微信</label>
-            <div class="col-md-8">
-              <img src="/assets/images/add_img.png" width="120px">
-            </div>
-          </div>
+        <label class="col-md-2 col-form-label text-right">公司电话</label>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="company.phone" name="phone" maxlength="50"/>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="row">
+        <label class="col-md-2 col-form-label text-right">企业邮箱</label>
+        <div class="form-group col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="company.email" name="email" maxlength="50"/>
+        </div>
+        <label class="col-md-2 col-form-label text-right">企业微信</label>
+        <div class="form-group col-md-4">
+          <input type="hidden" readonly="readonly" class="img_input form-control" [(ngModel)]="company.weixin"
+                 name="weixin"/>
+          <input type="file" class="hidden" id="imgFile" (change)="fileChange($event)"/>
+          <img [src]="preview" class="preview" width="120px" height="120px" onclick="imgFile.click()">
+        </div>
+      </div>
+      <div class="row">
         <label class="col-md-2 col-form-label text-right">公司简介</label>
-        <div class="col-md-10">
-          <editor [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
-        </div>
-      </div>
-      <div class="form-group row margin-top-5p">
-        <div class="offset-sm-3">
-          <button class="btn btn-success">确 认</button>
-        </div>
-        <div class="col-sm-2">
-          <button class="btn btn-info">取 消</button>
+        <div class="form-group col-md-10">
+          <editor [(ngModel)]="company.remark" name="remark"
+            [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
         </div>
       </div>
     </form>
   </nb-card-body>
+  <nb-card-footer class="text-center">
+    <button class="btn btn-success" (click)="editCompany()">确 认</button>
+  </nb-card-footer>
 </nb-card>
 

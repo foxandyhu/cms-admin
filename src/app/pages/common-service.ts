@@ -15,10 +15,12 @@ export class CommonService {
    * 图片上传
    */
   uploadFile(file: any): Promise<any> {
-    const formData = new FormData();
-    formData.append('file', file);
-    return this.httpUtil.post(AppApi.FILES.file_upload, formData).then(response => {
-      return Promise.resolve(response);
-    });
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      return this.httpUtil.post(AppApi.FILES.file_upload, formData).then(response => {
+        return Promise.resolve(response);
+      });
+    }
   }
 }

@@ -65,6 +65,22 @@ export class AppApi {
 
     watermark_config: '/manage/watermark/info.html',
     watermark_config_edit: '/manage/watermark/edit.html',
+
+    firewall_config: '/manage/firewall/info.html',
+    firewall_config_edit: '/manage/firewall/edit.html',
+
+    company_info: '/manage/company/info.html',
+    company_edit: '/manage/company/edit.html',
+
+    tast_list: '/manage/task/list.html',
+    task_stop: '/manage/task/stop/{:name}.html',
+    task_start: '/manage/task/start/{:name}.html',
+
+    resource_list: '/manage/resource/list.html',
+    resource_mkdir: '/manage/resource/mkdir.html',
+    resource_del: '/manage/resource/del.html',
+    resource_edit: '/manage/resource/edit.html',
+    resource_upload: '/manage/resource/upload.html',
   };
 
   /**
@@ -77,6 +93,7 @@ export class AppApi {
     dictionary_del: '/manage/dictionary/del.html',
     dictionary_detail: '/manage/dictionary/{:dictionaryId}.html',
     dictionary_types: '/manage/dictionary/types.html',
+    dictionary_type_by: '/manage/dictionary/type/{:type}.html',
     sensitive_list: '/manage/sensitive/list.html',
     sensitive_add: '/manage/sensitive/add.html',
     sensitive_edit: '/manage/sensitive/edit.html',

@@ -1,8 +1,6 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import '@ztree/ztree_v3';
 import {NbDialogRef} from '@nebular/theme';
-import {RoleService} from '../service/roles.service';
-import {BaseComponent} from '../../base-component';
 
 declare var jQuery: any;
 

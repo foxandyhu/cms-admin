@@ -135,9 +135,11 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
    */
   faceFileChange(event) {
     const file = event.currentTarget.files[0];
-    this.previewFace = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.commonService.uploadFile(file).then(result => {
-      this.user.face = result;
-    });
+    if (file) {
+      this.previewFace = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+      this.commonService.uploadFile(file).then(result => {
+        this.user.face = result;
+      });
+    }
   }
 }

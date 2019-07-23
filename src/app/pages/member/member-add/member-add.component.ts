@@ -98,10 +98,12 @@ export class MemberAddComponent extends BaseComponent implements OnInit {
    */
   faceFileChange(event) {
     const file = event.currentTarget.files[0];
-    this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.commonService.uploadFile(file).then(result => {
-      this.member.memberExt.face = result;
-    });
+    if (file) {
+      this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+      this.commonService.uploadFile(file).then(result => {
+        this.member.memberExt.face = result;
+      });
+    }
   }
 
   /**

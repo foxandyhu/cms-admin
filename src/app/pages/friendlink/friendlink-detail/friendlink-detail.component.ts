@@ -64,10 +64,12 @@ export class FriendLinkDetailComponent extends BaseComponent implements OnInit {
    */
   fileChange(event) {
     const file = event.currentTarget.files[0];
-    this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.commonService.uploadFile(file).then(result => {
-      this.friendlink.logo = result;
-    });
+    if (file) {
+      this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+      this.commonService.uploadFile(file).then(result => {
+        this.friendlink.logo = result;
+      });
+    }
   }
 
   cancel() {

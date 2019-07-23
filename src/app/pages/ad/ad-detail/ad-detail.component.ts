@@ -140,10 +140,12 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
    */
   adFileChange(event) {
     const file = event.currentTarget.files[0];
-    this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-    this.commonService.uploadFile(file).then(result => {
-      this.ad.attr.pic_url = result;
-    });
+    if (file) {
+      this.preview = this.domSanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
+      this.commonService.uploadFile(file).then(result => {
+        this.ad.attr.pic_url = result;
+      });
+    }
   }
 
   /**

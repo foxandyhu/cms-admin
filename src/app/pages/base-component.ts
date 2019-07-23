@@ -23,7 +23,7 @@ export class BaseComponent {
 
   private _pager: any;       // 分页对象
   private _isSelectAll: boolean = false; // 是否全部选中
-  private _selectItems: Array<number> = new Array<number>(); // 选中的ID
+  private _selectItems: Array<any> = new Array<any>(); // 选中的ID
   private _queryParams = new Map();   // 查询条件
   private _formValid: any;    // form对象
 
@@ -51,11 +51,11 @@ export class BaseComponent {
     this._isSelectAll = value;
   }
 
-  get selectItems(): Array<number> {
+  get selectItems(): Array<any> {
     return this._selectItems;
   }
 
-  set selectItems(value: Array<number>) {
+  set selectItems(value: Array<any>) {
     this._selectItems = value;
   }
 
@@ -123,12 +123,17 @@ export class BaseComponent {
     return Promise.resolve(false);
   }
 
-  private doDel(ids: Array<number>): Promise<boolean> {
+  private doDel(ids: Array<any>): Promise<boolean> {
     return this.modalUtil.confirm('删除提示', '您确认要删除该数据吗?').then(result => {
       if (result) {
         return this.baseService.delData(ids).then(() => {
           this.toastUtil.showSuccess('删除成功!');
-          this.getPager(this.pager.pageNo);
+          if (this.pager) {
+            this.getPager(this.pager.pageNo);
+          } else {
+            this.isSelectAll = false;
+            this.selectItems = new Array<any>();
+          }
           return Promise.resolve(true);
         });
       }
@@ -150,7 +155,7 @@ export class BaseComponent {
     return result.then(data => {
       this.pager = data;
       this.isSelectAll = false;
-      this.selectItems = new Array<number>();
+      this.selectItems = new Array<any>();
       return Promise.resolve(data);
     });
   }
