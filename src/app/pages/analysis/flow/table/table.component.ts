@@ -9,4 +9,9 @@ export class FlowTableComponent implements OnInit {
   ngOnInit() {
   }
 
+  private data: any;
+
+  setData(data: any) {
+    this.data = data;
+  }
 }

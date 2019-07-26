@@ -4,21 +4,12 @@
   </nb-card-header>
   <nb-list>
     <nb-list-item>
-      <form class="form-inline">
-      <div class="form-group">
+      <div class="form-inline">
         <label>日期:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <div ngbRadioGroup class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='1'>今天
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='2'>昨天
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='3'>当月
-          </label>
-          <label class='btn btn-outline-primary' ngbButtonLabel>
-            <input type='radio' ngbButton value='4'>今年
+        <div ngModel="1" name="type" ngbRadioGroup
+             class='btn-group btn-group-toggle btn-outline-toggle-group btn-toggle-radio-group'>
+          <label class='btn btn-outline-primary' ngbButtonLabel *ngFor="let item of times">
+            <input type='radio' ngbButton value='{{item.id}}' (click)="chooseTime(item.id)">{{item.name}}
           </label>
         </div>&nbsp;&nbsp;&nbsp;&nbsp;
         <div class="input-group">
@@ -27,17 +18,16 @@
               <i class="ion-ios-calendar-outline"></i>
             </button>
           </div>
-          <input class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
-          <nb-rangepicker #rangepicker format="YYYY-MM-DD"></nb-rangepicker>
+          <input readonly="readonly" class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
+          <nb-rangepicker #rangepicker (rangeChange)="changeDate($event)" format="YYYY-MM-DD"></nb-rangepicker>
         </div>
       </div>
-    </form>
       <div class="margin-top-5p">
-      <div echarts [options]="options" class="echart"></div>
-    </div>
+        <div style="height:300px" echarts [options]="options" (chartInit)="chartInit($event)" class="echart"></div>
+      </div>
       <div class="margin-top-5p">
-      <ngx-flow-table></ngx-flow-table>
-    </div>
+        <ngx-flow-table #flowTable></ngx-flow-table>
+      </div>
     </nb-list-item>
   </nb-list>
 </nb-card>

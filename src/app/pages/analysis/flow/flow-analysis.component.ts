@@ -1,5 +1,7 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
+import {AnalysisService} from '../service/analysis-service';
+import {EChartOption, ECharts} from 'echarts';
 
 @Component({
   selector: 'ngx-flow-analysis',
@@ -9,8 +11,12 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
 
   options: any = {};
   themeSubscription: any;
+  @ViewChild('flowTable') flowTable;
+  private echartInstance: ECharts;
+  private times: any = [{id: 1, name: '今天', checked: true}, {id: 2, name: '昨天'},
+    {id: 3, name: '本周'}, {id: 4, name: '本月'}, {id: 5, name: '本年'}]; // 时间类型
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private flowService: AnalysisService) {
   }
 
   ngOnInit() {
@@ -18,7 +24,6 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
 
@@ -28,8 +33,7 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            type: 'cross',
-            label: {
+            type: 'cross', label: {
               backgroundColor: echarts.tooltipBackgroundColor,
             },
           },
@@ -50,7 +54,7 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
           {
             type: 'category',
             boundaryGap: false,
-            data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            data: [],
             axisTick: {
               alignWithLabel: true,
             },
@@ -92,21 +96,21 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [120, 132, 101, 111, 455, 333, 66],
+            data: [],
           },
           {
             name: 'IP',
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [220, 182, 191, 45, 213, 456, 221],
+            data: [],
           },
           {
             name: '独立访客',
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [150, 232, 201, 111, 345, 657, 767],
+            data: [],
           },
         ],
       };
@@ -117,4 +121,50 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
     this.themeSubscription.unsubscribe();
   }
 
+  /**
+   * 获得echart实例
+   * @param chart
+   */
+  chartInit(chart) {
+    this.echartInstance = chart;
+    this.chooseTime(1);
+  }
+
+  /**
+   * 时间类型选择
+   * @param type
+   */
+  chooseTime(time, begin?: string, end?: string) {
+    this.flowService.statisticFlow(time, begin, end).then(result => {
+      this.options.xAxis[0].data = [];
+      this.options.series[0].data = [];
+      this.options.series[1].data = [];
+      this.options.series[2].data = [];
+      if (!result) {
+        return;
+      }
+      this.flowTable.setData(result);
+      for (const item of result) {
+        this.options.xAxis[0].data.push(item.time);
+        this.options.series[0].data.push(item.pv);
+        this.options.series[1].data.push(item.ip);
+        this.options.series[2].data.push(item.uv);
+      }
+      if (this.echartInstance) {
+        this.echartInstance.setOption(this.options);
+      }
+    });
+  }
+
+  /**
+   * 日期改变
+   * @param event
+   */
+  changeDate(event) {
+    if (event.start && event.end) {
+      const begin = event.start.format('YYYY-MM-DD');
+      const end = event.end.format('YYYY-MM-DD');
+      this.chooseTime(0, begin, end);
+    }
+  }
 }

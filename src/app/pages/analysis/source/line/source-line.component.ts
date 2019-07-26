@@ -1,18 +1,35 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
+import {EChartOption, ECharts} from 'echarts';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'ngx-source-line',
   template: `
-    <div echarts [options]="options" class="echart"></div>
-  `,
+    <div style="height:300px" echarts (chartInit)="chartInit($event)" [options]="options" class="echart"></div>`,
 })
 export class SourceLineComponent implements OnInit, AfterViewInit, OnDestroy {
 
   options: any = {};
+  legendData: Array<string>;
+  xAxisData: Array<string>;
+  private seriesData: Map<string, any>;
   themeSubscription: any;
+  private chart: ECharts;
+  private chartSubject: Subject<any> = new Subject<any>();
 
   constructor(private theme: NbThemeService) {
+  }
+
+  /**
+   * 获得echart实例
+   * @param chart
+   */
+  chartInit(chart) {
+    this.chart = chart;
+    this.chartSubject.asObservable().subscribe(data => {
+      this.renderChart(data);
+    });
   }
 
   ngAfterViewInit() {
@@ -34,7 +51,7 @@ export class SourceLineComponent implements OnInit, AfterViewInit, OnDestroy {
           },
         },
         legend: {
-          data: ['直接访问', '外部链接', '搜索引擎', '其他'],
+          data: [],
           textStyle: {
             color: echarts.textColor,
           },
@@ -49,7 +66,7 @@ export class SourceLineComponent implements OnInit, AfterViewInit, OnDestroy {
           {
             type: 'category',
             boundaryGap: false,
-            data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            data: [],
             axisTick: {
               alignWithLabel: true,
             },
@@ -67,6 +84,7 @@ export class SourceLineComponent implements OnInit, AfterViewInit, OnDestroy {
         ],
         yAxis: [
           {
+            name: 'PV',
             type: 'value',
             axisLine: {
               lineStyle: {
@@ -85,43 +103,75 @@ export class SourceLineComponent implements OnInit, AfterViewInit, OnDestroy {
             },
           },
         ],
-        series: [
-          {
-            name: '直接访问',
-            type: 'line',
-            stack: 'Total amount',
-            areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [120, 132, 101, 111, 455, 333, 66],
-          },
-          {
-            name: '外部链接',
-            type: 'line',
-            stack: 'Total amount',
-            areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [220, 182, 191, 45, 213, 456, 221],
-          },
-          {
-            name: '搜索引擎',
-            type: 'line',
-            stack: 'Total amount',
-            areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [150, 232, 201, 111, 345, 657, 767],
-          }, {
-            name: '其他',
-            type: 'line',
-            stack: 'Total amount',
-            areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [50, 32, 21, 11, 35, 67, 77],
-          },
-        ],
+        series: [],
       };
     });
   }
 
   ngOnDestroy(): void {
+    this.chartSubject.unsubscribe();
     this.themeSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * 设置数据
+   * @param data
+   */
+  setData(data: any) {
+    this.chartSubject.next(data);
+  }
+
+  /**
+   * 渲染图形
+   * @param data
+   */
+  renderChart(data: any) {
+    this.legendData = new Array();
+    this.xAxisData = new Array();
+    this.seriesData = new Map();
+    if (data) {
+      for (const item of data) {
+        if (this.legendData.indexOf(item.value) < 0) {
+          this.legendData.push(item.value);
+        }
+        if (this.xAxisData.indexOf(item.time) < 0) {
+          this.xAxisData.push(item.time);
+        }
+      }
+    }
+    this.legendData.forEach((value, index, array) => {
+      const items = new Array();
+      this.xAxisData.forEach((xData, seq, datas) => {
+        let result = 0;
+        for (const item of data) {
+          if (value === item.value && xData === item.time) {
+            result = parseInt(item.pv, 0);
+            break;
+          }
+        }
+        items.push(result);
+      });
+      this.seriesData.set(value, items);
+    });
+
+    this.options.legend.data = [];
+    this.options.xAxis[0].data = [];
+    this.options.series = [];
+
+    this.options.legend.data = this.legendData;
+    this.options.xAxis[0].data = this.xAxisData;
+    this.seriesData.forEach((value, key, map) => {
+      this.options.series.push({
+        name: key,
+        type: 'line',
+        stack: 'Total amount',
+        areaStyle: {normal: {opacity: echarts.areaOpacity}},
+        data: value,
+      });
+    });
+    this.chart.setOption(this.options);
   }
 }

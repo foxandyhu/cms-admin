@@ -7,8 +7,6 @@ import {AnalysisRoutingModule} from './analysis-routing.module';
 import {FlowAnalysisComponent} from './flow/flow-analysis.component';
 import {FlowTableComponent} from './flow/table/table.component';
 
-import {ChannelAnalysisComponent} from './channel/channel-analysis.component';
-
 import {SourceAnalysisComponent} from './source/source-analysis.component';
 import {SourcePieComponent} from './source/pie/source-pie.component';
 import {SourceLineComponent} from './source/line/source-line.component';
@@ -25,16 +23,14 @@ import {SiteAnalysisComponent} from './site/site-analysis.component';
 import {SiteTableComponent} from './site/table/site-table.component';
 import {SitePieComponent} from './site/pie/site-pie.component';
 import {SiteLineComponent} from './site/line/site-line.component';
-import {WordsAnalysisComponent} from './words/words-analysis.component';
-import {PagesAnalysisComponent} from './pages/pages-analysis.component';
 import {AreaAnalysisComponent} from './area/area-analysis.component';
 import {AreaTableComponent} from './area/table/area-table.component';
 import {AreaMapComponent} from './area/map/area-map.component';
+import {AnalysisService} from './service/analysis-service';
 
 @NgModule({
   declarations: [
     FlowAnalysisComponent, FlowTableComponent,
-    ChannelAnalysisComponent, WordsAnalysisComponent, PagesAnalysisComponent,
     SourceAnalysisComponent, SourcePieComponent, SourceLineComponent, SourceTableComponent,
     EngineAnalysisComponent, EnginePieComponent, EngineLineComponent, EngineTableComponent,
     BrowserAnalysisComponent, BrowserPieComponent, BrowserLineComponent, BrowserTableComponent,
@@ -46,6 +42,7 @@ import {AreaMapComponent} from './area/map/area-map.component';
     NgxEchartsModule,
     NbMomentDateModule,
     AnalysisRoutingModule],
+  providers: [AnalysisService],
 })
 export class AnalysisModule {
 }

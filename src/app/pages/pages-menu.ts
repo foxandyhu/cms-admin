@@ -98,29 +98,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: '趋势分析',
         link: '/analysis/flow',
       }, {
-        title: '栏目访问量排行',
-        link: '/analysis/channel',
-      }, {
         title: '来源分类',
         link: '/analysis/source',
       }, {
         title: '搜索引擎',
         link: '/analysis/engine',
       }, {
-        title: '浏览器',
-        link: '/analysis/browser',
-      }, {
         title: '来访站点',
         link: '/analysis/site',
       }, {
+        title: '浏览器',
+        link: '/analysis/browser',
+      }, {
         title: '来访地区',
         link: '/analysis/area',
-      }, {
-        title: '搜索词',
-        link: '/analysis/words',
-      }, {
-        title: '受访页面',
-        link: '/analysis/pages',
       },
     ],
   },

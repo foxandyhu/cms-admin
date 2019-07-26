@@ -200,4 +200,16 @@ export class AppApi {
     group_detail: '/manage/member/group/{:groupId}.html',
     group_all: '/manage/member/group/all.html',
   };
+
+  /**
+   * 流量统计模块
+   */
+  static STATISTIC = {
+    flow: '/manage/statistic/flow.html',
+    source: '/manage/statistic/source.html',
+    engine: '/manage/statistic/engine.html',
+    site: '/manage/statistic/site.html',
+    browser: '/manage/statistic/browser.html',
+    area: '/manage/statistic/area.html',
+  };
 }

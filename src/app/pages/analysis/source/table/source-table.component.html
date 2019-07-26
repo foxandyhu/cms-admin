@@ -1,60 +1,18 @@
-<table class="table">
+<table class="table table-hover">
   <thead>
   <tr>
     <th>分类</th>
-    <th class="align-right">PV总数</th>
-    <th class="table-arr"></th>
-    <th class="align-right">IP总数</th>
-    <th class="table-arr"></th>
-    <th class="align-right">访客总数</th>
-    <th class="table-arr"></th>
+    <th>PV总数</th>
+    <th>IP总数</th>
+    <th>访客总数</th>
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td class="nowrap">Google Chrome</td>
-    <td class="align-right">10,392</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-  </tr>
-  <tr>
-    <td class="nowrap">Google Chrome</td>
-    <td class="align-right">10,392</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-  </tr>
-  <tr>
-    <td class="nowrap">Google Chrome</td>
-    <td class="align-right">10,392</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-  </tr>
-  <tr>
-    <td class="nowrap">Google Chrome</td>
-    <td class="align-right">10,392</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-  </tr>
-  <tr>
-    <td class="nowrap">Google Chrome</td>
-    <td class="align-right">10,392</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
-    <td class="align-right">3,822</td>
-    <td class="table-arr"><i class="icon-up"></i></td>
+  <tr *ngFor="let item of data">
+    <td>{{item.value}}</td>
+    <td>{{item.pv}}</td>
+    <td>{{item.ip}}</td>
+    <td>{{item.uv}}</td>
   </tr>
   </tbody>
 </table>
