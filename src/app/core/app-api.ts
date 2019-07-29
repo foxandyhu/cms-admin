@@ -17,6 +17,7 @@ export class AppApi {
    * 用户模块
    */
   static USERS = {
+    edit_pwd: '/manage/user/edit-pwd.html',
     login: '/manage/user/login.html',
     logout: '/manage/user/logout.html',
     user_list: '/manage/user/list.html',
@@ -211,5 +212,14 @@ export class AppApi {
     site: '/manage/statistic/site.html',
     browser: '/manage/statistic/browser.html',
     area: '/manage/statistic/area.html',
+  };
+
+  /**
+   * 招聘模块
+   */
+  static JOB = {
+    apply_list: '/manage/job/apply/list.html',
+    apply_del: '/manage/job/apply/del.html',
+    resume_detail: '/manage/job/resume/:memberId.html',
   };
 }

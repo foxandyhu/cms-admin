@@ -25,7 +25,7 @@ import {NbDialogModule} from '@nebular/theme';
     UserRoutingModule,
     NbDialogModule.forChild(),
   ], providers: [UserService, RoleService],
-  entryComponents: [RoleMenuComponent],
+  entryComponents: [RoleMenuComponent, RoleAddComponent, RoleDetailComponent],
 })
 export class UserModule {
 }

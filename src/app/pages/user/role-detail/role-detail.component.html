@@ -5,23 +5,19 @@
   <nb-card-body>
     <form id="roleForm" class="form-horizontal" onSubmit="return false;">
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">名称</label>
-        <div class="form-group col-md-4">
-          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="role.name"
-                 name="name"/>
-        </div>
-      </div>
-      <div class="row margin-top-5p">
-        <div class="offset-sm-3">
-          <button type="buttom" class="btn btn-success" (click)="editRole()">
-            <i class="ion-checkmark"></i> 确 认
-          </button>
-        </div>
-        <div class="col-sm-2">
-          <a href="#user/role" class="btn btn-info">
-            <i class="ion-arrow-return-left"></i> 返回列表</a>
+        <div class="form-group col-md-12">
+          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="name"
+                 name="name" placeholder="角色名称"/>
         </div>
       </div>
     </form>
   </nb-card-body>
+  <nb-card-footer class="modal-footer">
+    <button type="buttom" class="btn btn-success" (click)="submit()">
+      <i class="ion-checkmark"></i> 确 认
+    </button>&nbsp;&nbsp;&nbsp;
+    <button type="buttom" class="btn btn-default" (click)="cancel()">
+      <i class="ion-checkmark"></i> 取 消
+    </button>
+  </nb-card-footer>
 </nb-card>

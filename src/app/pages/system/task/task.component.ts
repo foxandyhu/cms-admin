@@ -26,6 +26,7 @@ export class TaskComponent extends BaseComponent implements OnInit {
       if (result) {
         this.taskService.startTask(name).then(() => {
           this.toastUtil.showSuccess('启动成功!');
+          this.getPager(1);
         });
       }
     });
@@ -37,9 +38,12 @@ export class TaskComponent extends BaseComponent implements OnInit {
    */
   stopTask(name: string) {
     this.modalUtil.confirm('提示', '您确认要停止该计划任务吗?').then(result => {
-      this.taskService.stopTask(name).then(() => {
-        this.toastUtil.showSuccess('停止成功!');
-      });
+      if (result) {
+        this.taskService.stopTask(name).then(() => {
+          this.toastUtil.showSuccess('停止成功!');
+          this.getPager(1);
+        });
+      }
     });
   }
 }

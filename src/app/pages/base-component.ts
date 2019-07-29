@@ -193,4 +193,10 @@ export class BaseComponent {
     return flag;
   }
 
+  /**
+   * 重置Form
+   */
+  resetForm(formId: string) {
+    jQuery('#' + formId).data('bootstrapValidator').resetForm();
+  }
 }

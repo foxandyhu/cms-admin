@@ -10,6 +10,7 @@
           <th>任务名称</th>
           <th>上一次执行时间</th>
           <th>下一次执行时间</th>
+          <th>上一次执行结果</th>
           <th>执行次数</th>
           <th>执行周期</th>
           <th>状态</th>
@@ -17,10 +18,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of pager?.data">
+        <tr *ngFor="let item of pager?.data" nbPopover="{{item.remark}}" nbPopoverMode="hint">
           <td>{{item.name}}</td>
           <td>{{item.preExecTime}}</td>
           <td>{{item.nextExecTime}}</td>
+          <td>{{item.preExecResult}}</td>
           <td>{{item.count}}</td>
           <td>{{item.period}}</td>
           <td>{{item.statusName}}</td>
@@ -34,11 +36,6 @@
               <div *ngSwitchCase="2">
                 <button class="btn btn-success btn-smaller" (click)="startTask(item.name)">
                   <i class="ion-power"></i> 开启
-                </button>
-              </div>
-              <div *ngSwitchCase="3">
-                <button class="btn btn-danger btn-smaller" (click)="stopTask(item.name)">
-                  <i class="ion-android-radio-button-off"></i> 关闭
                 </button>
               </div>
             </div>

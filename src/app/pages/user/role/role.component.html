@@ -6,9 +6,9 @@
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
-          <a href="#user/role/add" class="btn btn-success">
+          <button (click)="showAddRole()" class="btn btn-success">
             <span class="ion-plus-round"></span> 新增
-          </a>&nbsp;&nbsp;
+          </button>&nbsp;&nbsp;
           <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>
@@ -34,9 +34,9 @@
             </td>
             <td>{{item.name}}</td>
             <td>
-              <a href="#user/role/{{item.id}}" class="btn btn-info btn-smaller">
+              <button (click)="showEditRole(item)" class="btn btn-info btn-smaller">
                 <i class="ion-edit"></i> 编辑
-              </a>&nbsp;&nbsp;
+              </button>&nbsp;&nbsp;
               <button class="btn btn-warning btn-smaller" (click)="showRoleMenuDialog(item.id,item.name)">
                 <i class="ion-hammer"></i> 分配权限
               </button>&nbsp;&nbsp;

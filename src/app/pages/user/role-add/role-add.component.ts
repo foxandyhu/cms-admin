@@ -1,7 +1,6 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
-import {RoleService} from '../service/roles.service';
-import {Router} from '@angular/router';
+import {NbDialogRef} from '@nebular/theme';
 
 @Component({
   selector: 'ngx-role-add',
@@ -10,11 +9,11 @@ import {Router} from '@angular/router';
 })
 export class RoleAddComponent extends BaseComponent implements OnInit {
 
-  constructor(private roleService: RoleService, protected injector: Injector, private router: Router) {
-    super(roleService, injector);
+  constructor(protected injector: Injector, private ref: NbDialogRef<RoleAddComponent>) {
+    super(null, injector);
   }
 
-  role = {name: ''};  //  角色对象
+  name = '';  //  角色名称
   private formId: string = 'roleForm';              //  表单ID
 
   ngOnInit() {
@@ -34,17 +33,13 @@ export class RoleAddComponent extends BaseComponent implements OnInit {
     });
   }
 
-  /**
-   * 保存系统角色
-   */
-  saveRole() {
+  cancel() {
+    this.ref.close();
+  }
+
+  submit() {
     if (this.isValidForm(this.formId)) {
-      this.roleService.saveData(this.role).then(result => {
-        if (result === true) {
-          this.toastUtil.showSuccess('新增成功!');
-          this.router.navigate(['/user/role']);
-        }
-      });
+      this.ref.close(this.name);
     }
   }
 }

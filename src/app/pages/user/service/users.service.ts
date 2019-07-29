@@ -15,6 +15,15 @@ export class UserService implements IBaseService {
   }
 
   /**
+   * 修改当前登录用户的密码
+   */
+  editCurrentPwd(oldPwd, newPwd): Promise<boolean> {
+    return this.httpUtil.post(AppApi.USERS.edit_pwd, {oldPwd: oldPwd, newPwd: newPwd}).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
    * 获得当前登录用户信息
    */
   getCurrentUser(): Observable<any> {
