@@ -222,4 +222,15 @@ export class AppApi {
     apply_del: '/manage/job/apply/del.html',
     resume_detail: '/manage/job/resume/:memberId.html',
   };
+
+  /**
+   * 问卷调查模块
+   */
+  static VOTE = {
+    vote_list: '/manage/vote/list.html',
+    vote_add: '/manage/vote/add.html',
+    vote_del: '/manage/vote/del.html',
+    vote_detail: '/manage/vote/{:voteId}.html',
+    vote_enabled: '/manage/vote/{:voteId}/{:enabled}.html',
+  };
 }

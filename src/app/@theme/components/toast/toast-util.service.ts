@@ -33,6 +33,7 @@ export class ToastUtil {
   }
 
   showDanger(content: string) {
+    this.config.status = NbToastStatus.DANGER;
     this.toastService.show(content, '错误', this.config);
   }
 }
