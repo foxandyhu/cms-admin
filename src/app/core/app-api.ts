@@ -233,4 +233,14 @@ export class AppApi {
     vote_detail: '/manage/vote/{:voteId}.html',
     vote_enabled: '/manage/vote/{:voteId}/{:enabled}.html',
   };
+
+  /**
+   * 消息模块
+   */
+  static MESSAGE = {
+    letter_list: '/manage/letter/list.html',
+    letter_add: '/manage/letter/add.html',
+    letter_del: '/manage/letter/del.html',
+    letter_detail: '/manage/letter/{:letterId}.html',
+  };
 }
