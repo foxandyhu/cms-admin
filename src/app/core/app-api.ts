@@ -242,5 +242,17 @@ export class AppApi {
     letter_add: '/manage/letter/add.html',
     letter_del: '/manage/letter/del.html',
     letter_detail: '/manage/letter/{:letterId}.html',
+
+    comment_list: '/manage/comment/list.html',
+    comment_del: '/manage/comment/del.html',
+    commend_recommend: '/manage/comment/recommend/{:commentId}-{:recommend}.html',
+    comment_verify: '/manage/comment/verify/{:status}.html',
+    comment_add: '/manage/comment/reply.html',
+
+    guestbook_list: '/manage/guestbook/list.html',
+    guestbook_del: '/manage/guestbook/del.html',
+    guestbook_recommend: '/manage/guestbook/recommend/{:guestbookId}-{:recommend}.html',
+    guestbook_verify: '/manage/guestbook/verify/{:status}.html',
+    guestbook_reply: '/manage/guestbook/reply.html',
   };
 }

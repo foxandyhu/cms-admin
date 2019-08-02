@@ -10,6 +10,7 @@
 .horizontal-center {display: flex;align-content: center !important;}
 .bg-low-red {background: #ec115024;}
 .font-red{color:#d22017fa;}
+.highlight_red {color:#d65252;}
 .btn-smaller {padding: 0.4rem 0.4rem !important;font-size: 0.75rem !important;line-height: 0 !important;}
 .hidden{display:none !important;}
 .float-left{float: left;}

@@ -30,14 +30,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: '问卷调查',
         link: '/vote/list',
       }, {
-        title: '站内信管理',
-        link: '/message/letter',
-      }, {
         title: '评论管理',
         link: '/message/comment',
       }, {
         title: '留言管理',
         link: '/message/guestbook',
+      }, {
+        title: '站内信管理',
+        link: '/message/letter',
       },
     ],
   },

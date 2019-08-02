@@ -11,6 +11,9 @@ import {LetterAddComponent} from './letter/letter-add/letter-add.component';
 import {LetterDetailComponent} from './letter/letter-detail/letter-detail.component';
 import {MemberGroupService} from '../member/service/member-group-service';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import {CommentService} from './service/comment-service';
+import {DictionaryService} from '../words/service/dictionary-service';
+import {GuestBookService} from './service/guestbook-service';
 
 @NgModule({
   declarations: [LetterComponent, CommentComponent, GuestbookComponent, LetterAddComponent, LetterDetailComponent],
@@ -20,7 +23,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     EditorModule,
     MessageRoutingModule,
   ],
-  providers: [LetterService, MemberGroupService],
+  providers: [LetterService, MemberGroupService, CommentService, DictionaryService, GuestBookService],
 })
 export class MessageModule {
 }
