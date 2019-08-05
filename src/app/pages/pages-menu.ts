@@ -57,9 +57,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: '专题管理',
         link: '/content/topic',
       }, {
-        title: '内容类型',
-        link: '/content/type',
-      }, {
         title: '模型管理',
         link: '/content/model',
       },

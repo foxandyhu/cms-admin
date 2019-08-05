@@ -255,4 +255,35 @@ export class AppApi {
     guestbook_verify: '/manage/guestbook/verify/{:status}.html',
     guestbook_reply: '/manage/guestbook/reply.html',
   };
+
+  static CONTENT = {
+    model_list: '/manage/model/list.html',
+    model_all: '/manage/model/all.html',
+    model_add: '/manage/model/add.html',
+    model_edit: '/manage/model/edit.html',
+    model_detail: '/manage/model/{:modelId}',
+    model_del: '/manage/model/del.html',
+    model_sort: '/manage/model/sort/{:upItemId}-{:downItemId}.html',
+    model_enabled: '/manage/model/enabled/{:modelId}-{:enabled}.html',
+    model_template: '/manage/model/template/{:modelId}.html',
+
+    model_item_default: '/manage/model/item/default.html',
+    model_item_for_model: '/manage/model/item/model-{:modelId}.html',
+    model_item_add: '/manage/model/item/add.html',
+    model_item_bind: '/manage/model/item/bind/{:modelId}.html',
+    model_item_edit: '/manage/model/item/edit.html',
+    model_item_detail: '/manage/model/item/{:modelItemId}.html',
+    model_item_del: '/manage/model/item/del.html',
+    model_item_sort: '/manage/model/item/sort/{:upItemId}-{:downItemId}.html',
+    model_item_enabled: '/manage/model/item/enabled/{:modelItemId}-{:enabled}.html',
+    model_item_datatypes: '/manage/model/item/datatypes.html',
+
+    channel_list: '/manage/channel/list.html',
+    channel_all: '/manage/channel/all.html',
+    channel_add: '/manage/channel/add.html',
+    channel_edit: '/manage/channel/edit.html',
+    channel_detail: '/manage/channel/{:channelId}.html',
+    channel_del: '/manage/channel/del.html',
+    channel_sort: '/manage/channel/sort/{:upItemId}-{:downItemId}.html',
+  };
 }

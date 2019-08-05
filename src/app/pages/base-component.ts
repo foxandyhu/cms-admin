@@ -26,6 +26,7 @@ export class BaseComponent {
   private _selectItems: Array<any> = new Array<any>(); // 选中的ID
   private _queryParams = new Map();   // 查询条件
   private _formValid: any;    // form对象
+  private _list: Array<any>;  //  数据集合
 
   get modalUtil(): ModalUtil {
     return this._modalUtil;
@@ -33,6 +34,17 @@ export class BaseComponent {
 
   get toastUtil(): ToastUtil {
     return this._toastUtil;
+  }
+
+  get list(): Array<any> {
+    if (this.pager) {
+      return this.pager.data;
+    }
+    return this._list;
+  }
+
+  set list(value: Array<any>) {
+    this._list = value;
   }
 
   get pager(): any {
@@ -75,7 +87,7 @@ export class BaseComponent {
   changeAllBox(isSelectAll) {
     this._isSelectAll = isSelectAll;
     if (isSelectAll) {
-      const items: Array<any> = this._pager.data;
+      const items: Array<any> = this.list;
       items.forEach((item, index, array) => {
         if (this._selectItems.indexOf(item.id) < 0) {
           this._selectItems.push(item.id);
