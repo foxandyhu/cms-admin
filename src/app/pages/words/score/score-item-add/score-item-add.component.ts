@@ -12,7 +12,7 @@ import {CommonService} from '../../../common-service';
 })
 export class ScoreItemAddComponent extends BaseComponent implements OnInit {
 
-  scoreItem: any = {name: '', score: 0, url: '', seq: 0, group: {id: 0}};  //  评分项
+  scoreItem: any = {name: '', score: 0, url: '',  group: {id: 0}};  //  评分项
   scoreGroup: any = {name: '', id: ''};   //  评分组
   private formId: string = 'scoreItemForm'; //   表单ID
   preview: any = '/assets/images/add_img.png';   //  图像预览
@@ -41,12 +41,6 @@ export class ScoreItemAddComponent extends BaseComponent implements OnInit {
         validators: {
           notEmpty: {message: '评分值不能为空!'},
           digits: {min: 0, message: '评分值最小为0!'},
-        },
-      },
-      seq: {
-        validators: {
-          notEmpty: {message: '排序不能为空!'},
-          digits: {min: 0, message: '排序最小为0!'},
         },
       },
     });
