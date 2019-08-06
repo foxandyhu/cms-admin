@@ -121,6 +121,7 @@ export class AppApi {
     score_item_edit: '/manage/score/item/edit.html',
     score_item_del: '/manage/score/item/del.html',
     score_item_detail: '/manage/score/item/{:groupId}.html',
+    score_item_sort: '/manage/score/item/sort/{:upItemId}-{:downItemId}.html',
   };
 
   /**
