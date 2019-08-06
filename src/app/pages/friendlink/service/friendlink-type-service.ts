@@ -57,4 +57,11 @@ export class FriendLinkTypeService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    const url = AppApi.FRIENDLINK.type_sort.replace('{:upItemId}', upItemId).replace('{:downItemId}', downItemId);
+    return this.httpUtil.get(url).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }

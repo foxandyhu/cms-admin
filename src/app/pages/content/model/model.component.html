@@ -55,8 +55,8 @@
             <td><a *ngIf="item.hasContent" href="#content/model/item/{{item.id}}">[内容模型]</a></td>
             <td>{{item.remark}}</td>
             <td>
-              <i class="ion-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <i class="ion-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <button class="btn btn-info btn-smaller" (click)="showEditModel(item.id)">
                 <i class="ion-edit"></i> 编辑
               </button>&nbsp;&nbsp;

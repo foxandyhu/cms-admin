@@ -5,16 +5,16 @@ import {AppApi} from '../../../core/app-api';
 import {HttpParams} from '@angular/common/http';
 
 /**
- * 栏目Service
+ * 专题Service
  */
 @Injectable()
-export class ChannelService implements IBaseService {
+export class SpecialTopicService implements IBaseService {
 
   constructor(private httpUtil: HttpUtil) {
   }
 
   delData(ids: Array<number>): Promise<any> {
-    return this.httpUtil.post(AppApi.CONTENT.channel_del, ids).then(response => {
+    return this.httpUtil.post(AppApi.CONTENT.topic_del, ids).then(response => {
       return Promise.resolve(response);
     });
   }
@@ -22,50 +22,59 @@ export class ChannelService implements IBaseService {
 
   getPager(params: Map<string, string>): Promise<any> {
     const httpParams: HttpParams = this.httpUtil.getHttpParams(params);
-    return this.httpUtil.get(AppApi.CONTENT.channel_list, httpParams).then(response => {
+    const result: Promise<any> = this.httpUtil.get(AppApi.CONTENT.topic_list, httpParams).then(response => {
       return Promise.resolve(response);
     });
+    return result;
   }
 
 
   saveData(menu: any): Promise<boolean> {
-    return this.httpUtil.post(AppApi.CONTENT.channel_add, menu).then(() => {
+    return this.httpUtil.post(AppApi.CONTENT.topic_add, menu).then(() => {
       return Promise.resolve(true);
     });
   }
 
 
   editData(menu: any): Promise<boolean> {
-    return this.httpUtil.post(AppApi.CONTENT.channel_edit, menu).then(() => {
+    return this.httpUtil.post(AppApi.CONTENT.topic_edit, menu).then(() => {
       return Promise.resolve(true);
     });
   }
 
   getData(id: any): Promise<any> {
-    const url = AppApi.CONTENT.channel_detail.replace('{:channelId}', id);
+    const url = AppApi.CONTENT.topic_detail.replace('{:topicId}', id);
     return this.httpUtil.get(url).then(response => {
       return Promise.resolve(response);
     });
   }
 
-
   /**
-   * 栏目项排序
+   * 模型排序
    * @param upItemId
    * @param downItemId
    */
   sort(upItemId: string, downItemId: string): Promise<boolean> {
-    const url = AppApi.CONTENT.channel_sort.replace('{:upItemId}', upItemId).replace('{:downItemId}', downItemId);
+    const url = AppApi.CONTENT.topic_sort.replace('{:upItemId}', upItemId).replace('{:downItemId}', downItemId);
     return this.httpUtil.get(url).then(() => {
       return Promise.resolve(true);
     });
   }
 
   /**
-   * 获得所有的栏目信息
+   * 获得所有的专题
    */
-  getAllChannels(): Promise<any> {
-    return this.httpUtil.get(AppApi.CONTENT.channel_all).then(response => {
+  getAllTopics(): Promise<any> {
+    return this.httpUtil.get(AppApi.CONTENT.topic_all).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 获得专题模版集合
+   */
+  getSpecialTopicTemplates(): Promise<any> {
+    return this.httpUtil.get(AppApi.CONTENT.topic_template).then(response => {
       return Promise.resolve(response);
     });
   }

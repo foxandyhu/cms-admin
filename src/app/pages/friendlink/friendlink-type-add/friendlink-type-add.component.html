@@ -11,15 +11,9 @@
                  name="name"/>
         </div>
       </div>
-      <div class="row">
-        <label class="col-md-3 col-form-label text-right">排序</label>
-        <div class="form-group col-md-9">
-          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="friendLinkType.seq"
-                 name="seq"/>
-        </div>
-      </div>
     </form>
-    <nb-card-footer class="modal-footer">
+  </nb-card-body>
+  <nb-card-footer class="modal-footer">
       <button type="buttom" class="btn btn-success" (click)="submit()">
         <i class="ion-checkmark"></i> 确 认
       </button>&nbsp;&nbsp;&nbsp;
@@ -27,5 +21,4 @@
         <i class="ion-checkmark"></i> 取 消
       </button>
     </nb-card-footer>
-  </nb-card-body>
 </nb-card>

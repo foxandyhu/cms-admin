@@ -30,12 +30,6 @@ export class FriendLinkTypeAddComponent extends BaseComponent implements OnInit 
           notEmpty: {message: '名称不能为空!'},
         },
       },
-      seq: {
-        validators: {
-          notEmpty: {message: '排序不能为空!'},
-          digits: {min: 0, message: '排序值最小为0!'},
-        },
-      },
     });
   }
 

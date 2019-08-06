@@ -71,4 +71,7 @@ export class MemberConfigService implements IBaseService {
     });
   }
 
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

@@ -30,4 +30,11 @@ export interface IBaseService {
    * @param id
    */
   getData(id: any): Promise<any>;
+
+  /**
+   * 排序
+   * @param upItemId
+   * @param downItemId
+   */
+  sort(upItemId, downItemId): Promise<boolean>;
 }

@@ -72,36 +72,4 @@ export class ChannelComponent extends BaseComponent implements OnInit {
       ref.componentRef.instance.modelChange();
     });
   }
-
-  /**
-   * 排序 isUp 为true标识上移 false下移
-   * @param id
-   * @param isUp
-   */
-  sort(id: string, isUp: boolean) {
-    this.list.forEach((item, index, array) => {
-      if (item.id === id) {
-        let upItemId = null;
-        let downItemId = null;
-        if (isUp === true) {
-          const preItem = array[index - 1];
-          if (preItem) {
-            upItemId = id;
-            downItemId = preItem.id;
-          }
-        } else {
-          const nextItem = array[index + 1];
-          if (nextItem) {
-            upItemId = nextItem.id;
-            downItemId = id;
-          }
-        }
-        if (upItemId && downItemId) {
-          this.channelService.sortChannel(upItemId, downItemId).then(() => {
-            this.getPager(1);
-          });
-        }
-      }
-    });
-  }
 }

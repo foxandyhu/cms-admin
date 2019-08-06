@@ -40,8 +40,8 @@
           <td>{{item.link}}</td>
           <td>{{item.display ? "是" : "否"}}</td>
           <td>
-            <i class="ion-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="ion-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </td>
           <td>
             <button class="btn btn-info btn-smaller" (click)="showEditChannel(item.id)">

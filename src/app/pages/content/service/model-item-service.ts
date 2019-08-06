@@ -59,7 +59,7 @@ export class ModelItemService implements IBaseService {
    * @param upItemId
    * @param downItemId
    */
-  sortModelItem(upItemId: string, downItemId: string): Promise<boolean> {
+  sort(upItemId: string, downItemId: string): Promise<boolean> {
     const url = AppApi.CONTENT.model_item_sort.replace('{:upItemId}', upItemId).replace('{:downItemId}', downItemId);
     return this.httpUtil.get(url).then(() => {
       return Promise.resolve(true);

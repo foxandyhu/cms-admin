@@ -158,6 +158,7 @@ export class AppApi {
     friendlink_edit: '/manage/friendlink/edit.html',
     friendlink_del: '/manage/friendlink/del.html',
     friendlink_detail: '/manage/friendlink/{:linkId}.html',
+    friendlink_sort: '/manage/friendlink/sort/{:upItemId}-{:downItemId}.html',
 
     type_list: '/manage/friendlink/type/list.html',
     type_add: '/manage/friendlink/type/add.html',
@@ -165,6 +166,7 @@ export class AppApi {
     type_del: '/manage/friendlink/type/del.html',
     type_detail: '/manage/friendlink/type/{:type}.html',
     type_all: '/manage/friendlink/type/all.html',
+    type_sort: '/manage/friendlink/type/sort/{:upItemId}-{:downItemId}.html',
   };
 
   /**
@@ -292,5 +294,15 @@ export class AppApi {
     channel_detail: '/manage/channel/{:channelId}.html',
     channel_del: '/manage/channel/del.html',
     channel_sort: '/manage/channel/sort/{:upItemId}-{:downItemId}.html',
+
+    topic_list: '/manage/topic/list.html',
+    topic_all: '/manage/topic/all.html',
+    topic_add: '/manage/topic/add.html',
+    topic_edit: '/manage/topic/edit.html',
+    topic_detail: '/manage/topic/{:topicId}.html',
+    topic_del: '/manage/topic/del.html',
+    topic_sort: '/manage/topic/sort/{:upItemId}-{:downItemId}.html',
+    topic_template: '/manage/topic/template.html',
+
   };
 }

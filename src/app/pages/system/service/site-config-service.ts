@@ -53,4 +53,8 @@ export class SiteConfigService implements IBaseService {
       return Promise.resolve(true);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

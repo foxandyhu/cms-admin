@@ -119,4 +119,8 @@ export class UserService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

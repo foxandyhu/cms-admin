@@ -67,4 +67,8 @@ export class CommentService implements IBaseService {
       return Promise.resolve(true);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

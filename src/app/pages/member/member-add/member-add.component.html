@@ -7,11 +7,13 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 用户名</label>
         <div class="form-group col-md-4">
-          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="member.userName" name="userName" maxlength="20"/>
+          <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="member.userName"
+                 name="userName" maxlength="20"/>
         </div>
         <label class="col-md-2 col-form-label text-right">电子邮箱</label>
         <div class="form-group col-md-4">
-          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="member.email" name="email" maxlength="50"/>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="member.email" name="email"
+                 maxlength="50"/>
         </div>
       </div>
       <div class="row">
@@ -50,7 +52,8 @@
         </div>
         <label class="col-md-3 col-form-label text-right">个性签名</label>
         <div class="col-md-4 vertical-center">
-          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="member.memberExt.signature" name="signature" maxlength="50"/>
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="member.memberExt.signature"
+                 name="signature" maxlength="50"/>
         </div>
       </div>
       <div class="row margin-top-1p">
@@ -113,20 +116,17 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">描述</label>
         <div class="form-group col-md-10">
-          <textarea class="form-control" rows="5" [(ngModel)]="member.memberExt.intro" name="intro" maxlength="200"></textarea>
-        </div>
-      </div>
-      <div class="row margin-top-2p">
-        <div class="offset-sm-3">
-          <button type="buttom" class="btn btn-success" (click)="saveMember()">
-            <i class="ion-checkmark"></i> 确 认
-          </button>
-        </div>
-        <div class="col-sm-2">
-          <a href="#member/list" class="btn btn-info">
-            <i class="ion-arrow-return-left"></i> 返回列表</a>
+          <textarea class="form-control" rows="5" [(ngModel)]="member.memberExt.intro" name="intro"
+                    maxlength="200"></textarea>
         </div>
       </div>
     </form>
   </nb-card-body>
+  <nb-card-footer class="modal-footer">
+    <button type="buttom" class="btn btn-success" (click)="saveMember()">
+      <i class="ion-checkmark"></i> 确 认
+    </button>
+    <a href="#member/list" class="btn btn-info">
+      <i class="ion-arrow-return-left"></i> 返回列表</a>
+  </nb-card-footer>
 </nb-card>

@@ -39,39 +39,6 @@ export class ModelComponent extends BaseComponent implements OnInit {
   }
 
   /**
-   * 排序 isUp 为true标识上移 false下移
-   * @param id
-   * @param isUp
-   */
-  sort(id: string, isUp: boolean) {
-    const datas = this.pager.data;
-    datas.forEach((item, index, array) => {
-      if (item.id === id) {
-        let upItemId = null;
-        let downItemId = null;
-        if (isUp === true) {
-          const preItem = array[index - 1];
-          if (preItem) {
-            upItemId = id;
-            downItemId = preItem.id;
-          }
-        } else {
-          const nextItem = array[index + 1];
-          if (nextItem) {
-            upItemId = nextItem.id;
-            downItemId = id;
-          }
-        }
-        if (upItemId && downItemId) {
-          this.modelService.sortModel(upItemId, downItemId).then(() => {
-            this.getPager(1);
-          });
-        }
-      }
-    });
-  }
-
-  /**
    * 显示添加模型框
    */
   showAddModel() {

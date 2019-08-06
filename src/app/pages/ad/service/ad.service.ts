@@ -42,4 +42,8 @@ export class AdService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

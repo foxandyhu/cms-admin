@@ -54,4 +54,8 @@ export class MenuService implements IBaseService {
   getData(id: any): Promise<any> {
     return undefined;
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

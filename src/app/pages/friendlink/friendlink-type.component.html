@@ -37,7 +37,10 @@
           <td>
             {{item.name}}
           </td>
-          <td>{{item.seq}}</td>
+          <td>
+            <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
           <td>
             <button class="btn btn-info btn-smaller" (click)="showEditFriendLinkType(item.id)">
               <i class="ion-edit"></i> 编辑

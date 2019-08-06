@@ -58,4 +58,7 @@ export class TaskService implements IBaseService {
     });
   }
 
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

@@ -11,7 +11,7 @@ import {CommonService} from '../../common-service';
 })
 export class FriendLinkDetailComponent extends BaseComponent implements OnInit {
 
-  friendlink: any = {name: '', url: '', logo: '', remark: '', seq: 0, enabled: false, type: {id: ''}};  //  友情链接
+  friendlink: any = {name: '', url: '', logo: '', remark: '',  enabled: false, type: {id: ''}};  //  友情链接
   private formId: string = 'friendLinkForm';     //   表单ID
   types: any;    //   类型列表
   preview: any = '/assets/images/add_img.png';   //  图像预览
@@ -47,12 +47,6 @@ export class FriendLinkDetailComponent extends BaseComponent implements OnInit {
       type: {
         validators: {
           notEmpty: {message: '类型不能为空!'},
-        },
-      },
-      seq: {
-        validators: {
-          notEmpty: {message: '排序不能为空!'},
-          digits: {min: 0, message: '排序值最小为0!'},
         },
       },
     });

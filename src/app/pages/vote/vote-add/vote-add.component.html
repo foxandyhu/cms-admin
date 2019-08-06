@@ -60,9 +60,9 @@
         <nb-accordion>
           <nb-accordion-item *ngFor="let subTopic of vote?.subtopics">
             <nb-accordion-item-header>
-              <span class="ion-op ion-android-remove-circle pointer" (click)="removeSubTopic(subTopic.seq)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span class="ion-op ion-arrow-down-a pointer" (click)="down(subTopic.seq)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span class="ion-op ion-arrow-up-a pointer" (click)="up(subTopic.seq)"></span>&nbsp;&nbsp;
+              <span class="sort-op ion-android-remove-circle pointer" (click)="removeSubTopic(subTopic.seq)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="sort-op ion-arrow-down-a pointer" (click)="down(subTopic.seq)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class="sort-op ion-arrow-up-a pointer" (click)="up(subTopic.seq)"></span>&nbsp;&nbsp;
               问题 {{subTopic.seq}}. &nbsp;{{subTopic.title}}
             </nb-accordion-item-header>
             <nb-accordion-item-body>

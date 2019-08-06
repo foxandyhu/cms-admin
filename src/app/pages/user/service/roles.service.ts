@@ -89,4 +89,8 @@ export class RoleService implements IBaseService {
       return Promise.resolve(response);
     });
   }
+
+  sort(upItemId, downItemId): Promise<boolean> {
+    return undefined;
+  }
 }

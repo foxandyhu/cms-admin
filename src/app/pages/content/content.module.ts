@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ThemeModule} from '../../@theme/theme.module';
 import {ContentRoutingModule} from './content-routing.module';
 import {NormalComponent} from './normal/normal.component';
-import {TopicComponent} from './topic/topic.component';
+import {SpecialTopicComponent} from './topic/topic.component';
 import {ChannelTreeComponent} from './normal/channel-tree/channel-tree.component';
 import {ChannelComponent} from './channel/channel.component';
 import {ModelComponent} from './model/model.component';
@@ -18,12 +18,15 @@ import {ModelItemService} from './service/model-item-service';
 import {ChannelService} from './service/channel-service';
 import {ChannelAddComponent} from './channel/channel-add/channel-add.component';
 import {ChannelDetailComponent} from './channel/channel-detail/channel-detail.component';
+import {SpecialTopicService} from './service/topic-service';
+import {SpecialTopicAddComponent} from './topic/topic-add/topic-add.component';
+import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.component';
 
 @NgModule({
-  declarations: [NormalComponent, TopicComponent,
+  declarations: [NormalComponent, SpecialTopicComponent,
     ChannelTreeComponent, ChannelComponent, ModelComponent,
     ModelAddComponent, ModelDetailComponent, ModelItemComponent, ModelItemAddComponent, ModelItemDetailComponent,
-    ChannelAddComponent, ChannelDetailComponent],
+    ChannelAddComponent, ChannelDetailComponent, SpecialTopicAddComponent, SpecialTopicDetailComponent],
   imports: [
     ThemeModule,
     CommonModule,
@@ -33,7 +36,7 @@ import {ChannelDetailComponent} from './channel/channel-detail/channel-detail.co
   entryComponents: [ModelAddComponent, ModelDetailComponent,
     ModelItemAddComponent, ModelItemDetailComponent,
     ChannelAddComponent, ChannelDetailComponent],
-  providers: [ModelService, ModelItemService, ChannelService],
+  providers: [ModelService, ModelItemService, ChannelService, SpecialTopicService],
 })
 export class ContentModule {
 }
