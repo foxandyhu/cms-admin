@@ -82,6 +82,13 @@ export class AppApi {
     resource_del: '/manage/resource/del.html',
     resource_edit: '/manage/resource/edit.html',
     resource_upload: '/manage/resource/upload.html',
+
+    template_list: '/manage/template/list.html',
+    template_mkdir: '/manage/template/mkdir.html',
+    template_del: '/manage/template/del.html',
+    template_edit: '/manage/template/edit.html',
+    template_upload: '/manage/template/upload.html',
+    template_detail: '/manage/template/detail.html',
   };
 
   /**

@@ -88,11 +88,13 @@ export class BaseComponent {
     this._isSelectAll = isSelectAll;
     if (isSelectAll) {
       const items: Array<any> = this.list;
-      items.forEach((item, index, array) => {
-        if (this._selectItems.indexOf(item.id) < 0) {
-          this._selectItems.push(item.id);
-        }
-      });
+      if (items) {
+        items.forEach((item, index, array) => {
+          if (this._selectItems.indexOf(item.id) < 0) {
+            this._selectItems.push(item.id);
+          }
+        });
+      }
     } else {
       this._selectItems.splice(0, this._selectItems.length);
     }

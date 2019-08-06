@@ -1,19 +1,20 @@
 import {Component, Injector, OnInit, ViewChild} from '@angular/core';
-import {NbDialogService} from '@nebular/theme';
-import {ResDirAddComponent} from './res-dir-add/res-dir-add.component';
 import {BaseComponent} from '../../base-component';
-import {ResourceService} from '../service/resource-service';
+import {TemplateService} from '../service/template-service';
+import {NbDialogService} from '@nebular/theme';
+import {TemplateDirAddComponent} from './template-dir-add/template-dir-add.component';
+import {TemplateDetailComponent} from './template-detail/template-detail.component';
 
 @Component({
-  selector: 'ngx-system-resource',
-  templateUrl: './resource.component.html',
-  styleUrls: ['./resource.component.scss'],
+  selector: 'ngx-system-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.scss'],
 })
-export class ResourceComponent extends BaseComponent implements OnInit {
+export class TemplateComponent extends BaseComponent implements OnInit {
 
-  constructor(private resourceService: ResourceService, protected injector: Injector,
+  constructor(private templateService: TemplateService, protected injector: Injector,
               private dialogService: NbDialogService) {
-    super(resourceService, injector);
+    super(templateService, injector);
   }
 
   nodes: any;     // tree 数据集合
@@ -23,9 +24,9 @@ export class ResourceComponent extends BaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  getResource(data) {
-    this.nodes = data;
+  getTemplate(data) {
     this.selectItems = new Array<any>();
+    this.nodes = data;
   }
 
   /**
@@ -40,9 +41,9 @@ export class ResourceComponent extends BaseComponent implements OnInit {
    * 新建目录
    */
   mkdir() {
-    this.dialogService.open(ResDirAddComponent).onClose.subscribe(name => {
+    this.dialogService.open(TemplateDirAddComponent).onClose.subscribe(name => {
       if (name) {
-        this.resourceService.mkdir(this.currntNode.path, name).then(() => {
+        this.templateService.mkdir(this.currntNode.path, name).then(() => {
           this.toastUtil.showSuccess('新建目录成功!');
           this.resTree.loadData(this.currntNode, this.currntNode.path);
         });
@@ -57,7 +58,7 @@ export class ResourceComponent extends BaseComponent implements OnInit {
   fileChange(event) {
     const file = event.currentTarget.files[0];
     if (file) {
-      this.resourceService.uploadFile(this.currntNode.path, file).then(() => {
+      this.templateService.uploadFile(this.currntNode.path, file).then(() => {
         this.toastUtil.showSuccess('上传成功!');
         this.resTree.loadData(this.currntNode, this.currntNode.path);
       });
@@ -84,6 +85,23 @@ export class ResourceComponent extends BaseComponent implements OnInit {
     super.delMutil().then(result => {
       if (result) {
         this.resTree.loadData(this.currntNode, this.currntNode.path);
+      }
+    });
+  }
+
+  /**
+   * 弹出编辑模版页面
+   */
+  showEditTemplate(path) {
+    const ref = this.dialogService.open(TemplateDetailComponent);
+    this.templateService.getData(path).then(result => {
+      ref.componentRef.instance.content = result;
+    });
+    ref.onClose.subscribe(result => {
+      if (result) {
+        this.templateService.editData({path: path, content: result}).then(() => {
+          this.toastUtil.showSuccess('保存成功!');
+        });
       }
     });
   }

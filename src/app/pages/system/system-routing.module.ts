@@ -11,9 +11,11 @@ import {NoRightComponent} from './noright/noright.component';
 import {SmsProviderComponent} from './sms/provider/provider.component';
 import {SmsRecordComponent} from './sms/record/record.component';
 import {EmailProviderComponent} from './email/email.component';
+import {TemplateComponent} from './template/template.component';
 
 const routes: Routes = [
   {path: 'resource', component: ResourceComponent},
+  {path: 'template', component: TemplateComponent},
   {path: 'noright', component: NoRightComponent},
   {path: 'setting/watermark', component: WatermarkConfigComponent},
   {path: 'setting/firewall', component: FirewallSettingComponent},

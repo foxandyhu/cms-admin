@@ -1,28 +1,28 @@
 import {AfterViewInit, Component, EventEmitter, Injector, OnInit, Output} from '@angular/core';
 import {BaseComponent} from '../../../base-component';
-import {ResourceService} from '../../service/resource-service';
 import '@ztree/ztree_v3';
+import {TemplateService} from '../../service/template-service';
 
 declare var jQuery: any;
 
 @Component({
-  selector: 'ngx-system-res-tree',
-  templateUrl: './res-tree.component.html',
-  styleUrls: ['./res-tree.component.scss'],
+  selector: 'ngx-system-template-tree',
+  templateUrl: './template-tree.component.html',
+  styleUrls: ['./template-tree.component.scss'],
 })
-export class ResTreeComponent extends BaseComponent implements OnInit, AfterViewInit {
+export class TemplateTreeComponent extends BaseComponent implements OnInit, AfterViewInit {
 
-  private static component: ResTreeComponent;
+  private static component: TemplateTreeComponent;
   private tree: any;
   private setting = {
     check: {enable: false}, data: {keep: {parent: true}, simpleData: {enable: true}},
     callback: {
       beforeExpand: function (treeId, treeNode) {
-        ResTreeComponent.component.eventTreeNode(treeNode);
+        TemplateTreeComponent.component.eventTreeNode(treeNode);
         return false;
       },
       onClick: function (event, treeId, treeNode) {
-        ResTreeComponent.component.eventTreeNode(treeNode);
+        TemplateTreeComponent.component.eventTreeNode(treeNode);
       },
     },
   };
@@ -30,8 +30,8 @@ export class ResTreeComponent extends BaseComponent implements OnInit, AfterView
   @Output() private showData = new EventEmitter(true);
   @Output() private node = new EventEmitter(true);
 
-  constructor(private resourceService: ResourceService, protected injector: Injector) {
-    super(resourceService, injector);
+  constructor(private templateService: TemplateService, protected injector: Injector) {
+    super(templateService, injector);
   }
 
   /**
@@ -49,9 +49,9 @@ export class ResTreeComponent extends BaseComponent implements OnInit, AfterView
   }
 
   ngOnInit() {
-    ResTreeComponent.component = this;
-    jQuery.fn.zTree.init(jQuery('#resourceTree'), this.setting, this.rootNode);
-    this.tree = jQuery.fn.zTree.getZTreeObj('resourceTree');
+    TemplateTreeComponent.component = this;
+    jQuery.fn.zTree.init(jQuery('#templateTree'), this.setting, this.rootNode);
+    this.tree = jQuery.fn.zTree.getZTreeObj('templateTree');
   }
 
   ngAfterViewInit(): void {
@@ -92,11 +92,11 @@ export class ResTreeComponent extends BaseComponent implements OnInit, AfterView
   }
 
   /**
-   * 加载资源
+   * 加载模版
    * @param path
    */
   loadData(parentNode: any, path: string) {
-    this.resourceService.getResource(path).then(result => {
+    this.templateService.getTemplate(path).then(result => {
       this.setData(parentNode, result);
     });
   }

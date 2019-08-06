@@ -113,12 +113,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: '资源管理',
+    title: '系统资源',
     icon: 'ion-images',
     children: [
       {
-        title: '系统资源',
+        title: '资源管理',
         link: '/system/resource',
+      }, {
+        title: '模版管理',
+        link: '/system/template',
       },
     ],
   },

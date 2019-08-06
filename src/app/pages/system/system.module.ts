@@ -36,6 +36,11 @@ import {DictionaryService} from '../words/service/dictionary-service';
 import {TaskService} from './service/task-service';
 import {ResourceService} from './service/resource-service';
 import {ResDirAddComponent} from './resource/res-dir-add/res-dir-add.component';
+import {TemplateComponent} from './template/template.component';
+import {TemplateService} from './service/template-service';
+import {TemplateDirAddComponent} from './template/template-dir-add/template-dir-add.component';
+import {TemplateTreeComponent} from './template/template-tree/template-tree.component';
+import {TemplateDetailComponent} from './template/template-detail/template-detail.component';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkConfigComponent,
@@ -43,7 +48,8 @@ import {ResDirAddComponent} from './resource/res-dir-add/res-dir-add.component';
     MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent,
     SmsProviderComponent, SmsRecordComponent, SmsProviderAddComponent,
     SmsProviderDetailComponent, EmailProviderComponent, ResDirAddComponent,
-    EmailProviderAddComponent, EmailProviderDetailComponent],
+    EmailProviderAddComponent, EmailProviderDetailComponent, TemplateComponent,
+    TemplateDirAddComponent, TemplateTreeComponent, TemplateDetailComponent],
   imports: [
     CommonModule,
     ThemeModule,
@@ -54,10 +60,10 @@ import {ResDirAddComponent} from './resource/res-dir-add/res-dir-add.component';
   ],
   entryComponents: [MenuAddComponent, MenuDetailComponent, SmsProviderAddComponent,
     SmsProviderDetailComponent, EmailProviderAddComponent, EmailProviderDetailComponent,
-    ResDirAddComponent],
+    ResDirAddComponent, TemplateDirAddComponent, TemplateDetailComponent],
   providers: [MenuService, SmsProviderService, EmailProviderService, SmsRecordService, SiteConfigService,
     WatermarkConfigService, FirewallConfigService, CompanyService, DictionaryService, TaskService,
-    ResourceService],
+    ResourceService, TemplateService],
 })
 export class SystemModule {
 }
