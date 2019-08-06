@@ -27,8 +27,8 @@
             <th>分组名</th>
             <th>名称</th>
             <th>分值</th>
-            <th>排列顺序</th>
             <th>图片</th>
+            <th>排序</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -41,10 +41,13 @@
             <td>{{item.group?.name}}</td>
             <td>{{item.name}}</td>
             <td>{{item.score}}</td>
-            <td>{{item.seq}}</td>
             <td>
               <img width="90" height="60" [src]="item.url?item.url:'assets/images/no-pic.gif'"/>
             </td>
+          <td>
+            <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
             <td>
               <button class="btn btn-info btn-smaller" (click)="showEditScoreItem(item.id)">
                 <i class="ion-edit"></i> 编辑

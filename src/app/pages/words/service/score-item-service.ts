@@ -46,6 +46,9 @@ export class ScoreItemService implements IBaseService {
   }
 
   sort(upItemId, downItemId): Promise<boolean> {
-    return undefined;
+    const url = AppApi.WORDS.score_item_sort.replace('{:upItemId}', upItemId).replace('{:downItemId}', downItemId);
+    return this.httpUtil.get(url).then(() => {
+      return Promise.resolve(true);
+    });
   }
 }
