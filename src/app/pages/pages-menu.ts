@@ -12,6 +12,27 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: '内容管理',
+    icon: 'ion-ios-book',
+    children: [
+      {
+        title: '栏目管理',
+        link: '/content/channel',
+      },
+      {
+        title: '内容管理',
+        link: '/content/normal',
+      },
+      {
+        title: '专题管理',
+        link: '/content/topic',
+      }, {
+        title: '模型管理',
+        link: '/content/model',
+      },
+    ],
+  },
+  {
     title: '运营',
     icon: 'ion-ios-cog',
     children: [
@@ -38,27 +59,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       }, {
         title: '站内信管理',
         link: '/message/letter',
-      },
-    ],
-  },
-  {
-    title: '内容管理',
-    icon: 'ion-ios-book',
-    children: [
-      {
-        title: '栏目管理',
-        link: '/content/channel',
-      },
-      {
-        title: '内容管理',
-        link: '/content/normal',
-      },
-      {
-        title: '专题管理',
-        link: '/content/topic',
-      }, {
-        title: '模型管理',
-        link: '/content/model',
       },
     ],
   },
