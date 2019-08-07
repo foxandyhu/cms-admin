@@ -16,6 +16,7 @@
 .float-left{float: left;}
 .pointer{cursor:pointer;}
 .sort-op{font-size:1.5rem;}
+.help {color: #a4a4c5;cursor: help;}
 
 
 /*翻页条样式*/

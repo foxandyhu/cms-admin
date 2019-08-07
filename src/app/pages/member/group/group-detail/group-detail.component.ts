@@ -35,12 +35,6 @@ export class MemberGroupDetailComponent extends BaseComponent implements OnInit 
           notEmpty: {message: '组名称不能为空!'},
         },
       },
-      seq: {
-        validators: {
-          notEmpty: {message: '排序不能为空!'},
-          digits: {min: 0, message: '排序最小为0!'},
-        },
-      },
       allowUploadPerDay: {
         validators: {
           notEmpty: {message: '每日允许上传附件总大小不能为空!'},
