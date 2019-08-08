@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ThemeModule} from '../../@theme/theme.module';
 import {ContentRoutingModule} from './content-routing.module';
-import {NormalComponent} from './normal/normal.component';
+import {ArticleComponent} from './article/article.component';
 import {SpecialTopicComponent} from './topic/topic.component';
-import {ChannelTreeComponent} from './normal/channel-tree/channel-tree.component';
+import {ChannelTreeComponent} from './article/channel-tree/channel-tree.component';
 import {ChannelComponent} from './channel/channel.component';
 import {ModelComponent} from './model/model.component';
 import {ModelService} from './service/model-service';
@@ -21,12 +21,15 @@ import {ChannelDetailComponent} from './channel/channel-detail/channel-detail.co
 import {SpecialTopicService} from './service/topic-service';
 import {SpecialTopicAddComponent} from './topic/topic-add/topic-add.component';
 import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.component';
+import {ArticleService} from './service/article-service';
+import {ArticleTopComponent} from './article/top/top.component';
 
 @NgModule({
-  declarations: [NormalComponent, SpecialTopicComponent,
+  declarations: [ArticleComponent, SpecialTopicComponent,
     ChannelTreeComponent, ChannelComponent, ModelComponent,
     ModelAddComponent, ModelDetailComponent, ModelItemComponent, ModelItemAddComponent, ModelItemDetailComponent,
-    ChannelAddComponent, ChannelDetailComponent, SpecialTopicAddComponent, SpecialTopicDetailComponent],
+    ChannelAddComponent, ChannelDetailComponent, SpecialTopicAddComponent,
+    SpecialTopicDetailComponent, ArticleTopComponent],
   imports: [
     ThemeModule,
     CommonModule,
@@ -35,8 +38,9 @@ import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.com
   ],
   entryComponents: [ModelAddComponent, ModelDetailComponent,
     ModelItemAddComponent, ModelItemDetailComponent,
-    ChannelAddComponent, ChannelDetailComponent],
-  providers: [ModelService, ModelItemService, ChannelService, SpecialTopicService],
+    ChannelAddComponent, ChannelDetailComponent, ArticleTopComponent],
+  providers: [ModelService, ModelItemService, ChannelService, SpecialTopicService,
+    ArticleService],
 })
 export class ContentModule {
 }

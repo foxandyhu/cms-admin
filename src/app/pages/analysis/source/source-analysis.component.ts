@@ -4,6 +4,7 @@ import {AnalysisService} from '../service/analysis-service';
 import {SourceTableComponent} from './table/source-table.component';
 import {SourcePieComponent} from './pie/source-pie.component';
 import {SourceLineComponent} from './line/source-line.component';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-source',
@@ -44,8 +45,8 @@ export class SourceAnalysisComponent implements OnInit {
    */
   changeDate(event) {
     if (event.start && event.end) {
-      const begin = event.start.format('YYYY-MM-DD');
-      const end = event.end.format('YYYY-MM-DD');
+      const begin = DateUtil.formatDate(event.start);
+      const end = DateUtil.formatDate(event.end);
       this.chooseTime(0, begin, end);
     }
   }

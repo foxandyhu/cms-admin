@@ -305,5 +305,13 @@ export class AppApi {
     topic_sort: '/manage/topic/sort/{:upItemId}-{:downItemId}.html',
     topic_template: '/manage/topic/template.html',
 
+    article_list: '/manage/article/list.html',
+    article_add: '/manage/article/add.html',
+    article_edit: '/manage/article/edit.html',
+    article_detail: '/manage/article/{:articleId}.html',
+    article_del: '/manage/article/del.html',
+    article_recommend: '/manage/article/recommend/{:recommend}-{:level}.html',
+    article_verify: '/manage/article/verify/{:status}.html',
+    article_top: '/manage/article/top/{:articleId}-{:level}.html',
   };
 }

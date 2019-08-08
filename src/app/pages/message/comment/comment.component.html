@@ -16,7 +16,7 @@
             <option value="false">否</option>
           </select>&nbsp;&nbsp;&nbsp;&nbsp;
           <label>文章ID:&nbsp;&nbsp;</label>
-          <input [(ngModel)]="contentId" name="contentId" type="text" class="form-control" placeholder="搜索文章ID" autocomplete="off"/>&nbsp;&nbsp;
+          <input [(ngModel)]="articleId" name="articleId" type="text" class="form-control" placeholder="搜索文章ID" autocomplete="off"/>&nbsp;&nbsp;
           &nbsp;&nbsp;
           <button type="button" class="btn btn-success" (click)="search()">
             查询
@@ -34,8 +34,8 @@
             <a href="" target="_blank">{{item.title}}</a>
           </div>
           <div class="col-md-4">
-            <span>文章ID：{{item.contentId}}</span>&nbsp;&nbsp;
-            <button class="btn btn-outline-primary btn-xs" (click)="viewContentAll(item.contentId)">查看本文全部评论</button>
+            <span>文章ID：{{item.articleId}}</span>&nbsp;&nbsp;
+            <button class="btn btn-outline-primary btn-xs" (click)="viewArticleAll(item.articleId)">查看本文全部评论</button>
           </div>
           <div class="col-md-2">审核状态:
             <span

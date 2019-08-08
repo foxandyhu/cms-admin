@@ -5,7 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
 import {Router} from '@angular/router';
 import {MemberGroupService} from '../service/member-group-service';
-import * as moment from 'moment';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-member-add',
@@ -111,6 +111,6 @@ export class MemberAddComponent extends BaseComponent implements OnInit {
    * @param date
    */
   dateChange(date) {
-    this.member.memberExt.birthday = moment(date).format('YYYY-MM-DD');
+    this.member.memberExt.birthday = DateUtil.formatDate(date);
   }
 }

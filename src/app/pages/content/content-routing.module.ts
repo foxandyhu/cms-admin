@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {NormalComponent} from './normal/normal.component';
+import {ArticleComponent} from './article/article.component';
 import {SpecialTopicComponent} from './topic/topic.component';
 import {ChannelComponent} from './channel/channel.component';
 import {ModelComponent} from './model/model.component';
@@ -9,7 +9,7 @@ import {SpecialTopicAddComponent} from './topic/topic-add/topic-add.component';
 import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.component';
 
 const routes: Routes = [
-  {path: 'normal', component: NormalComponent},
+  {path: 'article', component: ArticleComponent},
   {path: 'topic', component: SpecialTopicComponent},
   {path: 'topic/add', component: SpecialTopicAddComponent},
   {path: 'topic/:topicId', component: SpecialTopicDetailComponent},

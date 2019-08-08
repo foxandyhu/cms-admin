@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {LetterService} from '../service/letter-service';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-message-letter',
@@ -41,8 +42,8 @@ export class LetterComponent extends BaseComponent implements OnInit {
    */
   changeDate(event) {
     if (event.start && event.end) {
-      this.beginSendTime = event.start.format('YYYY-MM-DD');
-      this.endSendTime = event.end.format('YYYY-MM-DD');
+      this.beginSendTime = DateUtil.formatDate(event.start);
+      this.endSendTime = DateUtil.formatDate(event.end);
       this.search();
     }
   }

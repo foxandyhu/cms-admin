@@ -2,6 +2,7 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../../base-component';
 import {SmsRecordService} from '../../service/sms-record-service';
 import {SmsProviderService} from '../../service/sms-provider-service';
+import {DateUtil} from '../../../../core/utils/date';
 
 @Component({
   selector: 'ngx-sms-record',
@@ -47,10 +48,10 @@ export class SmsRecordComponent extends BaseComponent implements OnInit {
    */
   changeDate(event) {
     if (event.start) {
-      this.beginTime = event.start.format('YYYY-MM-DD');
+      this.beginTime = DateUtil.formatDate(event.start);
     }
     if (event.end) {
-      this.endTime = event.end.format('YYYY-MM-DD');
+      this.endTime = DateUtil.formatDate(event.end);
     }
   }
 

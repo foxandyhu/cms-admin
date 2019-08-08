@@ -15,7 +15,7 @@ export class CommentComponent extends BaseComponent implements OnInit {
 
   status: string = '';
   isRecommend: string = '';
-  contentId: string = '';
+  articleId: string = '';
   statuss: any = [{id: 0, name: '待审核'}, {id: 1, name: '审核不通过'}, {id: 2, name: '审核通过'}];
 
   ngOnInit() {
@@ -28,15 +28,15 @@ export class CommentComponent extends BaseComponent implements OnInit {
   search() {
     this.setQueryParams('status', this.status);
     this.setQueryParams('recommend', this.isRecommend);
-    this.setQueryParams('contentId', this.contentId);
+    this.setQueryParams('articleId', this.articleId);
     this.getPager(1);
   }
 
   /**
    * 查看该文章所有评论
    */
-  viewContentAll(contentId: string) {
-    this.contentId = contentId;
+  viewArticleAll(articleId: string) {
+    this.articleId = articleId;
     this.search();
   }
 
@@ -106,7 +106,7 @@ export class CommentComponent extends BaseComponent implements OnInit {
    * @param item
    */
   reply(item) {
-    const replyData = {parentId: item.id, contentId: item.contentId, commentExt: {text: item.replyText}};
+    const replyData = {parentId: item.id, articleId: item.articleId, commentExt: {text: item.replyText}};
     this.commentService.saveData(replyData).then(() => {
       this.toastUtil.showSuccess('回复成功!');
       this.hideReply(item);

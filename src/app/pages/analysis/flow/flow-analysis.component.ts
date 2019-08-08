@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/c
 import {NbThemeService} from '@nebular/theme';
 import {AnalysisService} from '../service/analysis-service';
 import {EChartOption, ECharts} from 'echarts';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-flow-analysis',
@@ -162,8 +163,8 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   changeDate(event) {
     if (event.start && event.end) {
-      const begin = event.start.format('YYYY-MM-DD');
-      const end = event.end.format('YYYY-MM-DD');
+      const begin = DateUtil.formatDate(event.start);
+      const end = DateUtil.formatDate(event.end);
       this.chooseTime(0, begin, end);
     }
   }

@@ -2,7 +2,7 @@ import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {VoteService} from '../service/vote-service';
 import {ActivatedRoute} from '@angular/router';
-import * as moment from 'moment';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-vote-detail',
@@ -23,10 +23,10 @@ export class VoteDetailComponent extends BaseComponent implements OnInit {
       this.voteService.getData(voteId).then(result => {
         this.vote = result;
         if (this.vote && this.vote.startTime) {
-          this.vote.startTime = moment(this.vote.startTime).format('YYYY-MM-DD');
+          this.vote.startTime = DateUtil.formatDate(this.vote.startTime);
         }
         if (this.vote && this.vote.endTime) {
-          this.vote.endTime = moment(this.vote.endTime).format('YYYY-MM-DD');
+          this.vote.endTime = DateUtil.formatDate(this.vote.endTime);
         }
         this.voteCountPercent();
       });

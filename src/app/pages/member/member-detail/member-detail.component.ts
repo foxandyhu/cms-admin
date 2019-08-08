@@ -6,7 +6,7 @@ import {CommonService} from '../../common-service';
 import {MemberGroupService} from '../service/member-group-service';
 import {BaseComponent} from '../../base-component';
 import {forkJoin} from 'rxjs';
-import * as moment from 'moment';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-member-detail',
@@ -97,7 +97,7 @@ export class MemberDetailComponent extends BaseComponent implements OnInit {
             this.preview = result.memberExt.face;
           }
           if (result.memberExt.birthday) {
-            result.memberExt.birthday = moment(result.birthday).format('YYYY-MM-DD');
+            result.memberExt.birthday = DateUtil.formatDate(result.birthday);
           } else {
             result.memberExt.birthday = this.member.memberExt.birthday;
           }
@@ -144,6 +144,6 @@ export class MemberDetailComponent extends BaseComponent implements OnInit {
    * @param date
    */
   dateChange(date) {
-    this.member.memberExt.birthday = moment(date).format('YYYY-MM-DD');
+    this.member.memberExt.birthday = DateUtil.formatDate(date);
   }
 }

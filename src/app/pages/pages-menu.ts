@@ -21,7 +21,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: '内容管理',
-        link: '/content/normal',
+        link: '/content/article',
       },
       {
         title: '专题管理',

@@ -5,6 +5,7 @@ import {AdSpaceService} from '../service/ad-space.service';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-ad-add',
@@ -129,10 +130,10 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
    */
   changeDate(event) {
     if (event.start) {
-      this.ad.startTime = event.start.format('YYYY-MM-DD');
+      this.ad.startTime = DateUtil.formatDate(event.start);
     }
     if (event.end) {
-      this.ad.endTime = event.end.format('YYYY-MM-DD');
+      this.ad.endTime = DateUtil.formatDate(event.end);
     }
   }
 

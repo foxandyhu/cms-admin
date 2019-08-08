@@ -3,6 +3,7 @@ import {BrowserPieComponent} from './pie/browser-pie.component';
 import {BrowserLineComponent} from './line/browser-line.component';
 import {BrowserTableComponent} from './table/browser-table.component';
 import {AnalysisService} from '../service/analysis-service';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-browser',
@@ -43,8 +44,8 @@ export class BrowserAnalysisComponent implements OnInit {
    */
   changeDate(event) {
     if (event.start && event.end) {
-      const begin = event.start.format('YYYY-MM-DD');
-      const end = event.end.format('YYYY-MM-DD');
+      const begin = DateUtil.formatDate(event.start);
+      const end = DateUtil.formatDate(event.end);
       this.chooseTime(0, begin, end);
     }
   }

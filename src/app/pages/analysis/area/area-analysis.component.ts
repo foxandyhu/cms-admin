@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AreaMapComponent} from './map/area-map.component';
 import {AreaTableComponent} from './table/area-table.component';
 import {AnalysisService} from '../service/analysis-service';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-area',
@@ -38,8 +39,8 @@ export class AreaAnalysisComponent implements OnInit {
    */
   changeDate(event) {
     if (event.start && event.end) {
-      const begin = event.start.format('YYYY-MM-DD');
-      const end = event.end.format('YYYY-MM-DD');
+      const begin = DateUtil.formatDate(event.start);
+      const end = DateUtil.formatDate(event.end);
       this.chooseTime(0, begin, end);
     }
   }

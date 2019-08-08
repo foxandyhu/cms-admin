@@ -5,7 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AdSpaceService} from '../service/ad-space.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
-import * as moment from 'moment';
+import {DateUtil} from '../../../core/utils/date';
 
 @Component({
   selector: 'ngx-ad-detail',
@@ -72,9 +72,9 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
           this.preview = this.ad.attr['pic_url'];
         }
         if (this.ad && this.ad.startTime) {
-          this.date = moment(this.ad.startTime).format('YYYY-MM-DD');
+          this.date = DateUtil.formatDate(this.ad.startTime);
           if (this.ad.endTime) {
-            this.date += ' - ' + moment(this.ad.endTime).format('YYYY-MM-DD');
+            this.date += ' - ' + DateUtil.formatDate(this.ad.endTime);
           }
         }
       });
@@ -154,10 +154,10 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
    */
   changeDate(event) {
     if (event.start) {
-      this.ad.startTime = event.start.format('YYYY-MM-DD');
+      this.ad.startTime = DateUtil.formatDate(event.start);
     }
     if (event.end) {
-      this.ad.endTime = event.end.format('YYYY-MM-DD');
+      this.ad.endTime = DateUtil.formatDate(event.end);
     }
   }
 
