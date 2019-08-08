@@ -4,7 +4,7 @@ import {BaseComponent} from '../../../base-component';
 import {DateUtil} from '../../../../core/utils/date';
 
 @Component({
-  selector: 'ngx-top',
+  selector: 'ngx-content-article-top',
   templateUrl: './top.component.html',
   styleUrls: ['./top.component.scss'],
 })

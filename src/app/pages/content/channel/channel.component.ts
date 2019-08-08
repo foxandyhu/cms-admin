@@ -20,19 +20,15 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
     super(channelService, injector);
   }
 
-  private dialogAdd: NbDialogRef<any>;
-  private dialogEdit: NbDialogRef<any>;
+  private dialog: NbDialogRef<any>;
 
   ngOnInit() {
     this.getPager(1);
   }
 
   ngOnDestroy(): void {
-    if (this.dialogAdd) {
-      this.dialogAdd.close();
-    }
-    if (this.dialogEdit) {
-      this.dialogEdit.close();
+    if (this.dialog) {
+      this.dialog.close();
     }
   }
 
@@ -41,8 +37,8 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
    * 显示添加栏目框
    */
   showAddChannel() {
-    this.dialogAdd = this.dialogService.open(ChannelAddComponent);
-    this.dialogAdd.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ChannelAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.channelService.saveData(result).then(() => {
           this.getPager(1);
@@ -50,10 +46,10 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
       }
     });
     this.channelService.getAllChannels().then(result => {
-      this.dialogAdd.componentRef.instance.channels = result;
+      this.dialog.componentRef.instance.channels = result;
     });
     this.modelService.getAllModels().then(result => {
-      this.dialogAdd.componentRef.instance.models = result;
+      this.dialog.componentRef.instance.models = result;
     });
   }
 
@@ -62,8 +58,8 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
    * @param id
    */
   showEditChannel(id: string) {
-    this.dialogEdit = this.dialogService.open(ChannelDetailComponent);
-    this.dialogEdit.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ChannelDetailComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.channelService.editData(result).then(() => {
           this.getPager(1);
@@ -71,18 +67,18 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
       }
     });
     const arr = [this.channelService.getData(id).then(result => {
-      this.dialogEdit.componentRef.instance.channel = result;
+      this.dialog.componentRef.instance.channel = result;
       return Promise.resolve(true);
     }), this.modelService.getAllModels().then(result => {
-      this.dialogEdit.componentRef.instance.models = result;
+      this.dialog.componentRef.instance.models = result;
       return Promise.resolve(true);
     }), this.channelService.getAllChannels().then(result => {
-      this.dialogEdit.componentRef.instance.channels = result;
+      this.dialog.componentRef.instance.channels = result;
       return Promise.resolve(true);
     })];
     const obSer = forkJoin(arr);
     obSer.subscribe(() => {
-      this.dialogEdit.componentRef.instance.modelChange();
+      this.dialog.componentRef.instance.modelChange();
     });
   }
 }

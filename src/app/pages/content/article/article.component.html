@@ -5,7 +5,7 @@
   <nb-card-body>
     <div class="row">
       <div class="col-md-2">
-        <ngx-content-channel-tree (sendData)="getChannel($event)"></ngx-content-channel-tree>
+        <ngx-content-article-channel-tree (sendData)="getChannel($event)"></ngx-content-article-channel-tree>
       </div>
       <div class="col-md-10">
         <form class="form-inline">
@@ -45,13 +45,12 @@
             <th width="10%">发布时间</th>
             <th>状态</th>
             <th>操作</th>
-
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of list">
             <td>
-              <nb-checkbox #selectBox status="success" [value]="isSelectAll"
+              <nb-checkbox #selectBox status="success" [value]="isSelectAll" [(ngModel)]="item.selected" name="selected"
                            (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
             </td>
             <td>
@@ -68,6 +67,9 @@
             <td>{{item.postDate}}</td>
             <td>{{item.statusName}}</td>
             <td>
+              <button class="btn btn-success btn-smaller" (click)="showArticleRelatedTopic(item.id)">
+                <i class="ion-ios-arrow-up"></i> 关联专题
+              </button>&nbsp;&nbsp;
               <button class="btn btn-primary btn-smaller" (click)="showTop(item.id)">
                 <i class="ion-ios-arrow-up"></i> 置顶
               </button>&nbsp;&nbsp;
@@ -84,21 +86,21 @@
       </div>
     </div>
   </nb-card-body>
-  <nb-card-footer class="text-right">
-    <div class="row">
-      <div class="col-md-6">
-        <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(true)">推荐</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(false)">取消推荐</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(true)">审核通过</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(false)">审核不通过</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="delMutil()">
-          <i class="ion-trash-b"></i> 删除
-        </button>
-      </div>
-      <div class="col-md-6">
-        <ngb-pagination ngClass="ng2-smart-pagination" maxSize="10" [collectionSize]="pager?.totalCount"
-                        [pageSize]="pager?.pageSize" (pageChange)="changePager($event)"></ngb-pagination>
-      </div>
-    </div>
+  <nb-card-footer class="text-left">
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="showRelatedTopic()">关联专题
+    </button>&nbsp;&nbsp;
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(true)">推荐
+    </button>&nbsp;&nbsp;
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(false)">取消推荐
+    </button>&nbsp;&nbsp;
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(true)">审核通过
+    </button>&nbsp;&nbsp;
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(false)">审核不通过
+    </button>&nbsp;&nbsp;
+    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="delMutil()"><i
+      class="ion-trash-b"></i> 删除
+    </button>&nbsp;&nbsp;
+    <ngb-pagination ngClass="ng2-smart-pagination" maxSize="10" [collectionSize]="pager?.totalCount"
+                    [pageSize]="pager?.pageSize" (pageChange)="changePager($event)"></ngb-pagination>
   </nb-card-footer>
 </nb-card>

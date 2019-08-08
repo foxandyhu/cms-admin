@@ -1,16 +1,18 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {ArticleService} from '../service/article-service';
 import {Router} from '@angular/router';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {ArticleTopComponent} from './top/top.component';
 import {DateUtil} from '../../../core/utils/date';
+import {ArticleRelatedTopicComponent} from './related-topic/related-topic.component';
+import {ArticleTopicComponent} from './article-topic/article-topic.component';
 
 @Component({
   selector: 'ngx-normal',
   templateUrl: './article.component.html',
 })
-export class ArticleComponent extends BaseComponent implements OnInit {
+export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private articleService: ArticleService, protected injector: Injector, private router: Router,
               private dialogService: NbDialogService) {
@@ -20,17 +22,24 @@ export class ArticleComponent extends BaseComponent implements OnInit {
   private types: Array<any> = [{id: 1, name: '普通'}, {id: 2, name: '图文'},
     {id: 3, name: '焦点'}, {id: 4, name: '头条'}]; //  内容类型
   private statuss: Array<any> = [{id: 0, name: '草稿'}, {id: 1, name: '待审核'}, {id: 2, name: '审核通过'},
-    {id: 3, name: '审核未通过'}];      //  状态
-  private channel: string;            //  树状栏目选中
-  private searchType: string = '';    //  搜索类型
-  private searchStatus: string = '';  //  搜索状态
-  private searchTitle: string = '';   //  搜索标题
-  private searchChannel: string = ''; //  搜索栏目
-  private dialogTop: any;              //  文章置顶框
+    {id: 3, name: '审核未通过'}];          //  状态
+  private channel: string;                //  树状栏目选中
+  private searchType: string = '';        //  搜索类型
+  private searchStatus: string = '';      //  搜索状态
+  private searchTitle: string = '';       //  搜索标题
+  private searchChannel: string = '';     //  搜索栏目
+  private dialog: NbDialogRef<any>;    //  文章置顶框
 
   ngOnInit() {
     this.search();
   }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
+  }
+
 
   /**
    * 得到选中的栏目
@@ -107,12 +116,40 @@ export class ArticleComponent extends BaseComponent implements OnInit {
         top.expired = DateUtil.formatDate(item.topExpired);
       }
     });
-    this.dialogTop = this.dialogService.open(ArticleTopComponent);
-    this.dialogTop.componentRef.instance.top = top;
-    this.dialogTop.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ArticleTopComponent);
+    this.dialog.componentRef.instance.top = top;
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.articleService.top(articleId, result.level, result.expired).then(() => {
           this.search();
+        });
+      }
+    });
+  }
+
+  /**
+   * 显示关联专题
+   */
+  showRelatedTopic() {
+    this.dialog = this.dialogService.open(ArticleRelatedTopicComponent);
+    this.dialog.componentRef.instance.articleIds = this.selectItems;
+  }
+
+  /**
+   * 显示文章关联的专题
+   * @param articleId
+   */
+  showArticleRelatedTopic(articleId: string) {
+    this.dialog = this.dialogService.open(ArticleTopicComponent);
+    this.dialog.componentRef.instance.articleId = articleId;
+    this.dialog.onClose.subscribe(result => {
+      if (result) {
+        this.list.forEach(item => {
+          if (item.id === result) {
+            item.selected = true;
+            this.changeBox(true, result);
+            this.showRelatedTopic();
+          }
         });
       }
     });

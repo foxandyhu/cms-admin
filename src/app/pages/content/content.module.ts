@@ -23,13 +23,15 @@ import {SpecialTopicAddComponent} from './topic/topic-add/topic-add.component';
 import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.component';
 import {ArticleService} from './service/article-service';
 import {ArticleTopComponent} from './article/top/top.component';
+import {ArticleRelatedTopicComponent} from './article/related-topic/related-topic.component';
+import {ArticleTopicComponent} from './article/article-topic/article-topic.component';
 
 @NgModule({
   declarations: [ArticleComponent, SpecialTopicComponent,
     ChannelTreeComponent, ChannelComponent, ModelComponent,
     ModelAddComponent, ModelDetailComponent, ModelItemComponent, ModelItemAddComponent, ModelItemDetailComponent,
     ChannelAddComponent, ChannelDetailComponent, SpecialTopicAddComponent,
-    SpecialTopicDetailComponent, ArticleTopComponent],
+    SpecialTopicDetailComponent, ArticleTopComponent, ArticleRelatedTopicComponent, ArticleTopicComponent],
   imports: [
     ThemeModule,
     CommonModule,
@@ -37,8 +39,8 @@ import {ArticleTopComponent} from './article/top/top.component';
     ContentRoutingModule,
   ],
   entryComponents: [ModelAddComponent, ModelDetailComponent,
-    ModelItemAddComponent, ModelItemDetailComponent,
-    ChannelAddComponent, ChannelDetailComponent, ArticleTopComponent],
+    ModelItemAddComponent, ModelItemDetailComponent, ArticleTopicComponent,
+    ChannelAddComponent, ChannelDetailComponent, ArticleTopComponent, ArticleRelatedTopicComponent],
   providers: [ModelService, ModelItemService, ChannelService, SpecialTopicService,
     ArticleService],
 })

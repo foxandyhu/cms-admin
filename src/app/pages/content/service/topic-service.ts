@@ -62,19 +62,20 @@ export class SpecialTopicService implements IBaseService {
   }
 
   /**
-   * 获得所有的专题
+   * 获得专题模版集合
    */
-  getAllTopics(): Promise<any> {
-    return this.httpUtil.get(AppApi.CONTENT.topic_all).then(response => {
+  getSpecialTopicTemplates(): Promise<any> {
+    return this.httpUtil.get(AppApi.CONTENT.topic_template).then(response => {
       return Promise.resolve(response);
     });
   }
 
   /**
-   * 获得专题模版集合
+   * 获得文章关联的专题
+   * @param articleId
    */
-  getSpecialTopicTemplates(): Promise<any> {
-    return this.httpUtil.get(AppApi.CONTENT.topic_template).then(response => {
+  getSpecialTopicForArticle(articleId: string): Promise<any> {
+    return this.httpUtil.get(AppApi.CONTENT.topic_article.replace('{:articleId}', articleId)).then(response => {
       return Promise.resolve(response);
     });
   }

@@ -5,7 +5,7 @@ import '@ztree/ztree_v3';
 declare var jQuery: any;
 
 @Component({
-  selector: 'ngx-content-channel-tree',
+  selector: 'ngx-content-article-channel-tree',
   templateUrl: './channel-tree.component.html',
 })
 export class ChannelTreeComponent implements OnInit {

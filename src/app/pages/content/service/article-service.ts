@@ -94,4 +94,28 @@ export class ArticleService implements IBaseService {
       return Promise.resolve(true);
     });
   }
+
+  /**
+   * 关联专题
+   * @param articleIds
+   * @param topicIds
+   */
+  saveRelatedTopic(articleIds: Array<any>, topicIds: Array<any>): Promise<boolean> {
+    return this.httpUtil.post(AppApi.CONTENT.article_related_topic, {article: articleIds, topic: topicIds}).then(() => {
+      return Promise.resolve(true);
+    });
+  }
+
+  /**
+   * 删除关联专题
+   * @param articleIds
+   * @param topicIds
+   */
+  delRelatedTopic(articleId: string, topicId: string): Promise<boolean> {
+    const url = AppApi.CONTENT.article_del_related_topic.replace('{:articleId}', articleId)
+      .replace('{:topicId}', topicId);
+    return this.httpUtil.get(url).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }

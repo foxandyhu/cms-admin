@@ -297,13 +297,13 @@ export class AppApi {
     channel_sort: '/manage/channel/sort/{:upItemId}-{:downItemId}.html',
 
     topic_list: '/manage/topic/list.html',
-    topic_all: '/manage/topic/all.html',
     topic_add: '/manage/topic/add.html',
     topic_edit: '/manage/topic/edit.html',
     topic_detail: '/manage/topic/{:topicId}.html',
     topic_del: '/manage/topic/del.html',
     topic_sort: '/manage/topic/sort/{:upItemId}-{:downItemId}.html',
     topic_template: '/manage/topic/template.html',
+    topic_article: '/manage/topic/article/{:articleId}.html',
 
     article_list: '/manage/article/list.html',
     article_add: '/manage/article/add.html',
@@ -313,5 +313,7 @@ export class AppApi {
     article_recommend: '/manage/article/recommend/{:recommend}-{:level}.html',
     article_verify: '/manage/article/verify/{:status}.html',
     article_top: '/manage/article/top/{:articleId}-{:level}.html',
+    article_related_topic: '/manage/article/related/topic.html',
+    article_del_related_topic: '/manage/article/del/{:articleId}-{:topicId}.html',
   };
 }
