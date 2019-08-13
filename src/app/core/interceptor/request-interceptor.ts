@@ -5,7 +5,7 @@ import {
   HttpRequest, HttpResponse,
 } from '@angular/common/http';
 import {Observable, of, throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {ModalUtil} from '../../@theme/components';
 import {LoadingBarService} from '../../@theme/components/loading-bar/loading-bar.service';
 

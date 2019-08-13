@@ -7,9 +7,11 @@ import {ArticleTopComponent} from './top/top.component';
 import {DateUtil} from '../../../core/utils/date';
 import {ArticleRelatedTopicComponent} from './related-topic/related-topic.component';
 import {ArticleTopicComponent} from './article-topic/article-topic.component';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-normal',
+  styleUrls: ['./article.component.scss'],
   templateUrl: './article.component.html',
 })
 export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy {
@@ -19,11 +21,10 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
     super(articleService, injector);
   }
 
-  private types: Array<any> = [{id: 1, name: '普通'}, {id: 2, name: '图文'},
-    {id: 3, name: '焦点'}, {id: 4, name: '头条'}]; //  内容类型
-  private statuss: Array<any> = [{id: 0, name: '草稿'}, {id: 1, name: '待审核'}, {id: 2, name: '审核通过'},
-    {id: 3, name: '审核未通过'}];          //  状态
+  private types: Array<any>;  //  内容类型
+  private statuss: Array<any> = Constant.ARTICLE_STATUS;      //  状态
   private channel: string;                //  树状栏目选中
+  private channels: Array<any>;            //  树状栏目集合
   private searchType: string = '';        //  搜索类型
   private searchStatus: string = '';      //  搜索状态
   private searchTitle: string = '';       //  搜索标题
@@ -31,6 +32,7 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
   private dialog: NbDialogRef<any>;    //  文章置顶框
 
   ngOnInit() {
+    this.types = Constant.CONTENT_TYPES;
     this.search();
   }
 
@@ -53,14 +55,11 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
   }
 
   /**
-   * 跳转到添加内容页面
+   * 得到所有的栏目
+   * @param channels
    */
-  toAddArticle() {
-    if (!this.channel || this.channel['id'] <= 0) {
-      this.toastUtil.showDanger('请选择栏目!');
-      return;
-    }
-    this.router.navigate(['/content/article/add']);
+  getChannels(channels: Array<any>) {
+    this.channels = channels;
   }
 
   /**

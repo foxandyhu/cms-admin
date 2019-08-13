@@ -43,6 +43,7 @@ import {
   HeaderComponent,
   ModalComponent,
   LoadingBarComponent,
+  UploaderBarComponent,
 } from './components';
 
 import {
@@ -52,6 +53,7 @@ import {DEFAULT_THEME} from './styles/theme.default';
 import {COSMIC_THEME} from './styles/theme.cosmic';
 import {CORPORATE_THEME} from './styles/theme.corporate';
 import {NbMomentDateModule} from '@nebular/moment';
+import {StringToArray} from '../core/pie/string-to-array';
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
 
@@ -97,6 +99,7 @@ const COMPONENTS = [
   SampleLayoutComponent,
   ModalComponent,
   LoadingBarComponent,
+  UploaderBarComponent,
 ];
 
 const ENTRY_COMPONENTS = [ModalComponent];
@@ -119,10 +122,12 @@ const NB_THEME_PROVIDERS = [
   }).providers,
 ];
 
+const PIPES = [StringToArray];
+
 @NgModule({
   imports: [...BASE_MODULES, ...NB_MODULES],
-  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS],
-  declarations: [...COMPONENTS],
+  exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, PIPES],
+  declarations: [...COMPONENTS, PIPES],
   entryComponents: [...ENTRY_COMPONENTS],
 })
 export class ThemeModule {

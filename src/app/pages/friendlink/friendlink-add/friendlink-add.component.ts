@@ -3,6 +3,7 @@ import {NbDialogRef} from '@nebular/theme';
 import {BaseComponent} from '../../base-component';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-friendlink-add',
@@ -11,10 +12,10 @@ import {CommonService} from '../../common-service';
 })
 export class FriendLinkAddComponent extends BaseComponent implements OnInit {
 
-  friendlink: any = {name: '', url: '', logo: '', remark: '',  enabled: true, type: {id: ''}};  //  友情链接
+  friendlink: any = {name: '', url: '', logo: '', remark: '', enabled: true, type: {id: ''}};  //  友情链接
   private formId: string = 'friendLinkForm';     //   表单ID
   types: any;    //   类型列表
-  preview: any = '/assets/images/add_img.png';   //  图像预览
+  preview: any;   //  图像预览
 
   constructor(protected injector: Injector,
               private ref: NbDialogRef<FriendLinkAddComponent>,
@@ -24,6 +25,7 @@ export class FriendLinkAddComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.initValiator();
   }
 

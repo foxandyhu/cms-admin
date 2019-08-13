@@ -15,6 +15,7 @@ export class ChannelTreeComponent implements OnInit {
   }
 
   @Output() private sendData = new EventEmitter(true);
+  @Output() private sendTreeData = new EventEmitter(true);
   private channelTree: any;
   private static component: ChannelTreeComponent;
   private rootNode = [{id: 0, isDir: true, open: true, path: '/', name: '根栏目', children: []}];
@@ -46,6 +47,7 @@ export class ChannelTreeComponent implements OnInit {
           return item.hasContent === true;
         });
         this.channelTree.addNodes(root[0], result);
+        this.sendTreeData.emit(result);
       }
     });
   }

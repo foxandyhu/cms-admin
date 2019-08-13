@@ -28,6 +28,7 @@
             <th>数据类型</th>
             <th>名称</th>
             <th>独占一行</th>
+            <th>是否必填</th>
             <th>系统字段</th>
             <th>排序</th>
             <th>操作</th>
@@ -43,6 +44,7 @@
             <td>{{item.dataTypeName}}</td>
             <td>{{item.name}}</td>
             <td>{{item.single ? "是" : "否"}}</td>
+            <td>{{item.required ? "是" : "否"}}</td>
             <td>{{!item.custom ? "是" : "否"}}</td>
             <td>
               <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

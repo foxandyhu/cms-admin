@@ -286,7 +286,6 @@ export class AppApi {
     model_item_del: '/manage/model/item/del.html',
     model_item_sort: '/manage/model/item/sort/{:upItemId}-{:downItemId}.html',
     model_item_enabled: '/manage/model/item/enabled/{:modelItemId}-{:enabled}.html',
-    model_item_datatypes: '/manage/model/item/datatypes.html',
 
     channel_list: '/manage/channel/list.html',
     channel_all: '/manage/channel/all.html',
@@ -315,5 +314,7 @@ export class AppApi {
     article_top: '/manage/article/top/{:articleId}-{:level}.html',
     article_related_topic: '/manage/article/related/topic.html',
     article_del_related_topic: '/manage/article/del/{:articleId}-{:topicId}.html',
+    article_picture_del: '/manage/article/picture/del/{:picId}.html',
+    article_attachment_del: '/manage/article/attachment/del/{:attaId}.html',
   };
 }

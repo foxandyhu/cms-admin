@@ -5,6 +5,7 @@ import {CommonService} from '../../../common-service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {forkJoin} from 'rxjs';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-content-topic-detail',
@@ -23,13 +24,15 @@ export class SpecialTopicDetailComponent extends BaseComponent implements OnInit
     name: '', shortName: '', keywords: '', remark: '', titleImg: '',
     contentImg: '', tplPc: '', tplMobile: '', recommend: true,
   }; //  专题
-  previewTitle: any = '/assets/images/add_img.png';   //  预览
-  previewContent: any = '/assets/images/add_img.png';   //  预览
+  previewTitle: any;   //  预览
+  previewContent: any;   //  预览
   pcTemplates: any;    //  pc模版
   mobileTemplates: any;  //  手机模版
   formId: string = 'topicForm';
 
   ngOnInit() {
+    this.previewTitle = Constant.DEFAULT_PIC;
+    this.previewContent = Constant.DEFAULT_PIC;
     this.initValiator();
     this.route.paramMap.subscribe(params => {
       const topicId = params.get('topicId');

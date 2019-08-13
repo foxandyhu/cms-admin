@@ -8,11 +8,33 @@ export class LoadingBarService {
   constructor() {
   }
 
+  private on: boolean = true;
+
   open(): void {
-    LoadingBarService.loading.open();
+    if (this.on) {
+      LoadingBarService.loading.open();
+    }
   }
 
   close(): void {
+    if (this.on) {
+      LoadingBarService.loading.close();
+    }
+  }
+
+  /**
+   * 模拟卸载服务
+   */
+  shutdown(): void {
     LoadingBarService.loading.close();
+    this.on = false;
+  }
+
+
+  /**
+   * 开启
+   */
+  start(): void {
+    this.on = true;
   }
 }

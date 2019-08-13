@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
 import {DateUtil} from '../../../core/utils/date';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-ad-add',
@@ -21,7 +22,7 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
   types: any = [{id: 1, name: '图片'}, {id: 2, name: '文字'}, {id: 3, name: '代码'}]; // 类型集合
   spaces: any; //  广告位
   private formId: string = 'adForm';     //   表单ID
-  preview: any = '/assets/images/add_img.png';   //  预览
+  preview: any;   //  预览
 
   constructor(private adService: AdService, private spaceService: AdSpaceService,
               protected injector: Injector, private domSanitizer: DomSanitizer,
@@ -30,6 +31,7 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
   }
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.initValiator();
     this.getAllSpaces();
   }

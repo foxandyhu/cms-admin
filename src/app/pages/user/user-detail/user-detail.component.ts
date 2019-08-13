@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {RoleService} from '../service/roles.service';
 import {forkJoin} from 'rxjs';
 import {CommonService} from '../../common-service';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-user-detail',
@@ -26,11 +27,12 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
   }; //  用户对象
   roles: Array<any> = new Array<any>();               // 系统所有角色集合
   currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
-  previewFace: any = '/assets/images/add_img.png';   //  头像预览
+  previewFace: any;   //  头像预览
   private formId: string = 'userForm';              //  表单ID
   statuss = [{id: 1, name: '启用'}, {id: 2, name: '禁用'}];
 
   ngOnInit() {
+    this.previewFace = Constant.DEFAULT_PIC;
     this.initValiator();
     this.route.paramMap.subscribe(params => {
       const userId = params.get('userId');

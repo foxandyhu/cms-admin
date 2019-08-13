@@ -5,15 +5,20 @@
   <nb-card-body>
     <div class="row">
       <div class="col-md-2">
-        <ngx-content-article-channel-tree (sendData)="getChannel($event)"></ngx-content-article-channel-tree>
+        <ngx-content-article-channel-tree (sendTreeData)="getChannels($event)" (sendData)="getChannel($event)"></ngx-content-article-channel-tree>
       </div>
       <div class="col-md-10">
         <form class="form-inline">
           <div class="form-group">
             当前栏目: {{channel?.name}}&nbsp;&nbsp;
-            <button [disabled]="!channel?.id>0" class="btn btn-success" (click)="toAddArticle()">
-              <i class="ion-plus-round"></i> 添加内容
-            </button>&nbsp;&nbsp;
+            <div class="dropdown" ngbDropdown>
+              <button class="btn btn-success" type="button" ngbDropdownToggle>
+                <i class="ion-plus-round"></i> 添加内容
+              </button>
+              <ul class="dropdown-menu" ngbDropdownMenu>
+                <li><a href="#content/article/add/{{item.id}}" class="dropdown-item" *ngFor="let item of channels">{{item.name}}</a></li>
+              </ul>
+            </div>&nbsp;&nbsp;
             <select class="form-control" [(ngModel)]="searchType" name="searchType" (change)="search()">
               <option value="">所有类型</option>
               <option *ngFor="let item of types" [value]="item.id">{{item.name}}</option>
@@ -73,7 +78,7 @@
               <button class="btn btn-primary btn-smaller" (click)="showTop(item.id)">
                 <i class="ion-ios-arrow-up"></i> 置顶
               </button>&nbsp;&nbsp;
-              <a class="btn btn-info btn-smaller" href="#content/topic/{{item.id}}">
+              <a class="btn btn-info btn-smaller" href="#content/article/{{item.id}}">
                 <i class="ion-edit"></i> 编辑
               </a>&nbsp;&nbsp;
               <button class="btn btn-danger btn-smaller" (click)="del(item.id)">

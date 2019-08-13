@@ -46,15 +46,6 @@ export class ModelItemService implements IBaseService {
   }
 
   /**
-   * 获得数据类型
-   */
-  getDataTypes(): Promise<any> {
-    return this.httpUtil.get(AppApi.CONTENT.model_item_datatypes).then(response => {
-      return Promise.resolve(response);
-    });
-  }
-
-  /**
    * 模型项排序
    * @param upItemId
    * @param downItemId

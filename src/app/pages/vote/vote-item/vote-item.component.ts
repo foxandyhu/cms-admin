@@ -3,6 +3,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
 import {NbDialogRef} from '@nebular/theme';
 import {BaseComponent} from '../../base-component';
+import {Constant} from '../../../core/constant';
 
 declare var jQuery: any;
 
@@ -22,10 +23,11 @@ export class VoteItemComponent extends BaseComponent implements OnInit {
   types: any = [{id: 1, name: '添加单选题'}, {id: 2, name: '添加多选题'}, {id: 3, name: '添加问答题'}];
   type: any;
   subTopic: any = {title: '', type: '', seq: 0, voteItems: []}; //  子项题目
-  preview: any = '/assets/images/add_img.png';   //  头像预览
-  items = [{title: '', seq: 1, picture: '', preview: '/assets/images/add_img.png'}];
+  preview: any;   //  头像预览
+  items = [{title: '', seq: 1, picture: '', preview: Constant.DEFAULT_PIC}];
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.subTopic.type = this.type;
     this.initValiator();
   }
@@ -102,7 +104,7 @@ export class VoteItemComponent extends BaseComponent implements OnInit {
    */
   addCount() {
     const seq = this.items.length + 1;
-    this.items.push({title: '', seq: seq, picture: '', preview: '/assets/images/add_img.png'});
+    this.items.push({title: '', seq: seq, picture: '', preview: Constant.DEFAULT_PIC});
     this.formValid.addField('itemTitle', {
       validators: {
         notEmpty: {message: '问题答案选项不能为空!'},

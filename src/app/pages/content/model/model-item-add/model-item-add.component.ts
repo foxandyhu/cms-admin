@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../../base-component';
 import {NbDialogRef} from '@nebular/theme';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-content-model-item-add',
@@ -18,7 +19,7 @@ export class ModelItemAddComponent extends BaseComponent implements OnInit {
     defValue: '', optValue: '', remark: '', single: false, required: false,
   };  //  模型项
   formId: string = 'modelItemForm';
-  dataTypes: Array<any>;
+  dataTypes: Array<any> = Constant.DATA_TYPES;
 
   ngOnInit() {
     this.initValiator();

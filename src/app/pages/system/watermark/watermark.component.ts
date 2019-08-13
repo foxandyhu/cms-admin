@@ -3,6 +3,7 @@ import {BaseComponent} from '../../base-component';
 import {CommonService} from '../../common-service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {WatermarkConfigService} from '../service/watermark-config-service';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-system-watermark-config',
@@ -17,7 +18,7 @@ export class WatermarkConfigComponent extends BaseComponent implements OnInit {
   }
 
   formId: string = 'watermarkConfigForm';
-  preview: any = '/assets/images/add_img.png';   //  预览
+  preview: any;   //  预览
   watermarkConfig: any = {
     openWaterMark: '', imgWidth: '', imgHeight: '', img: '',
     text: '', size: '', color: '', alpha: '', pos: '0', offsetX: '', offsetY: '',
@@ -27,6 +28,7 @@ export class WatermarkConfigComponent extends BaseComponent implements OnInit {
     {id: 4, name: '右下'}, {id: 5, name: '居中'}];  //  位置
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.initValiator();
     this.getWatermarkConfig();
   }

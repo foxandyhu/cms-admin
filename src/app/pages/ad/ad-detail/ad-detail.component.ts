@@ -6,6 +6,7 @@ import {AdSpaceService} from '../service/ad-space.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {CommonService} from '../../common-service';
 import {DateUtil} from '../../../core/utils/date';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-ad-detail',
@@ -21,7 +22,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
   types: any = [{id: 1, name: '图片'}, {id: 2, name: '文字'}, {id: 3, name: '代码'}]; // 类型集合
   spaces: any; //  广告位
   private formId: string = 'adForm';     //   表单ID
-  preview: any = '/assets/images/add_img.png';   //  预览
+  preview: any;   //  预览
   date: string = '';    //  展示时间
 
   constructor(private adService: AdService, protected injector: Injector,
@@ -32,6 +33,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
   }
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.loadData();
     this.getAllSpaces();
     this.initValiator();

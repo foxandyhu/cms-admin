@@ -4,6 +4,7 @@ import {BaseComponent} from '../../../base-component';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ScoreItemService} from '../../service/score-item-service';
 import {CommonService} from '../../../common-service';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-score-item-add',
@@ -15,7 +16,7 @@ export class ScoreItemAddComponent extends BaseComponent implements OnInit {
   scoreItem: any = {name: '', score: 0, url: '',  group: {id: 0}};  //  评分项
   scoreGroup: any = {name: '', id: ''};   //  评分组
   private formId: string = 'scoreItemForm'; //   表单ID
-  preview: any = '/assets/images/add_img.png';   //  图像预览
+  preview: any;   //  图像预览
 
   constructor(private scoreItemService: ScoreItemService, protected injector: Injector,
               private ref: NbDialogRef<ScoreItemAddComponent>,
@@ -24,6 +25,7 @@ export class ScoreItemAddComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.initValiator();
   }
 

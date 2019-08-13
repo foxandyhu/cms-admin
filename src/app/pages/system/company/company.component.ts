@@ -6,6 +6,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {forkJoin} from 'rxjs';
 import {DictionaryService} from '../../words/service/dictionary-service';
 import '../../../@theme/components/editor.loader';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-system-company',
@@ -20,7 +21,7 @@ export class CompanyComponent extends BaseComponent implements OnInit {
     super(companyService, injector);
   }
 
-  preview: any = '/assets/images/add_img.png';   //  预览
+  preview: any;   //  预览
   company: any = {
     name: '', scale: '', nature: '', industry: '',
     address: '', phone: '', email: '', weixin: '', remark: '',
@@ -30,6 +31,7 @@ export class CompanyComponent extends BaseComponent implements OnInit {
   industrys: any;  //  企业所属行业
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     const arr = [this.getScales(), this.getNatures(), this.getIndustrys()];
     const observable = forkJoin(arr);
 

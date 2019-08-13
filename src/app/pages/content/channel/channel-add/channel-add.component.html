@@ -8,7 +8,7 @@
         <label class="col-md-2 col-form-label text-right">选择栏目</label>
         <div class="form-group col-md-4">
           <select class="form-control" [(ngModel)]="channel.parentId" name="parentId">
-            <option value="">上级栏目</option>
+            <option value="">根栏目</option>
             <option *ngFor="let item of channels" [value]="item.id">{{item.name}}</option>
           </select>
         </div>

@@ -7,9 +7,13 @@ import {ModelComponent} from './model/model.component';
 import {ModelItemComponent} from './model/model-item/model-item.component';
 import {SpecialTopicAddComponent} from './topic/topic-add/topic-add.component';
 import {SpecialTopicDetailComponent} from './topic/topic-detail/topic-detail.component';
+import {ArticleAddComponent} from './article/article-add/article-add.component';
+import {ArticleDetailComponent} from './article/article-detail/article-detail.component';
 
 const routes: Routes = [
   {path: 'article', component: ArticleComponent},
+  {path: 'article/add/:channelId', component: ArticleAddComponent},
+  {path: 'article/:articleId', component: ArticleDetailComponent},
   {path: 'topic', component: SpecialTopicComponent},
   {path: 'topic/add', component: SpecialTopicAddComponent},
   {path: 'topic/:topicId', component: SpecialTopicDetailComponent},

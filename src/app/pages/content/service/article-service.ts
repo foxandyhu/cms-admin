@@ -118,4 +118,24 @@ export class ArticleService implements IBaseService {
       return Promise.resolve(true);
     });
   }
+
+  /**
+   * 删除图片集
+   */
+  delPicture(picId: string): Promise<boolean> {
+    const url = AppApi.CONTENT.article_picture_del.replace('{:picId}', picId);
+    return this.httpUtil.get(url).then(() => {
+      return Promise.resolve(true);
+    });
+  }
+
+  /**
+   * 删除图片集
+   */
+  delAttachment(attachId: string): Promise<boolean> {
+    const url = AppApi.CONTENT.article_attachment_del.replace('{:attaId}', attachId);
+    return this.httpUtil.get(url).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }

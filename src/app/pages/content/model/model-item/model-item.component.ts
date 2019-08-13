@@ -33,6 +33,13 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
     });
   }
 
+
+  getPager(pageNo: number): Promise<any> {
+    this.initData();
+    return null
+      ;
+  }
+
   /**
    * 初始化数据
    */
@@ -83,9 +90,6 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
    */
   showAddModelItem() {
     const ref = this.dialogService.open(ModelItemAddComponent);
-    this.modelItemService.getDataTypes().then(result => {
-      ref.componentRef.instance.dataTypes = result;
-    });
     ref.onClose.subscribe(result => {
       if (result) {
         result.modelId = this.modelId;

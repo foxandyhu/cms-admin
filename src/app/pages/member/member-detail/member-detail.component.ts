@@ -7,6 +7,7 @@ import {MemberGroupService} from '../service/member-group-service';
 import {BaseComponent} from '../../base-component';
 import {forkJoin} from 'rxjs';
 import {DateUtil} from '../../../core/utils/date';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-member-detail',
@@ -31,9 +32,10 @@ export class MemberDetailComponent extends BaseComponent implements OnInit {
   };
   statuss: any = [{id: 0, name: '待审核'}, {id: 1, name: '正常'}, {id: 2, name: '已禁用'}];
   groups: any;   //  会员组
-  preview: any = '/assets/images/add_img.png';   //  头像预览
+  preview: any;   //  头像预览
 
   ngOnInit() {
+    this.preview = Constant.DEFAULT_PIC;
     this.initValiator();
     this.route.paramMap.subscribe(params => {
       const memberId = params.get('memberId');

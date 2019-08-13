@@ -4,6 +4,7 @@ import {SpecialTopicService} from '../../service/topic-service';
 import {Router} from '@angular/router';
 import {CommonService} from '../../../common-service';
 import {DomSanitizer} from '@angular/platform-browser';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-content-topic-add',
@@ -21,13 +22,15 @@ export class SpecialTopicAddComponent extends BaseComponent implements OnInit {
     name: '', shortName: '', keywords: '', remark: '', titleImg: '',
     contentImg: '', tplPc: '', tplMobile: '', recommend: true,
   }; //  专题
-  previewTitle: any = '/assets/images/add_img.png';   //  预览
-  previewContent: any = '/assets/images/add_img.png';   //  预览
+  previewTitle: any;   //  预览
+  previewContent: any;   //  预览
   pcTemplates: any;    //  pc模版
   mobileTemplates: any;  //  手机模版
   formId: string = 'topicForm';
 
   ngOnInit() {
+    this.previewTitle = Constant.DEFAULT_PIC;
+    this.previewContent = Constant.DEFAULT_PIC;
     this.initValiator();
     this.topicService.getSpecialTopicTemplates().then(result => {
       if (result) {

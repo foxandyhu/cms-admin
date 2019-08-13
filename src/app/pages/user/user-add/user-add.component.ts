@@ -5,6 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {RoleService} from '../service/roles.service';
 import {CommonService} from '../../common-service';
+import {Constant} from '../../../core/constant';
 
 @Component({
   selector: 'ngx-user-add',
@@ -22,10 +23,11 @@ export class UserAddComponent extends BaseComponent implements OnInit {
   user = {userName: '', password: '', confirmPassword: '', email: '', roles: [], face: '', superAdmin: false}; //  用户对象
   roles: Array<any>;                                  // 系统所有角色集合
   currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
-  previewFace: any = '/assets/images/add_img.png';   //  头像预览
+  previewFace: any;   //  头像预览
   private formId: string = 'userForm';              //  表单ID
 
   ngOnInit() {
+    this.previewFace = Constant.DEFAULT_PIC;
     this.initValiator();
     this.getRoles();
   }

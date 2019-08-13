@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12">
+    <input type="file" [multiple]="multiple" class="hidden" (change)="fileChange($event)"/>
+    <button [disabled]="!isComplete" class="btn btn-success" (click)="fileClick($event)">{{text}}</button>
+  </div>
+</div>
+<div class="margin-top-1p">
+  <div *ngIf="showBar">
+    {{title}}&nbsp;{{fileName}}
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar bg-success progress-bar-striped progress-bar-animated" [ngStyle]="{width:value+'%'}"></div>
+    </div>
+  </div>
+</div>
