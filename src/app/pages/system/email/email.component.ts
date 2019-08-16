@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {EmailProviderService} from '../service/email-provider-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {EmailProviderAddComponent} from './email-add/email-add.component';
 import {EmailProviderDetailComponent} from './email-detail/email-detail.component';
 
@@ -10,23 +10,31 @@ import {EmailProviderDetailComponent} from './email-detail/email-detail.componen
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss'],
 })
-export class EmailProviderComponent extends BaseComponent implements OnInit {
+export class EmailProviderComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private emailProviderService: EmailProviderService, protected injector: Injector,
               private dialogService: NbDialogService) {
     super(emailProviderService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
+
   ngOnInit() {
     this.getPager(1);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
    * 显示添加短信服务商弹框
    */
   showAddProvider() {
-    const ref = this.dialogService.open(EmailProviderAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(EmailProviderAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.emailProviderService.saveData(result).then(() => {
           this.getPager(1);
@@ -40,9 +48,9 @@ export class EmailProviderComponent extends BaseComponent implements OnInit {
    */
   showEditProvider(id: string) {
     this.emailProviderService.getData(id).then(data => {
-      const ref = this.dialogService.open(EmailProviderDetailComponent);
-      ref.componentRef.instance.emailProvider = data;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(EmailProviderDetailComponent);
+      this.dialog.componentRef.instance.emailProvider = data;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.emailProviderService.editData(result).then(() => {
             this.getPager(1);

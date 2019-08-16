@@ -1,5 +1,5 @@
-import {Component, Injector, OnInit} from '@angular/core';
-import {NbDialogService} from '@nebular/theme';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {MenuAddComponent} from './menu-add/menu-add.component';
 import {BaseComponent} from '../../base-component';
 import {MenuService} from '../service/menu-service';
@@ -11,16 +11,22 @@ import {MenuDetailComponent} from './menu-detail/menu-detail.component';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent extends BaseComponent implements OnInit {
+export class MenuComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private menuService: MenuService, protected injector: Injector, private dialogService: NbDialogService) {
     super(menuService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
+
   ngOnInit() {
     this.getMenus();
+  }
 
-
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   selectNode: any = {id: 0, name: '根节点', level: 0};   //  选中的节点
@@ -48,9 +54,9 @@ export class MenuComponent extends BaseComponent implements OnInit {
    * 弹出添加菜单模态框
    */
   showAddNode() {
-    const ref = this.dialogService.open(MenuAddComponent);
-    ref.componentRef.instance.parentMenuName = this.selectNode.name;
-    ref.onClose.subscribe(menu => {
+    this.dialog = this.dialogService.open(MenuAddComponent);
+    this.dialog.componentRef.instance.parentMenuName = this.selectNode.name;
+    this.dialog.onClose.subscribe(menu => {
       if (menu) {
         menu.level = this.selectNode.level + 1;
         if (this.selectNode.id !== 0) {
@@ -69,9 +75,9 @@ export class MenuComponent extends BaseComponent implements OnInit {
    * 弹出编辑菜单模态框
    */
   showEditNode(item: any) {
-    const ref = this.dialogService.open(MenuDetailComponent);
-    ref.componentRef.instance.menu = {id: item.id, name: item.name, url: item.url};
-    ref.onClose.subscribe(menu => {
+    this.dialog = this.dialogService.open(MenuDetailComponent);
+    this.dialog.componentRef.instance.menu = {id: item.id, name: item.name, url: item.url};
+    this.dialog.onClose.subscribe(menu => {
       if (menu) {
         this.menuService.editData(menu).then(() => {
           this.getMenus();

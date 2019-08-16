@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {VoteService} from '../service/vote-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {VoteItemComponent} from '../vote-item/vote-item.component';
 import {Router} from '@angular/router';
 
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   templateUrl: './vote-add.component.html',
   styleUrls: ['./vote-add.component.scss'],
 })
-export class VoteAddComponent extends BaseComponent implements OnInit {
+export class VoteAddComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private voteService: VoteService, protected injector: Injector, private dialogService: NbDialogService,
               private router: Router) {
@@ -23,9 +23,16 @@ export class VoteAddComponent extends BaseComponent implements OnInit {
     title: '', remark: '', startTime: '', endTime: '',
     repeatHour: '', needLogin: 'true', subtopics: [],
   };  // 问卷调查
+  private dialog: NbDialogRef<any>;
 
   ngOnInit() {
     this.initValiator();
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -65,9 +72,9 @@ export class VoteAddComponent extends BaseComponent implements OnInit {
   }
 
   showAddItem(type: any) {
-    const ref = this.dialogService.open(VoteItemComponent);
-    ref.componentRef.instance.type = type;
-    ref.onClose.subscribe(subTopic => {
+    this.dialog = this.dialogService.open(VoteItemComponent);
+    this.dialog.componentRef.instance.type = type;
+    this.dialog.onClose.subscribe(subTopic => {
       if (subTopic) {
         subTopic.seq = this.vote.subtopics.length + 1;
         this.vote.subtopics.push(subTopic);

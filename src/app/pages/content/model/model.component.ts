@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {ModelService} from '../service/model-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {ModelAddComponent} from './model-add/model-add.component';
 import {ModelDetailComponent} from './model-detail/model-detail.component';
 
@@ -10,15 +10,23 @@ import {ModelDetailComponent} from './model-detail/model-detail.component';
   templateUrl: './model.component.html',
   styleUrls: ['./model.component.scss'],
 })
-export class ModelComponent extends BaseComponent implements OnInit {
+export class ModelComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private modelService: ModelService, protected injector: Injector,
               private dialogService: NbDialogService) {
     super(modelService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
+
   ngOnInit() {
     this.getPager(1);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -42,8 +50,8 @@ export class ModelComponent extends BaseComponent implements OnInit {
    * 显示添加模型框
    */
   showAddModel() {
-    const ref = this.dialogService.open(ModelAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ModelAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.modelService.saveData(result).then(() => {
           this.getPager(1);
@@ -57,11 +65,11 @@ export class ModelComponent extends BaseComponent implements OnInit {
    * @param id
    */
   showEditModel(id: string) {
-    const ref = this.dialogService.open(ModelDetailComponent);
+    this.dialog = this.dialogService.open(ModelDetailComponent);
     this.modelService.getData(id).then(result => {
-      ref.componentRef.instance.model = result;
+      this.dialog.componentRef.instance.model = result;
     });
-    ref.onClose.subscribe(result => {
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.modelService.editData(result).then(() => {
           this.getPager(1);

@@ -222,6 +222,8 @@ export class AppApi {
     site: '/manage/statistic/site.html',
     browser: '/manage/statistic/browser.html',
     area: '/manage/statistic/area.html',
+    content: '/manage/statistic/content.html',
+    latest: '/manage/statistic/latest.html',
   };
 
   /**

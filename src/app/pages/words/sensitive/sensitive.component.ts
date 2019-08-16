@@ -1,6 +1,6 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {SensitiveDetailComponent} from './sensitive-detail/sensitive-detail.component';
 import {SensitiveAddComponent} from './sensitive-add/sensitive-add.component';
 import {SensitiveWordService} from '../service/sensitiveword-service';
@@ -9,17 +9,24 @@ import {SensitiveWordService} from '../service/sensitiveword-service';
   selector: 'ngx-words-sensitive',
   templateUrl: './sensitive.component.html',
 })
-export class SensitiveComponent extends BaseComponent implements OnInit {
+export class SensitiveComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private sensitiveService: SensitiveWordService,
               protected injector: Injector, private dialogService: NbDialogService) {
     super(sensitiveService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
   searchWord: string;  //  搜索词
 
   ngOnInit() {
     this.loadData();
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -34,8 +41,8 @@ export class SensitiveComponent extends BaseComponent implements OnInit {
    * 显示添加敏感词弹框
    */
   showAddSensitive() {
-    const ref = this.dialogService.open(SensitiveAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(SensitiveAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.sensitiveService.saveData(result).then(() => {
           this.loadData();
@@ -49,9 +56,9 @@ export class SensitiveComponent extends BaseComponent implements OnInit {
    */
   showEditSensitive(id: string) {
     this.sensitiveService.getData(id).then(data => {
-      const ref = this.dialogService.open(SensitiveDetailComponent);
-      ref.componentRef.instance.sensitive = data;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(SensitiveDetailComponent);
+      this.dialog.componentRef.instance.sensitive = data;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.sensitiveService.editData(result).then(() => {
             this.loadData();

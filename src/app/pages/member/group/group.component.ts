@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {MemberGroupService} from '../service/member-group-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {MemberGroupAddComponent} from './group-add/group-add.component';
 import {MemberGroupDetailComponent} from './group-detail/group-detail.component';
 
@@ -9,23 +9,31 @@ import {MemberGroupDetailComponent} from './group-detail/group-detail.component'
   selector: 'ngx-member-group',
   templateUrl: './group.component.html',
 })
-export class MemberGroupComponent extends BaseComponent implements OnInit {
+export class MemberGroupComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private memberService: MemberGroupService, protected injector: Injector,
               private dialogService: NbDialogService) {
     super(memberService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
+
   ngOnInit() {
     this.getPager(1);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
    * 显示添加会员组弹框
    */
   showAddGroup() {
-    const ref = this.dialogService.open(MemberGroupAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(MemberGroupAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.memberService.saveData(result).then(() => {
           this.getPager(1);
@@ -39,9 +47,9 @@ export class MemberGroupComponent extends BaseComponent implements OnInit {
    */
   showEditGroup(id: string) {
     this.memberService.getData(id).then(data => {
-      const ref = this.dialogService.open(MemberGroupDetailComponent);
-      ref.componentRef.instance.group = data;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(MemberGroupDetailComponent);
+      this.dialog.componentRef.instance.group = data;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.memberService.editData(result).then(() => {
             this.getPager(1);

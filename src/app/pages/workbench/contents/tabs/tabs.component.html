@@ -1,0 +1,74 @@
+<nb-card size="large">
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="最新加入会员">
+      <div class="chart-container">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>头像</th>
+            <th>注册时间</th>
+            <th>注册IP</th>
+            <th>状态</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of members">
+            <td><img [src]="item.face?item.face:preview" width="60" height="60"/><br>{{item.userName}}</td>
+            <td>{{item.registerTime}}</td>
+            <td>{{item.registerIp}}&nbsp;{{item.area}}</td>
+            <td>{{item.statusName}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="最新评论">
+      <div class="chart-container">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>头像</th>
+            <th>内容</th>
+            <th>评论时间</th>
+            <th>评论IP</th>
+            <th>状态</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of comments">
+            <td><img [src]="item.face?item.face:preview" width="60" height="60"/><br>{{item.userName}}</td>
+            <td>{{item.text}}</td>
+            <td>{{item.postDate}}</td>
+            <td>{{item.ip}}<br>{{item.area}}</td>
+            <td>{{item.statusName}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="最新留言">
+      <div class="chart-container">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>头像</th>
+            <th>内容</th>
+            <th>留言时间</th>
+            <th>留言IP</th>
+            <th>状态</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of guestBooks">
+            <td><img [src]="item.face?item.face:preview" width="60" height="60"/><br>{{item.userName}}</td>
+            <td>{{item.content}}</td>
+            <td>{{item.postDate}}</td>
+            <td>{{item.ip}}<br>{{item.area}}</td>
+            <td>{{item.statusName}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>

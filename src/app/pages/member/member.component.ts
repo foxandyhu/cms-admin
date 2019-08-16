@@ -1,14 +1,14 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../base-component';
 import {MemberService} from './service/member-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {MemberEditPasswordComponent} from './edit-password/edit-password.component';
 
 @Component({
   selector: 'ngx-member',
   templateUrl: './member.component.html',
 })
-export class MemberComponent extends BaseComponent implements OnInit {
+export class MemberComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private memberService: MemberService, protected injector: Injector,
               private dialogService: NbDialogService) {
@@ -20,9 +20,16 @@ export class MemberComponent extends BaseComponent implements OnInit {
    */
   statuss: any = [{id: 0, name: '待审核'}, {id: 1, name: '正常'}, {id: 2, name: '已禁用'}];
   params: any = {status: '', userName: '', email: ''};    //  搜索条件
+  private dialog: NbDialogRef<any>;
 
   ngOnInit() {
     this.getPager(1);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -56,8 +63,8 @@ export class MemberComponent extends BaseComponent implements OnInit {
    * @param memberId
    */
   showEditPassword(memberId: string) {
-    const ref = this.dialogService.open(MemberEditPasswordComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(MemberEditPasswordComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         result.memberId = memberId;
         this.memberService.editPassword(result).then(() => {

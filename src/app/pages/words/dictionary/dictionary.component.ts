@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
 import {DictionaryService} from '../service/dictionary-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {DictionaryAddComponent} from './dictionary-add/dictionary-add.component';
 import {DictionaryDetailComponent} from './dictionary-detail/dictionary-detail.component';
 
@@ -9,17 +9,24 @@ import {DictionaryDetailComponent} from './dictionary-detail/dictionary-detail.c
   selector: 'ngx-words-dictionary',
   templateUrl: './dictionary.component.html',
 })
-export class DictionaryComponent extends BaseComponent implements OnInit {
+export class DictionaryComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private dictionaryService: DictionaryService,
               protected injector: Injector, private dialogService: NbDialogService) {
     super(dictionaryService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
   types: Array<string>;  //  类型集合
 
   ngOnInit() {
     this.loadData();
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -51,8 +58,8 @@ export class DictionaryComponent extends BaseComponent implements OnInit {
    * 显示添加数据字典弹框
    */
   showAddDictionary() {
-    const ref = this.dialogService.open(DictionaryAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(DictionaryAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.dictionaryService.saveData(result).then(() => {
           this.loadData();
@@ -66,9 +73,9 @@ export class DictionaryComponent extends BaseComponent implements OnInit {
    */
   showEditDictionary(id: string) {
     this.dictionaryService.getData(id).then(data => {
-      const ref = this.dialogService.open(DictionaryDetailComponent);
-      ref.componentRef.instance.dictionary = data;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(DictionaryDetailComponent);
+      this.dialog.componentRef.instance.dictionary = data;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.dictionaryService.editData(result).then(() => {
             this.loadData();

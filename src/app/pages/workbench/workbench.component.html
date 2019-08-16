@@ -2,17 +2,10 @@
 <ngx-visitors-flow></ngx-visitors-flow>
 
 <div class="row">
-  <div class="col-md-4">
-    <ngx-visitors-engine></ngx-visitors-engine>
+  <div class="col-md-8">
+    <ngx-contents-tabs [comments]="comments" [guestBooks]="guestBooks" [members]="members"></ngx-contents-tabs>
   </div>
   <div class="col-md-4">
-    <ngx-visitors-source></ngx-visitors-source>
-  </div>
-  <div class="col-md-4">
-    <ngx-visitors-browser></ngx-visitors-browser>
+    <ngx-contents-list [clickTops]="clickTops" [commentTops]="commentTops"></ngx-contents-list>
   </div>
 </div>
-
-<ngx-visitors-area></ngx-visitors-area>
-
-<ngx-visitors-words></ngx-visitors-words>

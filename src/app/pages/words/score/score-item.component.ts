@@ -1,6 +1,6 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../base-component';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {ScoreItemService} from '../service/score-item-service';
 import {ScoreItemAddComponent} from './score-item-add/score-item-add.component';
 import {ScoreItemDetailComponent} from './score-item-detail/score-item-detail.component';
@@ -12,13 +12,14 @@ import {ScoreGroupService} from '../service/score-group-service';
   templateUrl: './score-item.component.html',
   styleUrls: ['./score-item.component.scss'],
 })
-export class ScoreItemComponent extends BaseComponent implements OnInit {
+export class ScoreItemComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private scoreGroupService: ScoreGroupService, private scoreItemService: ScoreItemService,
               protected injector: Injector, private dialogService: NbDialogService, private route: ActivatedRoute) {
     super(scoreItemService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
   private groupId: string;    //  评分组ID
   private scoreGroup: any = {name: '', id: 0};    //   评分组对象
 
@@ -29,6 +30,12 @@ export class ScoreItemComponent extends BaseComponent implements OnInit {
       this.getScoreGroup();
       this.loadData();
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -53,9 +60,9 @@ export class ScoreItemComponent extends BaseComponent implements OnInit {
    * 显示添加评分项
    */
   showAddScoreItem() {
-    const ref = this.dialogService.open(ScoreItemAddComponent);
-    ref.componentRef.instance.scoreGroup = this.scoreGroup;
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ScoreItemAddComponent);
+    this.dialog.componentRef.instance.scoreGroup = this.scoreGroup;
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.scoreItemService.saveData(result).then(() => {
           this.loadData();
@@ -69,10 +76,10 @@ export class ScoreItemComponent extends BaseComponent implements OnInit {
    */
   showEditScoreItem(id: string) {
     this.scoreItemService.getData(id).then(data => {
-      const ref = this.dialogService.open(ScoreItemDetailComponent);
-      ref.componentRef.instance.scoreItem = data;
-      ref.componentRef.instance.scoreGroup = this.scoreGroup;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(ScoreItemDetailComponent);
+      this.dialog.componentRef.instance.scoreItem = data;
+      this.dialog.componentRef.instance.scoreGroup = this.scoreGroup;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.scoreItemService.editData(result).then(() => {
             this.loadData();

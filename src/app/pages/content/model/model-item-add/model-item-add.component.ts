@@ -20,11 +20,26 @@ export class ModelItemAddComponent extends BaseComponent implements OnInit {
   };  //  模型项
   formId: string = 'modelItemForm';
   dataTypes: Array<any> = Constant.DATA_TYPES;
+  private disabledDef: boolean = false;
 
   ngOnInit() {
     this.initValiator();
   }
 
+  /**
+   * 类型选择转换
+   */
+  dataTypeChange() {
+    const dateType = parseInt(this.modelItem.dataType, 0);
+    if (dateType === Constant.DATA_TYPES[6].id || dateType === Constant.DATA_TYPES[7].id
+      || dateType === Constant.DATA_TYPES[8].id) {
+      this.disabledDef = true;
+      this.modelItem.defValue = '';
+      this.modelItem.optValue = '';
+    } else {
+      this.disabledDef = false;
+    }
+  }
 
   /**
    * 初始化表单验证

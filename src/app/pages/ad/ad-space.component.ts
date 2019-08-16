@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../base-component';
 import {AdSpaceService} from './service/ad-space.service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {SpaceAddComponent} from './space-add/space-add.component';
 import {SpaceDetailComponent} from './space-detail/space-detail.component';
 
@@ -9,23 +9,31 @@ import {SpaceDetailComponent} from './space-detail/space-detail.component';
   selector: 'ngx-ad-space',
   templateUrl: './ad-space.component.html',
 })
-export class AdSpaceComponent extends BaseComponent implements OnInit {
+export class AdSpaceComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private adSpaceService: AdSpaceService, protected injector: Injector,
               private dialogService: NbDialogService) {
     super(adSpaceService, injector);
   }
 
+  private dialog: NbDialogRef<any>;
+
   ngOnInit() {
     this.getPager(1);
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
    * 显示添加广告位
    */
   showAddAdSpace() {
-    const ref = this.dialogService.open(SpaceAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(SpaceAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.adSpaceService.saveData(result).then(() => {
           this.getPager(1);
@@ -39,9 +47,9 @@ export class AdSpaceComponent extends BaseComponent implements OnInit {
    */
   showEditAdSpace(id: string) {
     this.adSpaceService.getData(id).then(data => {
-      const ref = this.dialogService.open(SpaceDetailComponent);
-      ref.componentRef.instance.adSpace = data;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(SpaceDetailComponent);
+      this.dialog.componentRef.instance.adSpace = data;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.adSpaceService.editData(result).then(() => {
             this.getPager(1);

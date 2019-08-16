@@ -1,8 +1,8 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../base-component';
 import {FriendLinkService} from './service/friendlink-service';
 import {FriendLinkTypeService} from './service/friendlink-type-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {FriendLinkAddComponent} from './friendlink-add/friendlink-add.component';
 import {FriendLinkDetailComponent} from './friendlink-detail/friendlink-detail.component';
 
@@ -10,7 +10,7 @@ import {FriendLinkDetailComponent} from './friendlink-detail/friendlink-detail.c
   selector: 'ngx-friendlink',
   templateUrl: './friendlink.component.html',
 })
-export class FriendlinkComponent extends BaseComponent implements OnInit {
+export class FriendlinkComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private linkService: FriendLinkService, private typeService: FriendLinkTypeService,
               protected injector: Injector, private dialogService: NbDialogService) {
@@ -19,10 +19,17 @@ export class FriendlinkComponent extends BaseComponent implements OnInit {
 
   type: string = '';  //  类型
   types: any;    //   类型列表
+  private dialog: NbDialogRef<any>;
 
   ngOnInit() {
     this.changeType();
     this.getAllType();
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
   /**
@@ -46,9 +53,9 @@ export class FriendlinkComponent extends BaseComponent implements OnInit {
    * 显示添加友情链接弹框
    */
   showAddFriendLink() {
-    const ref = this.dialogService.open(FriendLinkAddComponent);
-    ref.componentRef.instance.types = this.types;
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(FriendLinkAddComponent);
+    this.dialog.componentRef.instance.types = this.types;
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.linkService.saveData(result).then(() => {
           this.type = '';
@@ -63,10 +70,10 @@ export class FriendlinkComponent extends BaseComponent implements OnInit {
    */
   showEditFriendLink(id: string) {
     this.linkService.getData(id).then(data => {
-      const ref = this.dialogService.open(FriendLinkDetailComponent);
-      ref.componentRef.instance.friendlink = data;
-      ref.componentRef.instance.types = this.types;
-      ref.onClose.subscribe(result => {
+      this.dialog = this.dialogService.open(FriendLinkDetailComponent);
+      this.dialog.componentRef.instance.friendlink = data;
+      this.dialog.componentRef.instance.types = this.types;
+      this.dialog.onClose.subscribe(result => {
         if (result) {
           this.linkService.editData(result).then(() => {
             this.getPager(1);

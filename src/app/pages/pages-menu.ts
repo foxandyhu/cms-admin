@@ -8,6 +8,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '工作台',
         link: '/workbench',
+      }, {
+        title: 'Druid监控',
+        link: '/druid',
       },
     ],
   },
@@ -196,10 +199,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: '操作日志',
         link: '/logs/sys',
-      },
-      {
-        title: '服务器日志',
-        link: '/logs/file',
       },
     ],
   },

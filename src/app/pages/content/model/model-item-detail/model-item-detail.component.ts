@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {BaseComponent} from '../../../base-component';
 import {NbDialogRef} from '@nebular/theme';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-content-model-item-detail',
@@ -18,11 +19,24 @@ export class ModelItemDetailComponent extends BaseComponent implements OnInit {
     defValue: '', optValue: '', remark: '', single: false, required: false,
   };  //  模型项
   formId: string = 'modelItemForm';
+  private disabledDef: boolean = false;
 
   ngOnInit() {
     this.initValiator();
   }
 
+  setData(modelItem: any) {
+    this.modelItem = modelItem;
+    const dateType = parseInt(this.modelItem.dataType, 0);
+    if (dateType === Constant.DATA_TYPES[6].id || dateType === Constant.DATA_TYPES[7].id
+      || dateType === Constant.DATA_TYPES[8].id) {
+      this.disabledDef = true;
+      this.modelItem.defValue = '';
+      this.modelItem.optValue = '';
+    } else {
+      this.disabledDef = false;
+    }
+  }
 
   /**
    * 初始化表单验证

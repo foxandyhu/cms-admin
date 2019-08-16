@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpUtil} from '../../../core/utils/http';
 import {AppApi} from '../../../core/app-api';
 import {HttpParams} from '@angular/common/http';
+import {IBaseService} from '../../ibase.service';
 
 /**
  * 流量统计Service
  */
 @Injectable()
-export class AnalysisService {
+export class AnalysisService implements IBaseService {
 
   constructor(private httpUtil: HttpUtil) {
   }
@@ -98,5 +99,43 @@ export class AnalysisService {
 
   sort(upItemId, downItemId): Promise<boolean> {
     return undefined;
+  }
+
+  delData(ids: Array<number>): Promise<any> {
+    return undefined;
+  }
+
+  editData(data: any): Promise<boolean> {
+    return undefined;
+  }
+
+  getData(id: any): Promise<any> {
+    return undefined;
+  }
+
+  getPager(params: Map<string, string>): Promise<any> {
+    return undefined;
+  }
+
+  saveData(data: any): Promise<boolean> {
+    return undefined;
+  }
+
+  /**
+   * 获得内容统计
+   */
+  getStatisticContent(): Promise<any> {
+    return this.httpUtil.get(AppApi.STATISTIC.content).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 统计最新的数据
+   */
+  getStatisticLatest(): Promise<any> {
+    return this.httpUtil.get(AppApi.STATISTIC.latest).then(response => {
+      return Promise.resolve(response);
+    });
   }
 }

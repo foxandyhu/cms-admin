@@ -8,6 +8,7 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       {path: 'workbench', loadChildren: 'app/pages/workbench/workbench.module#WorkbenchModule'},
+      {path: 'druid', loadChildren: 'app/pages/druid/druid.module#DruidModule'},
       {path: 'analysis', loadChildren: 'app/pages/analysis/analysis.module#AnalysisModule'},
       {path: 'content', loadChildren: 'app/pages/content/content.module#ContentModule'},
       {path: 'member', loadChildren: 'app/pages/member/member.module#MemberModule'},

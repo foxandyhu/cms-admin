@@ -1,0 +1,25 @@
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .list-card {
+    nb-card-body {
+      padding: 0;
+    }
+
+    nb-list-item:first-child {
+      border-top: 0px;
+    }
+
+    nb-list-item:last-child {
+      border-bottom: 0px;
+    }
+
+    nb-list {
+      margin-top: -1.2rem;
+    }
+  }
+
+  .nb-theme-cosmic nb-accordion nb-accordion-item-body .item-body {
+    padding: 0 !important;
+  }
+}

@@ -1,13 +1,15 @@
 import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import {NbThemeService} from '@nebular/theme';
+import {EChartOption, ECharts} from 'echarts';
+import {AnalysisService} from '../../analysis/service/analysis-service';
 
 @Component({
   selector: 'ngx-visitors-flow',
   template: `
     <nb-card>
-      <nb-card-header>流量统计</nb-card-header>
+      <nb-card-header>本周流量统计</nb-card-header>
       <nb-card-body>
-        <div echarts [options]="options" class="echart"></div>
+        <div echarts [options]="options" (chartInit)="chartInit($event)" class="echart"></div>
       </nb-card-body>
     </nb-card>
   `,
@@ -15,13 +17,13 @@ import {NbThemeService} from '@nebular/theme';
 export class VisitorsFlowComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
+  private echartInstance: ECharts;
 
-  constructor(private theme: NbThemeService) {
+  constructor(private theme: NbThemeService, private flowService: AnalysisService) {
   }
 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
       const colors: any = config.variables;
       const echarts: any = config.variables.echarts;
 
@@ -31,8 +33,7 @@ export class VisitorsFlowComponent implements AfterViewInit, OnDestroy {
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            type: 'cross',
-            label: {
+            type: 'cross', label: {
               backgroundColor: echarts.tooltipBackgroundColor,
             },
           },
@@ -53,7 +54,7 @@ export class VisitorsFlowComponent implements AfterViewInit, OnDestroy {
           {
             type: 'category',
             boundaryGap: false,
-            data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            data: [],
             axisTick: {
               alignWithLabel: true,
             },
@@ -95,21 +96,21 @@ export class VisitorsFlowComponent implements AfterViewInit, OnDestroy {
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [120, 132, 101, 111, 455, 333, 66],
+            data: [],
           },
           {
             name: 'IP',
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [220, 182, 191, 45, 213, 456, 221],
+            data: [],
           },
           {
             name: '独立访客',
             type: 'line',
             stack: 'Total amount',
             areaStyle: {normal: {opacity: echarts.areaOpacity}},
-            data: [150, 232, 201, 111, 345, 657, 767],
+            data: [],
           },
         ],
       };
@@ -118,5 +119,41 @@ export class VisitorsFlowComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
+  }
+
+  /**
+   * 获得echart实例
+   * @param chart
+   */
+  chartInit(chart) {
+    this.echartInstance = chart;
+    this.initFlow();
+  }
+
+  /**
+   *初始化流量数据
+   * @param time
+   * @param begin
+   * @param end
+   */
+  initFlow() {
+    this.flowService.statisticFlow('3', null, null).then(result => {
+      this.options.xAxis[0].data = [];
+      this.options.series[0].data = [];
+      this.options.series[1].data = [];
+      this.options.series[2].data = [];
+      if (!result) {
+        return;
+      }
+      for (const item of result) {
+        this.options.xAxis[0].data.push(item.time);
+        this.options.series[0].data.push(item.pv);
+        this.options.series[1].data.push(item.ip);
+        this.options.series[2].data.push(item.uv);
+      }
+      if (this.echartInstance) {
+        this.echartInstance.setOption(this.options);
+      }
+    });
   }
 }

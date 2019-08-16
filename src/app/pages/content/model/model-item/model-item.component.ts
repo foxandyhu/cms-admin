@@ -1,7 +1,7 @@
-import {Component, Injector, OnInit} from '@angular/core';
+import {Component, Injector, OnDestroy, OnInit} from '@angular/core';
 import {BaseComponent} from '../../../base-component';
 import {ModelItemService} from '../../service/model-item-service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {ModelItemAddComponent} from '../model-item-add/model-item-add.component';
 import {ModelItemDetailComponent} from '../model-item-detail/model-item-detail.component';
 import {ActivatedRoute} from '@angular/router';
@@ -13,7 +13,7 @@ import {ModelService} from '../../service/model-service';
   templateUrl: './model-item.component.html',
   styleUrls: ['./model-item.component.scss'],
 })
-export class ModelItemComponent extends BaseComponent implements OnInit {
+export class ModelItemComponent extends BaseComponent implements OnInit, OnDestroy {
 
   constructor(private modelItemService: ModelItemService, private modelService: ModelService,
               protected injector: Injector,
@@ -24,6 +24,7 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
   defaultModelItem: Array<any>; //  系统默认模型
   model: any;  //  模型
   modelId: string; //  模型ID
+  private dialog: NbDialogRef<any>;
 
   ngOnInit() {
     this.rout.paramMap.subscribe(params => {
@@ -31,6 +32,12 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
       this.getModel();
       this.initData();
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.dialog) {
+      this.dialog.close();
+    }
   }
 
 
@@ -89,8 +96,8 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
    * 显示添加模型项框
    */
   showAddModelItem() {
-    const ref = this.dialogService.open(ModelItemAddComponent);
-    ref.onClose.subscribe(result => {
+    this.dialog = this.dialogService.open(ModelItemAddComponent);
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         result.modelId = this.modelId;
         this.modelItemService.saveData(result).then(() => {
@@ -105,11 +112,11 @@ export class ModelItemComponent extends BaseComponent implements OnInit {
    * @param id
    */
   showEditModelItem(id: string) {
-    const ref = this.dialogService.open(ModelItemDetailComponent);
+    this.dialog = this.dialogService.open(ModelItemDetailComponent);
     this.modelItemService.getData(id).then(result => {
-      ref.componentRef.instance.modelItem = result;
+      this.dialog.componentRef.instance.setData(result);
     });
-    ref.onClose.subscribe(result => {
+    this.dialog.onClose.subscribe(result => {
       if (result) {
         this.modelItemService.editData(result).then(() => {
           this.loadModelItems(this.modelId);

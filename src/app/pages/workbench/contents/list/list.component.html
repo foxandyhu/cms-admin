@@ -1,0 +1,27 @@
+<nb-card class="list-card" size="large">
+  <nb-card-body>
+    <nb-accordion>
+      <nb-accordion-item expanded="true">
+        <nb-accordion-item-header>最热文章</nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            <nb-list-item *ngFor="let article of clickTops">
+             <i class="ion-eye highlight_red">{{article.views}}</i> {{ article.title }}
+            </nb-list-item>
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+
+      <nb-accordion-item>
+        <nb-accordion-item-header>好评文章</nb-accordion-item-header>
+        <nb-accordion-item-body>
+          <nb-list>
+            <nb-list-item *ngFor="let article of commentTops">
+              <i class="ion-pricetag highlight_red">{{article.comments}}</i> {{ article.title }}
+            </nb-list-item>
+          </nb-list>
+        </nb-accordion-item-body>
+      </nb-accordion-item>
+    </nb-accordion>
+  </nb-card-body>
+</nb-card>
