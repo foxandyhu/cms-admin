@@ -24,6 +24,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
   private formId: string = 'adForm';     //   表单ID
   preview: any;   //  预览
   date: string = '';    //  展示时间
+  color: string;
 
   constructor(private adService: AdService, protected injector: Injector,
               private domSanitizer: DomSanitizer,

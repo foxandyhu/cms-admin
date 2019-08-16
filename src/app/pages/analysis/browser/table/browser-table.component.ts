@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-browser-table',
+  selector: 'ngx-analysis-browser-table',
   templateUrl: './browser-table.component.html',
 })
 export class BrowserTableComponent implements OnInit {
 
-  private data: any;
+  data: any;
 
   constructor() {
   }

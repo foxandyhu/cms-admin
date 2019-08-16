@@ -11,7 +11,7 @@ export class ContentsComponent implements OnInit {
   constructor(private analysisService: AnalysisService) {
   }
 
-  private progressInfoData: Array<any> = [
+  progressInfoData: Array<any> = [
     {title: '内容发布数', today: 0, total: 0, iconColor: 'primary', icon: 'nb-list'},
     {title: '评论数', today: 0, total: 0, iconColor: 'success', icon: 'nb-compose'},
     {title: '留言数', today: 0, total: 0, iconColor: 'info', icon: 'nb-email'},

@@ -32,7 +32,7 @@
           <button type="button" class="btn btn-outline-warning" (click)="resetForm()">
             重置
           </button>&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             批量删除
           </button>
         </div>

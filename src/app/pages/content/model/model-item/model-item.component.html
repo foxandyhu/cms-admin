@@ -9,7 +9,7 @@
           <button class="btn btn-success" (click)="showAddModelItem()">
             <span class="ion-plus-round"></span> 添加自定义项
           </button>&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutilModelItem()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutilModelItem()">
             批量删除
           </button>&nbsp;&nbsp;
           <a href="#content/model" class="btn btn-info">

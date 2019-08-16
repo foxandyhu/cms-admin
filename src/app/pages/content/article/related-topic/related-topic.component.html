@@ -1,6 +1,6 @@
 <nb-card style="width:500px">
   <nb-card-header>
-    选择专题&nbsp;&nbsp;&nbsp;<button  class="btn btn-success" (click)="submit()" [disabled]="!selectItems?.length>0">确定</button>
+    选择专题&nbsp;&nbsp;&nbsp;<button  class="btn btn-success" (click)="submit()" [disabled]="!(selectItems?.length>0)">确定</button>
   </nb-card-header>
   <nb-card-body style="max-height:400px;overflow:auto;">
     <table class="table table-hover">

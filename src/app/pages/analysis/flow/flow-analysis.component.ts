@@ -5,7 +5,7 @@ import {EChartOption, ECharts} from 'echarts';
 import {DateUtil} from '../../../core/utils/date';
 
 @Component({
-  selector: 'ngx-flow-analysis',
+  selector: 'ngx-analysis-flow-analysis',
   templateUrl: './flow-analysis.component.html',
 })
 export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -14,7 +14,7 @@ export class FlowAnalysisComponent implements OnInit, AfterViewInit, OnDestroy {
   themeSubscription: any;
   @ViewChild('flowTable') flowTable;
   private echartInstance: ECharts;
-  private times: any = [{id: 1, name: '今天', checked: true}, {id: 2, name: '昨天'},
+  times: any = [{id: 1, name: '今天', checked: true}, {id: 2, name: '昨天'},
     {id: 3, name: '本周'}, {id: 4, name: '本月'}, {id: 5, name: '本年'}]; // 时间类型
 
   constructor(private theme: NbThemeService, private flowService: AnalysisService) {

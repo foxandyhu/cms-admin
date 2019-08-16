@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'ngx-flow-table',
+  selector: 'ngx-analysis-flow-table',
   templateUrl: './table.component.html',
 })
 export class FlowTableComponent implements OnInit {
@@ -9,7 +9,7 @@ export class FlowTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  private data: any;
+  data: any;
 
   setData(data: any) {
     this.data = data;

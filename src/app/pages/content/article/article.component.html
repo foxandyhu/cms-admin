@@ -92,17 +92,17 @@
     </div>
   </nb-card-body>
   <nb-card-footer class="text-left">
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="showRelatedTopic()">关联专题
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="showRelatedTopic()">关联专题
     </button>&nbsp;&nbsp;
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(true)">推荐
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="recommendMutil(true)">推荐
     </button>&nbsp;&nbsp;
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="recommendMutil(false)">取消推荐
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="recommendMutil(false)">取消推荐
     </button>&nbsp;&nbsp;
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(true)">审核通过
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="verifyMutil(true)">审核通过
     </button>&nbsp;&nbsp;
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="verifyMutil(false)">审核不通过
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="verifyMutil(false)">审核不通过
     </button>&nbsp;&nbsp;
-    <button class="btn btn-outline-primary" [disabled]="!selectItems?.length>0" (click)="delMutil()"><i
+    <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="delMutil()"><i
       class="ion-trash-b"></i> 删除
     </button>&nbsp;&nbsp;
     <ngb-pagination ngClass="ng2-smart-pagination" maxSize="10" [collectionSize]="pager?.totalCount"

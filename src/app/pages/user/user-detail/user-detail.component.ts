@@ -23,7 +23,8 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
 
   user = {
     userName: '', password: '', confirmPassword: '', email: '', roles: [],
-    face: '', status: '', superAdmin: false,
+    face: '', status: '', superAdmin: false, statusName: '', loginCount: 0,
+    lastLoginIp: '', lastLoginTime: '', registerIp: '', registerTime: '',
   }; //  用户对象
   roles: Array<any> = new Array<any>();               // 系统所有角色集合
   currentRoles: Array<any> = new Array<any>();       //  当前用户拥有的角色集合
@@ -111,7 +112,7 @@ export class UserDetailComponent extends BaseComponent implements OnInit {
    * 账户状态选择
    * @param status
    */
-  changeStatus(status: string) {
+  changeStatus(status: any) {
     this.user.status = status;
   }
 

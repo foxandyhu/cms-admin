@@ -13,7 +13,7 @@
             <option value="">所有状态</option>
             <option [value]="item.id" *ngFor="let item of statuss">{{item.name}}</option>
           </select>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>
         </div>

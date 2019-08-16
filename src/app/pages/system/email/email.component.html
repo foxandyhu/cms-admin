@@ -9,7 +9,7 @@
           <button class="btn btn-success" (click)="showAddProvider()">
             <span class="ion-plus-round"></span> 新增
           </button>&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             批量删除
           </button>
         </div>

@@ -10,11 +10,11 @@ export class WorkbenchComponent implements OnInit {
   constructor(private analysisService: AnalysisService) {
   }
 
-  private clickTops: any;
-  private commentTops: any;
-  private members: any;
-  private comments: any;
-  private guestBooks: any;
+  clickTops: any;
+  commentTops: any;
+  members: any;
+  comments: any;
+  guestBooks: any;
 
   ngOnInit(): void {
     this.initStatisticLatest();

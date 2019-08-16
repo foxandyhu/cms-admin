@@ -17,7 +17,7 @@ export class MenuAddComponent extends BaseComponent implements OnInit {
     this.initValiator();
   }
 
-  private menu: any = {name: '', url: ''};  //  菜单信息
+  menu: any = {name: '', url: ''};  //  菜单信息
   private formId: string = 'menuForm';     //   表单ID
   parentMenuName: string;          //  父菜单名称
 

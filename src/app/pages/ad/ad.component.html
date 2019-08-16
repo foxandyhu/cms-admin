@@ -12,7 +12,7 @@
           <a href="#ad/space/list" class="btn btn-outline-info">
             <i class="ion-navicon"></i> 广告位管理
           </a>&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>
         </div>

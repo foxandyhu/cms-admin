@@ -19,6 +19,7 @@ export class WatermarkConfigComponent extends BaseComponent implements OnInit {
 
   formId: string = 'watermarkConfigForm';
   preview: any;   //  预览
+  color: string;
   watermarkConfig: any = {
     openWaterMark: '', imgWidth: '', imgHeight: '', img: '',
     text: '', size: '', color: '', alpha: '', pos: '0', offsetX: '', offsetY: '',

@@ -9,7 +9,7 @@
           <button class="btn btn-success" (click)="showAddFriendLinkType()">
             <span class="ion-plus-round"></span> 新增
           </button>&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>&nbsp;&nbsp;
           <a href="#friendlink/list" class="btn btn-info">

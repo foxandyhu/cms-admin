@@ -5,12 +5,12 @@ import {AnalysisService} from '../service/analysis-service';
 import {DateUtil} from '../../../core/utils/date';
 
 @Component({
-  selector: 'ngx-area',
+  selector: 'ngx-analysis-area',
   templateUrl: './area-analysis.component.html',
 })
 export class AreaAnalysisComponent implements OnInit {
 
-  private times: any = [{id: 1, name: '今天', checked: true}, {id: 2, name: '昨天'},
+  times: any = [{id: 1, name: '今天', checked: true}, {id: 2, name: '昨天'},
     {id: 3, name: '本周'}, {id: 4, name: '本月'}, {id: 5, name: '本年'}]; // 时间类型
   @ViewChild('mapChart') mapChart: AreaMapComponent;
   @ViewChild('tableChart') tableChart: AreaTableComponent;

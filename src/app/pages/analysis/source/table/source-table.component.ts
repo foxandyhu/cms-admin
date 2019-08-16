@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'ngx-source-table',
+  selector: 'ngx-analysis-source-table',
   templateUrl: './source-table.component.html',
 })
 export class SourceTableComponent implements OnInit {
 
-  private data: any;
+  data: any;
 
   constructor() {
   }

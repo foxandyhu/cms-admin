@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-site-table',
+  selector: 'ngx-analysis-site-table',
   templateUrl: './site-table.component.html',
 })
 export class SiteTableComponent implements OnInit {
 
-  private data: any;
+  data: any;
 
   constructor() {
   }

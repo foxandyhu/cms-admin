@@ -11,9 +11,9 @@ export class ContentTabsComponent implements OnInit {
   constructor() {
   }
 
-  @Input() private members: any;
-  @Input() private comments: any;
-  @Input() private guestBooks: any;
+  @Input() members: any;
+  @Input() comments: any;
+  @Input() guestBooks: any;
   private preview = Constant.DEFAULT_PIC;
 
   ngOnInit() {

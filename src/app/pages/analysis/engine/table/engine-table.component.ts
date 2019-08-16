@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ngx-engine-table',
+  selector: 'ngx-analysis-engine-table',
   templateUrl: './engine-table.component.html',
 })
 export class EngineTableComponent implements OnInit {
 
-   private data: any;
+   data: any;
 
   constructor() {
   }

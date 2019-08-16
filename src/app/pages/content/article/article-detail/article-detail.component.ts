@@ -22,25 +22,26 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
   constructor(private articleService: ArticleService, protected injector: Injector,
               private route: ActivatedRoute, private channelService: ChannelService,
               private commonService: CommonService, private domSanitizer: DomSanitizer,
-              private groupService: MemberGroupService, private router:Router,
+              private groupService: MemberGroupService, private router: Router,
               private modelItemService: ModelItemService, private modelService: ModelService) {
     super(articleService, injector);
   }
 
-  private channel: any;  //  栏目对象
-  private modelItems: Array<any>;  //  模型项集合
-  private typeImgPreview: any = Constant.DEFAULT_PIC; //  类型图
-  private titleImgPreview: any; //  标题图
-  private contentImgPreview: any; //  类型图
-  private memberGroups: any;   //  会员组
-  private pcTemplates: any;
-  private mobileTemplates: any;
-  private contentTypes: any = Constant.CONTENT_TYPES;
-  private docTypes: Array<any> = Constant.DOC_TYPES;
-  private mediaTypes: Array<any> = Constant.MEDIA_TYPES;
-  private showDocResult: any = {show: false, text: ''};
-  private showMediaResult: any = {show: false, text: ''};
-  private article: any = {  //  文章
+  channel: any;  //  栏目对象
+  modelItems: Array<any>;  //  模型项集合
+  typeImgPreview: any = Constant.DEFAULT_PIC; //  类型图
+  titleImgPreview: any; //  标题图
+  contentImgPreview: any; //  类型图
+  memberGroups: any;   //  会员组
+  pcTemplates: any;
+  mobileTemplates: any;
+  color: string;
+  contentTypes: any = Constant.CONTENT_TYPES;
+  docTypes: Array<any> = Constant.DOC_TYPES;
+  mediaTypes: Array<any> = Constant.MEDIA_TYPES;
+  showDocResult: any = {show: false, text: ''};
+  showMediaResult: any = {show: false, text: ''};
+  article: any = {  //  文章
     topLevel: 0, topExpired: '', recommend: false, recommendLevel: 0, status: '',
     type: '', share: true, updown: true, comment: true,
     articleExt: {

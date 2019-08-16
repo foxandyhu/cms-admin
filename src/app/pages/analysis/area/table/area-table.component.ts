@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'ngx-area-table',
+  selector: 'ngx-analysis-area-table',
   templateUrl: './area-table.component.html',
 })
 export class AreaTableComponent implements OnInit {
 
-  private data: any;
+  data: any;
 
   constructor() {
   }

@@ -18,7 +18,7 @@
         <tr>
           <th>
             <nb-checkbox #selectBox status="success" [value]="isSelectAll"
-                         (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
+                         (change)="changeAllBox(selectBox.value)"></nb-checkbox>
           </th>
           <th>名称</th>
           <th>描述</th>

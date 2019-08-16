@@ -21,15 +21,15 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
     super(articleService, injector);
   }
 
-  private types: Array<any>;  //  内容类型
-  private statuss: Array<any> = Constant.ARTICLE_STATUS;      //  状态
-  private channel: string;                //  树状栏目选中
-  private channels: Array<any>;            //  树状栏目集合
-  private searchType: string = '';        //  搜索类型
-  private searchStatus: string = '';      //  搜索状态
-  private searchTitle: string = '';       //  搜索标题
-  private searchChannel: string = '';     //  搜索栏目
-  private dialog: NbDialogRef<any>;    //  文章置顶框
+  types: Array<any>;  //  内容类型
+  statuss: Array<any> = Constant.ARTICLE_STATUS;      //  状态
+  channel: any;                //  树状栏目选中
+  channels: Array<any>;            //  树状栏目集合
+  searchType: string = '';        //  搜索类型
+  searchStatus: string = '';      //  搜索状态
+  searchTitle: string = '';       //  搜索标题
+  searchChannel: string = '';     //  搜索栏目
+  dialog: NbDialogRef<any>;    //  文章置顶框
 
   ngOnInit() {
     this.types = Constant.CONTENT_TYPES;

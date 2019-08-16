@@ -23,6 +23,7 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
   spaces: any; //  广告位
   private formId: string = 'adForm';     //   表单ID
   preview: any;   //  预览
+  color: string;
 
   constructor(private adService: AdService, private spaceService: AdSpaceService,
               protected injector: Injector, private domSanitizer: DomSanitizer,

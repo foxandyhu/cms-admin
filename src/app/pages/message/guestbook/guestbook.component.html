@@ -90,11 +90,11 @@
       <div class="col-md-5">
         <nb-checkbox #selectAllBox status="success" [value]="isSelectAll"
                      (change)="changeAllBox(selectAllBox.value)"></nb-checkbox>
-        <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="verifyMutil(true)">审核通过
+        <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="verifyMutil(true)">审核通过
         </button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="verifyMutil(false)">审核不通过
+        <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="verifyMutil(false)">审核不通过
         </button>&nbsp;&nbsp;
-        <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+        <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
           批量删除
         </button>
       </div>

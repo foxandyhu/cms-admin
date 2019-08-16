@@ -19,7 +19,7 @@ export class ModelItemDetailComponent extends BaseComponent implements OnInit {
     defValue: '', optValue: '', remark: '', single: false, required: false,
   };  //  模型项
   formId: string = 'modelItemForm';
-  private disabledDef: boolean = false;
+  disabledDef: boolean = false;
 
   ngOnInit() {
     this.initValiator();

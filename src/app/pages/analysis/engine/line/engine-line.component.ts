@@ -4,7 +4,7 @@ import {EChartOption, ECharts} from 'echarts';
 import {Subject} from 'rxjs';
 
 @Component({
-  selector: 'ngx-engine-line',
+  selector: 'ngx-analysis-engine-line',
   template: `
     <div style="height:300px" echarts (chartInit)="chartInit($event)" [options]="options" class="echart"></div>
   `,

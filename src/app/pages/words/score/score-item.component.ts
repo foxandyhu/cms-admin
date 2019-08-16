@@ -20,8 +20,8 @@ export class ScoreItemComponent extends BaseComponent implements OnInit, OnDestr
   }
 
   private dialog: NbDialogRef<any>;
-  private groupId: string;    //  评分组ID
-  private scoreGroup: any = {name: '', id: 0};    //   评分组对象
+  groupId: string;    //  评分组ID
+  scoreGroup: any = {name: '', id: 0};    //   评分组对象
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

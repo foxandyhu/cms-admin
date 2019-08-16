@@ -5,7 +5,7 @@ import {EChartOption, ECharts} from 'echarts';
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'ngx-area-map',
+  selector: 'ngx-analysis-area-map',
   template: `
     <div echarts (chartInit)="chartInit($event)" [options]="options"></div>
   `,

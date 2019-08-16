@@ -15,7 +15,7 @@
             <option value="0">待审核</option>
             <option value="2">已禁用</option>
           </select>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutil()">
+          <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutil()">
             <i class="ion-trash-b"></i> 批量删除
           </button>
         </div>

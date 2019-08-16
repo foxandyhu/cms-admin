@@ -20,7 +20,7 @@ export class ModelItemAddComponent extends BaseComponent implements OnInit {
   };  //  模型项
   formId: string = 'modelItemForm';
   dataTypes: Array<any> = Constant.DATA_TYPES;
-  private disabledDef: boolean = false;
+  disabledDef: boolean = false;
 
   ngOnInit() {
     this.initValiator();

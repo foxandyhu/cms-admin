@@ -12,9 +12,9 @@ export class UploaderBarComponent implements OnInit, OnDestroy {
   @Input() text: string = '上传';  // 按钮文字
   @Input() multiple: boolean = false;  // 批量上传
   @Output() private complete = new EventEmitter(true);
-  private isComplete: boolean = true; //  是否上传完毕
+  isComplete: boolean = true; //  是否上传完毕
   private title: string;
-  private showBar: boolean = false; // 进度条显示
+  showBar: boolean = false; // 进度条显示
   fileName: string = '';   // 上传的文件名
   private timer: any;      //  进度条定时器
   private value: number = 0;

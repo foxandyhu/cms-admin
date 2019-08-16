@@ -15,7 +15,7 @@
             <input type="file" class="d-none" id="file" (change)="fileChange($event)"/>
             <button class="btn btn-outline-primary" (click)="mkdir()">新建目录</button>&nbsp;&nbsp;
             <button class="btn btn-outline-primary" onclick="file.click()">上传文件</button>&nbsp;&nbsp;
-            <button class="btn btn-outline-primary" [disabled]="!selectItems.length>0" (click)="delMutilRes()">批量删除
+            <button class="btn btn-outline-primary" [disabled]="!(selectItems.length>0)" (click)="delMutilRes()">批量删除
             </button>
           </div>
           <table class="table table-hover margin-top-2p">
