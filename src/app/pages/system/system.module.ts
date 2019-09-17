@@ -8,7 +8,7 @@ import {ResTreeComponent} from './resource/res-tree/res-tree.component';
 import {WatermarkConfigComponent} from './watermark/watermark.component';
 import {FirewallSettingComponent} from './firewall/firewall.component';
 import {CompanyComponent} from './company/company.component';
-import {SiteConfigComponent} from './site/site.component';
+import {SiteComponent} from './site/site.component';
 import {TaskComponent} from './task/task.component';
 import {MenuComponent} from './menu/menu.component';
 import {MenuAddComponent} from './menu/menu-add/menu-add.component';
@@ -41,15 +41,21 @@ import {TemplateService} from './service/template-service';
 import {TemplateDirAddComponent} from './template/template-dir-add/template-dir-add.component';
 import {TemplateTreeComponent} from './template/template-tree/template-tree.component';
 import {TemplateDetailComponent} from './template/template-detail/template-detail.component';
+import {SiteConfigComponent} from './site/config/config.component';
+import {CommentConfigComponent} from '../message/comment/config/config.component';
+import {GuestBookConfigComponent} from '../message/guestbook/config/config.component';
+import {CommentService} from '../message/service/comment-service';
+import {GuestBookService} from '../message/service/guestbook-service';
 
 @NgModule({
   declarations: [ResourceComponent, ResTreeComponent, WatermarkConfigComponent,
-    FirewallSettingComponent, CompanyComponent, SiteConfigComponent, TaskComponent,
+    FirewallSettingComponent, CompanyComponent, SiteComponent, TaskComponent,
     MenuComponent, MenuAddComponent, MenuDetailComponent, NoRightComponent,
     SmsProviderComponent, SmsRecordComponent, SmsProviderAddComponent,
     SmsProviderDetailComponent, EmailProviderComponent, ResDirAddComponent,
     EmailProviderAddComponent, EmailProviderDetailComponent, TemplateComponent,
-    TemplateDirAddComponent, TemplateTreeComponent, TemplateDetailComponent],
+    TemplateDirAddComponent, TemplateTreeComponent, TemplateDetailComponent, SiteConfigComponent,
+    CommentConfigComponent, GuestBookConfigComponent],
   imports: [
     CommonModule,
     ThemeModule,
@@ -63,7 +69,7 @@ import {TemplateDetailComponent} from './template/template-detail/template-detai
     ResDirAddComponent, TemplateDirAddComponent, TemplateDetailComponent],
   providers: [MenuService, SmsProviderService, EmailProviderService, SmsRecordService, SiteConfigService,
     WatermarkConfigService, FirewallConfigService, CompanyService, DictionaryService, TaskService,
-    ResourceService, TemplateService],
+    ResourceService, TemplateService, CommentService, GuestBookService],
 })
 export class SystemModule {
 }

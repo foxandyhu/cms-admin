@@ -6,7 +6,7 @@ export class AppApi {
   /**
    * 服务根域名
    */
-  static ROOT_URI = 'http://192.168.8.113';
+  static ROOT_URI = 'http://web.servers.com';
 
   /**
    * 是否属于后台接口的标识
@@ -110,7 +110,11 @@ export class AppApi {
     searchword_list: '/manage/searchword/list.html',
     searchword_del: '/manage/searchword/del.html',
     searchword_recommend: '/manage/searchword/recommend-{:searchId}-{:type}.html',
+    searchword_add: '/manage/searchword/add.html',
+    searchword_detail: '/manage/searchword/{:searchwordId}.html',
+    searchword_edit: '/manage/searchword/edit.html',
     score_group_list: '/manage/score/group/list.html',
+    score_group_all: '/manage/score/group/all.html',
     score_group_add: '/manage/score/group/add.html',
     score_group_edit: '/manage/score/group/edit.html',
     score_group_del: '/manage/score/group/del.html',
@@ -200,7 +204,8 @@ export class AppApi {
     member_check: '/manage/member/check.html',
     member_edit_status: '/manage/member/edit/{:memberId}-{:status}.html',
     member_edit_password: '/manage/member/editpwd.html',
-    member_config: '/manage/member/config/info.html',
+    member_login_config: '/manage/member/config/login.html',
+    member_regist_config: '/manage/member/config/register.html',
     member_login_config_edit: '/manage/member/config/login/edit.html',
     member_regist_config_edit: '/manage/member/config/regist/edit.html',
 
@@ -260,12 +265,16 @@ export class AppApi {
     commend_recommend: '/manage/comment/recommend/{:commentId}-{:recommend}.html',
     comment_verify: '/manage/comment/verify/{:status}.html',
     comment_add: '/manage/comment/reply.html',
+    comment_config: '/manage/comment/config.html',
+    comment_config_edit: '/manage/comment/config/edit.html',
 
     guestbook_list: '/manage/guestbook/list.html',
     guestbook_del: '/manage/guestbook/del.html',
     guestbook_recommend: '/manage/guestbook/recommend/{:guestbookId}-{:recommend}.html',
     guestbook_verify: '/manage/guestbook/verify/{:status}.html',
     guestbook_reply: '/manage/guestbook/reply.html',
+    guestbook_config: '/manage/guestbook/config.html',
+    guestbook_config_edit: '/manage/guestbook/config/edit.html',
   };
 
   static CONTENT = {

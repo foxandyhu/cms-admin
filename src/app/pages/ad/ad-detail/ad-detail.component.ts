@@ -37,7 +37,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
     this.preview = Constant.DEFAULT_PIC;
     this.loadData();
     this.getAllSpaces();
-    this.initValiator();
+    this.initValidator();
   }
 
   ngAfterViewChecked(): void {
@@ -87,7 +87,7 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
   /**
    * 初始化表单验证
    */
-  initValiator() {
+  initValidator() {
     this.initValidateForm(this.formId, {
       name: {
         validators: {
@@ -109,6 +109,10 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
         validators: {
           notEmpty: {message: '展示次数不能为空!'},
           digits: {min: 0, message: '展示次数最小为0!'},
+        },
+      }, showTime: {
+        validators: {
+          notEmpty: {message: '开始或结束时间不能为空!'},
         },
       },
     });
@@ -161,6 +165,11 @@ export class AdDetailComponent extends BaseComponent implements OnInit, AfterVie
     }
     if (event.end) {
       this.ad.endTime = DateUtil.formatDate(event.end);
+    }
+    if (event.start && event.end) {
+      this.formValid.updateStatus('showTime', 'VALID');
+    } else {
+      this.formValid.updateStatus('showTime', 'NOT_VALIDATED');
     }
   }
 

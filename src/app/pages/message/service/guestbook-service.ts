@@ -71,4 +71,22 @@ export class GuestBookService implements IBaseService {
   sort(upItemId, downItemId): Promise<boolean> {
     return undefined;
   }
+
+  /**
+   * 得到留言配置
+   */
+  getGuestBookConfig(): Promise<any> {
+    return this.httpUtil.get(AppApi.MESSAGE.guestbook_config).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   *编辑留言配置信息
+   */
+  editGuestBookConfig(data: any): Promise<boolean> {
+    return this.httpUtil.post(AppApi.MESSAGE.guestbook_config_edit, data).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }

@@ -25,9 +25,9 @@ export class RegisterConfigComponent extends BaseComponent implements OnInit {
     this.configService.getAllEmailProvider().then(result => {
       this.emails = result;
     });
-    this.configService.getConfig().then(result => {
-      if (result && result.registConfig) {
-        this.registConfig = result.registConfig;
+    this.configService.getRegistConfig().then(result => {
+      if (result) {
+        this.registConfig = result;
         this.registConfig.openRegiste = this.registConfig.openRegiste + '';
         this.registConfig.needCheckRegisted = this.registConfig.needCheckRegisted + '';
       }
@@ -78,9 +78,8 @@ export class RegisterConfigComponent extends BaseComponent implements OnInit {
    * 保存注册配置
    */
   saveRegistConfig() {
-    const data = {registConfig: this.registConfig};
     if (this.isValidForm(this.formId)) {
-      this.configService.editRegistConfig(data).then(() => {
+      this.configService.editRegistConfig(this.registConfig).then(() => {
         this.toastUtil.showSuccess('保存成功!');
       });
     }

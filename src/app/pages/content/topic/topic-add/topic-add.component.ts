@@ -19,7 +19,7 @@ export class SpecialTopicAddComponent extends BaseComponent implements OnInit {
   }
 
   topic: any = {
-    name: '', shortName: '', keywords: '', remark: '', titleImg: '',
+    name: '', shortName: '', keywords: '', remark: '', titleImg: '', summary: '',
     contentImg: '', tplPc: '', tplMobile: '', recommend: true,
   }; //  专题
   previewTitle: any;   //  预览

@@ -29,6 +29,12 @@
         </div>
       </div>
       <div class="row">
+        <label class="col-md-2 col-form-label text-right">概要</label>
+        <div class="form-group col-md-10">
+          <textarea class="form-control" [(ngModel)]="topic.summary" name="summary"></textarea>
+        </div>
+      </div>
+      <div class="row">
         <label class="col-md-2 col-form-label text-right">推荐</label>
         <div class="form-group col-md-4">
           <nb-checkbox [(ngModel)]="topic.recommend" name="recommend" status="success">是</nb-checkbox>

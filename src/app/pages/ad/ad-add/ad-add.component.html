@@ -33,15 +33,15 @@
         <div class="col-md-4">
           <nb-checkbox status="success" name="enabled" [(ngModel)]="ad.enabled">是</nb-checkbox>
         </div>
-        <label class="col-md-2 col-form-label text-right">展示时间</label>
-        <div class="col-md-4">
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 展示时间</label>
+        <div class="form-group col-md-4">
           <div class="input-group">
             <div class="input-group-prepend">
               <button class="btn btn-primary btn-icon">
                 <i class="ion-ios-calendar-outline"></i>
               </button>
             </div>
-            <input class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
+            <input name="showTime" autocomplete="off" class="form-control" placeholder="选择日期" [nbDatepicker]="rangepicker">
             <nb-rangepicker #rangepicker (rangeChange)="changeDate($event)" format="YYYY-MM-DD"></nb-rangepicker>
           </div>
         </div>

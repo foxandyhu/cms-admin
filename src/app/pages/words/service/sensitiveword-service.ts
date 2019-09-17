@@ -21,7 +21,7 @@ export class SensitiveWordService implements IBaseService {
   }
 
   editData(data: any): Promise<boolean> {
-    return this.httpUtil.post(AppApi.WORDS.sensitive_edit, data).then(response => {
+    return this.httpUtil.post(AppApi.WORDS.sensitive_edit, data).then(() => {
       return Promise.resolve(true);
     });
   }

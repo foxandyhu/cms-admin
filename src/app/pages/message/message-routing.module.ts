@@ -12,8 +12,6 @@ const routes: Routes = [
   {path: 'letter/:letterId', component: LetterDetailComponent},
   {path: 'comment', component: CommentComponent},
   {path: 'guestbook', component: GuestbookComponent},
-  {path: '', redirectTo: 'list', pathMatch: 'full'},
-  {path: '**', redirectTo: 'list'},
 ];
 
 @NgModule({

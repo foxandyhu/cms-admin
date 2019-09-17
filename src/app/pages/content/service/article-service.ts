@@ -22,7 +22,7 @@ export class ArticleService implements IBaseService {
 
   getPager(params: Map<string, string>): Promise<any> {
     const httpParams: HttpParams = this.httpUtil.getHttpParams(params);
-    const result: Promise<any> = this.httpUtil.get(AppApi.CONTENT.article_list, httpParams).then(response => {
+    const result: Promise<any> = this.httpUtil.post(AppApi.CONTENT.article_list, httpParams).then(response => {
       return Promise.resolve(response);
     });
     return result;

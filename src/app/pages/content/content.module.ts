@@ -30,6 +30,8 @@ import {ArticleDetailComponent} from './article/article-detail/article-detail.co
 import {ColorPickerModule} from 'ngx-color-picker';
 import {MemberGroupService} from '../member/service/member-group-service';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import {ScoreGroupService} from '../words/service/score-group-service';
+import {DictionaryService} from '../words/service/dictionary-service';
 
 @NgModule({
   declarations: [ArticleComponent, SpecialTopicComponent,
@@ -50,7 +52,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     ModelItemAddComponent, ModelItemDetailComponent, ArticleTopicComponent,
     ChannelAddComponent, ChannelDetailComponent, ArticleTopComponent, ArticleRelatedTopicComponent],
   providers: [ModelService, ModelItemService, ChannelService, SpecialTopicService,
-    ArticleService, MemberGroupService],
+    ArticleService, MemberGroupService, ScoreGroupService, DictionaryService],
 })
 export class ContentModule {
 }

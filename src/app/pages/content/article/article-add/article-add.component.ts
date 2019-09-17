@@ -10,9 +10,12 @@ import {Constant} from '../../../../core/constant';
 import {CommonService} from '../../../common-service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {MemberGroupService} from '../../../member/service/member-group-service';
-import {isBoolean} from 'util';
 import '../../../../@theme/components/editor.loader';
 import * as moment from 'moment';
+import {ValidateUtil} from '../../../../core/utils/validate';
+import {ScoreGroupService} from '../../../words/service/score-group-service';
+import {DictionaryService} from '../../../words/service/dictionary-service';
+
 
 @Component({
   selector: 'ngx-content-article-add',
@@ -25,7 +28,8 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
               private route: ActivatedRoute, private channelService: ChannelService,
               private commonService: CommonService, private domSanitizer: DomSanitizer,
               private groupService: MemberGroupService, private router: Router,
-              private modelItemService: ModelItemService, private modelService: ModelService) {
+              private modelItemService: ModelItemService, private modelService: ModelService,
+              private scoreGroupService: ScoreGroupService, private dictionaryService: DictionaryService) {
     super(articleService, injector);
   }
 
@@ -35,20 +39,22 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
   titleImgPreview: any; //  标题图
   contentImgPreview: any; //  类型图
   memberGroups: any;   //  会员组
+  scoreGroups: any;    //   评分组
+  fileTypes: Array<any>;  //  文件类型
+  docTypes: Array<any>;  //  文档类型
+  mediaTypes: Array<any>;  //  多媒体类型
+  fileCategory: Array<any> = [{name: '文档', id: Constant.DOC_TYPE}, {name: '多媒体', id: Constant.MEDIA_TYPE}];
   pcTemplates: any;
   mobileTemplates: any;
   color: string;
   contentTypes: any = Constant.CONTENT_TYPES;
-  docTypes: Array<any> = Constant.DOC_TYPES;
-  mediaTypes: Array<any> = Constant.MEDIA_TYPES;
-  showDocResult: any = {show: false, text: ''};
-  showMediaResult: any = {show: false, text: ''};
+  showFileResult: any = {show: false, text: ''};
   article: any = {  //  文章
     topLevel: 0, topExpired: '', recommend: false, recommendLevel: 0, status: '',
-    type: '', share: true, updown: true, comment: true,
+    type: '', share: true, updown: true, comment: true, score: false, scoreGroupId: '', scores: 0,
     articleExt: {
       title: '', shortTitle: '', summary: '', keywords: '', description: '', author: '', origin: '', originUrl: '',
-      postDate: '', mediaPath: '', mediaType: '', docPath: '', docType: '', titleColor: '', bold: false, titleImg: '',
+      postDate: '', filePath: '', fileType: '', titleColor: '', bold: false, titleImg: '',
       contentImg: '', typeImg: '', link: '', tplPc: '', tplMobile: '', tags: '',
     },
     articleTxt: {txt: '', txt1: '', txt2: '', txt3: ''},
@@ -95,6 +101,15 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
           if (this.hasItem('viewgroup')) {
             this.loadMemberGroup();
           }
+
+          //  加载评分组
+          if (this.hasItem('score')) {
+            this.loadScoreGroup();
+          }
+          //  加载文档类型
+          if (this.hasItem('file')) {
+            this.loadFileTypes();
+          }
         }
       });
     }
@@ -129,11 +144,15 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
     }
     const updown = this.getDefValue('updown');
     if (updown) {
-      this.article.updown = isBoolean(updown);
+      this.article.updown = ValidateUtil.isBoolean(updown);
     }
     const comment = this.getDefValue('comment');
     if (comment) {
-      this.article.comment = isBoolean(comment);
+      this.article.comment = ValidateUtil.isBoolean(comment);
+    }
+    const score = this.getDefValue('score');
+    if (score) {
+      this.article.score = ValidateUtil.isBoolean(score);
     }
     this.modelItems.forEach(item => {
       if (item.custom) {
@@ -210,15 +229,10 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
    */
   removeUploadFile(target, name, field) {
     switch (target) {
-      case 'doc':
-        this.article.articleExt.docType = '';
-        this.article.articleExt.docPath = '';
-        this.showDocResult.show = false;
-        break;
-      case 'media':
-        this.article.articleExt.mediaType = '';
-        this.article.articleExt.mediaPath = '';
-        this.showMediaResult.show = false;
+      case 'file':
+        this.article.articleExt.fileType = '';
+        this.article.articleExt.filePath = '';
+        this.showFileResult.show = false;
         break;
       case 'pictures':
         if (name) {
@@ -256,15 +270,10 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
    */
   uploadFileChange(result, target, field?: string) {
     switch (target) {
-      case 'doc':
-        this.article.articleExt.docPath = result.dest;
-        this.showDocResult.show = true;
-        this.showDocResult.text = result.source.name;
-        break;
-      case 'media':
-        this.article.articleExt.mediaPath = result.dest;
-        this.showMediaResult.show = true;
-        this.showMediaResult.text = result.source.name;
+      case 'file':
+        this.article.articleExt.filePath = result.dest;
+        this.showFileResult.show = true;
+        this.showFileResult.text = result.source.name;
         break;
       case 'pictures':
         const maxSeq = this.article.pictures.length;
@@ -348,6 +357,15 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
   }
 
   /**
+   * 加载评分组
+   */
+  loadScoreGroup() {
+    this.scoreGroupService.getAllGroup().then(result => {
+      this.scoreGroups = result;
+    });
+  }
+
+  /**
    * 加载模版
    */
   loadTpl() {
@@ -360,9 +378,21 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
   }
 
   /**
+   * 加载文件类型
+   */
+  loadFileTypes() {
+    this.dictionaryService.getDictionaryByType('doc_type').then(result => {
+      this.docTypes = result;
+    });
+    this.dictionaryService.getDictionaryByType('industry').then(result => {
+      this.mediaTypes = result;
+    });
+  }
+
+  /**
    * 会员组选择
    */
-  changeMembetGroup(groupId: string, selected: boolean) {
+  changeMemberGroup(groupId: string, selected: boolean) {
     this.article.viewGroups.splice(0, this.article.viewGroups.length);
     this.memberGroups.forEach(group => {
       if (group.id === groupId) {
@@ -456,6 +486,28 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
       }
     }
     this.article.attr[field] = array.join(',');
+  }
+
+  /**
+   * 文件类型切换事件
+   * @param value
+   */
+  fileCategoryChange(value) {
+    if (parseInt(value, 0) === Constant.DOC_TYPE) {
+      this.fileTypes = this.docTypes;
+    } else if (parseInt(value, 0) === Constant.MEDIA_TYPE) {
+      this.fileTypes = this.mediaTypes;
+    } else {
+      this.fileTypes = new Array();
+    }
+  }
+
+  /**
+   * 文件类型切换事件
+   * @param value
+   */
+  fileTypeChange(value) {
+    this.article.articleExt.fileType = value;
   }
 
   /**

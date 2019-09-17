@@ -21,12 +21,14 @@ import {ScoreItemService} from './service/score-item-service';
 import {ScoreItemComponent} from './score/score-item.component';
 import {ScoreItemAddComponent} from './score/score-item-add/score-item-add.component';
 import {ScoreItemDetailComponent} from './score/score-item-detail/score-item-detail.component';
+import {SearchAddComponent} from './search/search-add/search-add.component';
+import {SearchDetailComponent} from './search/search-detail/search-detail.component';
 
 @NgModule({
   declarations: [DictionaryComponent, SensitiveComponent, DictionaryAddComponent, DictionaryDetailComponent,
     SensitiveComponent, SensitiveAddComponent, SensitiveDetailComponent, SearchComponent,
     ScoreGroupComponent, ScoreGroupAddComponent, ScoreGroupDetailComponent,
-    ScoreItemComponent, ScoreItemAddComponent, ScoreItemDetailComponent],
+    ScoreItemComponent, ScoreItemAddComponent, ScoreItemDetailComponent, SearchAddComponent, SearchDetailComponent],
   imports: [
     CommonModule,
     ThemeModule,
@@ -36,7 +38,7 @@ import {ScoreItemDetailComponent} from './score/score-item-detail/score-item-det
     SensitiveWordService, ScoreGroupService, ScoreItemService],
   entryComponents: [DictionaryAddComponent, DictionaryDetailComponent,
     SensitiveAddComponent, SensitiveDetailComponent, ScoreGroupAddComponent, ScoreGroupDetailComponent,
-    ScoreItemAddComponent, ScoreItemDetailComponent],
+    ScoreItemAddComponent, ScoreItemDetailComponent, SearchAddComponent, SearchDetailComponent],
 })
 export class WordsModule {
 }

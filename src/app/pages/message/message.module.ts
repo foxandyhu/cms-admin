@@ -16,7 +16,8 @@ import {DictionaryService} from '../words/service/dictionary-service';
 import {GuestBookService} from './service/guestbook-service';
 
 @NgModule({
-  declarations: [LetterComponent, CommentComponent, GuestbookComponent, LetterAddComponent, LetterDetailComponent],
+  declarations: [LetterComponent, CommentComponent, GuestbookComponent,
+    LetterAddComponent, LetterDetailComponent],
   imports: [
     CommonModule,
     ThemeModule,

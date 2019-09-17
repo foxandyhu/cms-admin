@@ -6,6 +6,9 @@
     <nb-list-item>
       <form class="form-inline">
         <div class="form-group">
+          <button class="btn btn-success" (click)="showAddSearch()">
+            <span class="ion-plus-round"></span> 新增
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <select class="form-control" #type (change)="changeType(type.value)">
             <option selected value="">首页推荐</option>
             <option value="true">是</option>
@@ -50,6 +53,9 @@
               </button>
             </td>
             <td>
+              <button class="btn btn-info btn-smaller" (click)="showEditSearch(item.id)">
+                <i class="ion-edit"></i> 编辑
+              </button>&nbsp;&nbsp;
               <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
                 <i class="ion-trash-a"></i> 删除
               </button>

@@ -4,7 +4,7 @@ import {ResourceComponent} from './resource/resource.component';
 import {WatermarkConfigComponent} from './watermark/watermark.component';
 import {FirewallSettingComponent} from './firewall/firewall.component';
 import {CompanyComponent} from './company/company.component';
-import {SiteConfigComponent} from './site/site.component';
+import {SiteComponent} from './site/site.component';
 import {TaskComponent} from './task/task.component';
 import {MenuComponent} from './menu/menu.component';
 import {NoRightComponent} from './noright/noright.component';
@@ -12,6 +12,9 @@ import {SmsProviderComponent} from './sms/provider/provider.component';
 import {SmsRecordComponent} from './sms/record/record.component';
 import {EmailProviderComponent} from './email/email.component';
 import {TemplateComponent} from './template/template.component';
+import {CommentConfigComponent} from '../message/comment/config/config.component';
+import {GuestBookConfigComponent} from '../message/guestbook/config/config.component';
+import {SiteConfigComponent} from './site/config/config.component';
 
 const routes: Routes = [
   {path: 'resource', component: ResourceComponent},
@@ -20,7 +23,14 @@ const routes: Routes = [
   {path: 'setting/watermark', component: WatermarkConfigComponent},
   {path: 'setting/firewall', component: FirewallSettingComponent},
   {path: 'setting/company', component: CompanyComponent},
-  {path: 'setting/site', component: SiteConfigComponent},
+  {
+    path: 'setting/config', component: SiteComponent, children: [
+      {path: 'site', component: SiteConfigComponent},
+      {path: 'comment', component: CommentConfigComponent},
+      {path: 'guestbook', component: GuestBookConfigComponent},
+      {path: '', redirectTo: 'site', pathMatch: 'full'},
+    ],
+  },
   {path: 'setting/task', component: TaskComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'sms/provider', component: SmsProviderComponent},

@@ -17,12 +17,12 @@ export class Constant {
   /**
    * 文档类型
    */
-  static DOC_TYPES: any = ['DOC', 'PPT', 'TXT', 'PDF'];   // 文档类型
+  static DOC_TYPE: number = 0;   // 文档类型
 
   /**
    * 多媒体类型
    */
-  static MEDIA_TYPES: any = ['CK', 'FLASH', 'FLV', 'REAL', 'WM'];  //  多媒体类型
+  static MEDIA_TYPE: number = 1;  //  多媒体类型
 
   /**
    * 数据类型

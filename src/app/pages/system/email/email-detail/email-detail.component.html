@@ -5,31 +5,31 @@
   <nb-card-body>
     <form id="emailProviderForm" class="form-horizontal" onSubmit="return false;">
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">名称</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 名称</label>
         <div class="form-group col-md-10">
           <input type="text" autocomplete="off" required="true" class="form-control" [(ngModel)]="emailProvider.name"
                  name="name"/>
         </div>
       </div>
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">服务器地址</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 服务器地址</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.host"
                  name="host"/>
         </div>
-        <label class="col-md-2 col-form-label text-right">编码</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 编码</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.encoding"
                  name="encoding" value="UTF-8"/>
         </div>
       </div>
       <div class="row">
-        <label class="col-md-2 col-form-label text-right">用户名</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 用户名</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.userName"
                  name="userName"/>
         </div>
-        <label class="col-md-2 col-form-label text-right">密码</label>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 密码</label>
         <div class="form-group col-md-4">
           <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.password"
                  name="password"/>

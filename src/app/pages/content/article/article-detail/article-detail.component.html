@@ -40,11 +40,8 @@
             <ng-container *ngSwitchCase="'contentimg'">
               <ng-container *ngTemplateOutlet="contentImgTemplate;context:{$implicit:item}"></ng-container>
             </ng-container>
-            <ng-container *ngSwitchCase="'doc'">
-              <ng-container *ngTemplateOutlet="docTemplate;context:{$implicit:item}"></ng-container>
-            </ng-container>
-            <ng-container *ngSwitchCase="'media'">
-              <ng-container *ngTemplateOutlet="mediaTemplate;context:{$implicit:item}"></ng-container>
+            <ng-container *ngSwitchCase="'file'">
+              <ng-container *ngTemplateOutlet="fileTemplate;context:{$implicit:item}"></ng-container>
             </ng-container>
             <ng-container *ngSwitchCase="'viewgroup'">
               <ng-container *ngTemplateOutlet="viewGroupTemplate;context:{$implicit:item}"></ng-container>
@@ -57,6 +54,9 @@
             </ng-container>
             <ng-container *ngSwitchCase="'comment'">
               <ng-container *ngTemplateOutlet="commentTemplate;context:{$implicit:item}"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'score'">
+              <ng-container *ngTemplateOutlet="scoreTemplate;context:{$implicit:item}"></ng-container>
             </ng-container>
             <ng-container *ngSwitchCase="'author'">
               <ng-container *ngTemplateOutlet="authorTemplate;context:{$implicit:item}"></ng-container>
@@ -267,7 +267,7 @@
 
     <!--浏览权限-->
     <ng-template #viewGroupTemplate let-item>
-      <nb-checkbox #selectGroup (change)="changeMembetGroup(item.id,selectGroup.value)"
+      <nb-checkbox #selectGroup (change)="changeMemberGroup(item.id,selectGroup.value)"
                    [value]="item.selected"
                    *ngFor="let item of memberGroups" status="success">{{item.name}}</nb-checkbox>
     </ng-template>
@@ -371,6 +371,24 @@
                    status="success"></nb-checkbox>
     </ng-template>
 
+    <!--是否评分-->
+    <ng-template #scoreTemplate let-item>
+        <div class="row">
+          <div class="form-group col-md-12 form-inline">
+              <nb-checkbox [(ngModel)]="article.score" name="score" status="success"></nb-checkbox>
+              <ng-container *ngIf="article.score">
+                <label class="col-form-label text-right">分值:</label>&nbsp;&nbsp;
+                <input style="width:20%" type="text" autocomplete="off" class="form-control" name="scores" [(ngModel)]="article.scores" maxlength="3"/>&nbsp;&nbsp;
+                <label class="col-form-label text-right">评分组:</label>&nbsp;&nbsp;
+                <select [(ngModel)]="article.scoreGroupId" class="form-control" name="scoreGroupId">
+                    <option value="">选择评分组</option>
+                    <option *ngFor="let group of scoreGroups" [value]="group.id">{{group.name}}</option>
+                </select>
+              </ng-container>
+          </div>
+        </div>
+    </ng-template>
+
     <!--PC模版选择-->
     <ng-template #tplPcTemplate let-item>
       <select [required]="item.required" [(ngModel)]="article.articleExt.tplPc" class="form-control" name="tplpc">
@@ -419,37 +437,27 @@
       <img [src]="contentImgPreview" class="preview" width="120px" height="120px" onclick="contentImgFile.click()">
     </ng-template>
 
-    <!--文档-->
-    <ng-template #docTemplate let-item>
+    <!--文件-->
+    <ng-template #fileTemplate let-item>
       <input type="hidden" readonly="readonly" class="img_input form-control"
-             [(ngModel)]="article.articleExt.docPath" name="docPath"/>
-      <ngx-uploader-bar text="上传文档" (complete)="uploadFileChange($event,'doc')"></ngx-uploader-bar>
+             [(ngModel)]="article.articleExt.filePath" name="filePath"/>
+      <ngx-uploader-bar text="上传文件" (complete)="uploadFileChange($event,'file')"></ngx-uploader-bar>
       <div class="margin-top-1p">
-        <nb-alert *ngIf="showDocResult.show" (close)="removeUploadFile('doc','')" closable="true"
-                  status="success"><a [href]="showDocResult.text">{{showDocResult.text}}</a></nb-alert>
+        <nb-alert *ngIf="showFileResult.show" (close)="removeUploadFile('file','')" closable="true" status="success">
+          <a target="_blank" [href]="showFileResult.text">{{showFileResult.text}}</a>
+        </nb-alert>
       </div>
       <div class="margin-top-1p">
-        <div class="float-left col-form-label">类型:&nbsp;</div>
-        <nb-radio-group [(ngModel)]="article.articleExt.docType" name="docType">
-          <nb-radio class="float-left" *ngFor="let dt of docTypes" [value]="dt">{{dt}}</nb-radio>
-        </nb-radio-group>
-      </div>
-    </ng-template>
-
-    <!--多媒体-->
-    <ng-template #mediaTemplate let-item>
-      <input type="hidden" readonly="readonly" class="img_input form-control"
-             [(ngModel)]="article.articleExt.mediaPath" name="mediaPath"/>
-      <ngx-uploader-bar text="上传多媒体" (complete)="uploadFileChange($event,'media')"></ngx-uploader-bar>
-      <div class="margin-top-1p">
-        <nb-alert *ngIf="showMediaResult.show" (close)="removeUploadFile('media','')" closable="true"
-                  status="success"><a [href]="showMediaResult.text">{{showMediaResult.text}}</a></nb-alert>
-      </div>
-      <div class="margin-top-1p">
-        <div class="float-left">类型:</div>
-        <nb-radio-group [(ngModel)]="article.articleExt.mediaType" name="mediaType">
-          <nb-radio *ngFor="let dt of mediaTypes" class="float-left" [value]="dt">{{dt}}</nb-radio>
-        </nb-radio-group>
+        <div class="form-group col-md-12 form-inline" (change)="fileCategoryChange($event.target.value)">
+          <div class="float-left">类型:&nbsp;</div>
+          <select class="form-control" [(ngModel)]="categoryId">
+              <option value="">选择</option>
+              <option *ngFor="let c of fileCategory" [value]="c.id">{{c.name}}</option>
+          </select>&nbsp;
+          <nb-radio-group name="fileType" [(value)]="article.articleExt.fileType">
+              <nb-radio *ngFor="let t of fileTypes" [checked]="t.value==article.articleExt.fileType" class="float-left" [(value)]="t.value" (valueChange)="fileTypeChange(t.value)">{{t.name}}</nb-radio>
+          </nb-radio-group>
+          </div>
       </div>
     </ng-template>
 

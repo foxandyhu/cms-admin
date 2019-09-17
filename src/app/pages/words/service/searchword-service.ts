@@ -21,11 +21,15 @@ export class SearchWordService implements IBaseService {
   }
 
   editData(data: any): Promise<boolean> {
-    return undefined;
+    return this.httpUtil.post(AppApi.WORDS.searchword_edit, data).then(() => {
+      return Promise.resolve(true);
+    });
   }
 
   getData(id: any): Promise<any> {
-    return undefined;
+    return this.httpUtil.get(AppApi.WORDS.searchword_detail.replace('{:searchwordId}', id)).then(response => {
+      return Promise.resolve(response);
+    });
   }
 
   getPager(params: Map<string, string>): Promise<any> {
@@ -36,7 +40,9 @@ export class SearchWordService implements IBaseService {
   }
 
   saveData(data: any): Promise<boolean> {
-    return undefined;
+    return this.httpUtil.post(AppApi.WORDS.searchword_add, data).then(() => {
+      return Promise.resolve(true);
+    });
   }
 
   /**

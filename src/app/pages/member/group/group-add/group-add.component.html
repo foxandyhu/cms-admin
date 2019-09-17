@@ -38,12 +38,16 @@
       </div>
       <div class="row">
         <label class="col-md-2 col-form-label text-right">评论需要审核</label>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-2">
           <nb-checkbox status="success" name="commentNeedCheck" [(ngModel)]="group.commentNeedCheck">是</nb-checkbox>
         </div>
         <label class="col-md-2 col-form-label text-right">评论需要验证码</label>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-2">
           <nb-checkbox status="success" name="commentNeedCaptcha" [(ngModel)]="group.commentNeedCaptcha">是</nb-checkbox>
+        </div>
+        <label class="col-md-2 col-form-label text-right">默认会员组</label>
+        <div class="form-group col-md-2">
+          <nb-checkbox status="success" name="defaults" [(ngModel)]="group.defaults">是</nb-checkbox>
         </div>
       </div>
     </form>

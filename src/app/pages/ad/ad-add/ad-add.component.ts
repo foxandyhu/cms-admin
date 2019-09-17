@@ -33,7 +33,7 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
 
   ngOnInit() {
     this.preview = Constant.DEFAULT_PIC;
-    this.initValiator();
+    this.initValidator();
     this.getAllSpaces();
   }
 
@@ -63,7 +63,8 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
   /**
    * 初始化表单验证
    */
-  initValiator() {
+  initValidator() {
+    const thisObj = this;
     this.initValidateForm(this.formId, {
       name: {
         validators: {
@@ -85,6 +86,11 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
         validators: {
           notEmpty: {message: '展示次数不能为空!'},
           digits: {min: 0, message: '展示次数最小为0!'},
+        },
+      },
+      showTime: {
+        validators: {
+          notEmpty: {message: '开始或结束时间不能为空!'},
         },
       },
     });
@@ -137,6 +143,11 @@ export class AdAddComponent extends BaseComponent implements OnInit, AfterViewCh
     }
     if (event.end) {
       this.ad.endTime = DateUtil.formatDate(event.end);
+    }
+    if (event.start && event.end) {
+      this.formValid.updateStatus('showTime', 'VALID');
+    } else {
+      this.formValid.updateStatus('showTime', 'NOT_VALIDATED');
     }
   }
 

@@ -71,4 +71,22 @@ export class CommentService implements IBaseService {
   sort(upItemId, downItemId): Promise<boolean> {
     return undefined;
   }
+
+  /**
+   * 得到评论配置
+   */
+  getCommentConfig(): Promise<any> {
+    return this.httpUtil.get(AppApi.MESSAGE.comment_config).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   *编辑评论配置信息
+   */
+  editCommentConfig(data: any): Promise<boolean> {
+    return this.httpUtil.post(AppApi.MESSAGE.comment_config_edit, data).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }

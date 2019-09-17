@@ -28,6 +28,7 @@
           <th>允许上传文件后缀</th>
           <th>评论需要审核</th>
           <th>评论需要验证码</th>
+          <th>默认会员组</th>
           <th>操作</th>
         </tr>
         </thead>
@@ -43,6 +44,7 @@
           <td>{{item.allowUploadSuffix}}</td>
           <td>{{item.commentNeedCheck ? "是" : "否"}}</td>
           <td>{{item.commentNeedCaptcha ? "是" : "否"}}</td>
+          <td>{{item.defaults ? "是" : "否"}}</td>
           <td>
             <button class="btn btn-info btn-smaller" (click)="showEditGroup(item.id)">
               <i class="ion-edit"></i> 编辑

@@ -12,7 +12,7 @@ export class MemberGroupAddComponent extends BaseComponent implements OnInit {
 
   group: any = {          //  会员组
     name: '', allowUploadPerDay: 0, allowUploadMaxFile: 0, allowUploadSuffix: '',
-    seq: 0, commentNeedCheck: false, commentNeedCaptcha: false,
+    seq: 0, commentNeedCheck: false, commentNeedCaptcha: false, defaults: false,
   };
   private formId: string = 'memberGroupForm'; //   表单ID
 

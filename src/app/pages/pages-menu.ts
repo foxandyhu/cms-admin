@@ -48,9 +48,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/ad/list',
       },
       {
-        title: '申请职位',
-        link: '/job/apply',
-      }, {
         title: '问卷调查',
         link: '/vote/list',
       }, {
@@ -154,7 +151,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '站点设置',
-        link: '/system/setting/site',
+        link: '/system/setting/config',
       },
       {
         title: '登录注册设置',

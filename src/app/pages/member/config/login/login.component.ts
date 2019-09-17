@@ -25,9 +25,9 @@ export class LoginConfigComponent extends BaseComponent implements OnInit {
     this.configService.getAllEmailProvider().then(result => {
       this.emails = result;
     });
-    this.configService.getConfig().then(result => {
-      if (result && result.loginConfig) {
-        this.loginConfig = result.loginConfig;
+    this.configService.getLoginConfig().then(result => {
+      if (result) {
+        this.loginConfig = result;
         this.loginConfig.openLogin = this.loginConfig.openLogin + '';
       }
     });
@@ -72,9 +72,8 @@ export class LoginConfigComponent extends BaseComponent implements OnInit {
    * 保存登录配置
    */
   saveLoginConfig() {
-    const data = {loginConfig: this.loginConfig};
     if (this.isValidForm(this.formId)) {
-      this.configService.editLoginConfig(data).then(() => {
+      this.configService.editLoginConfig(this.loginConfig).then(() => {
         this.toastUtil.showSuccess('保存成功!');
       });
     }

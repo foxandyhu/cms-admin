@@ -49,4 +49,13 @@ export class ScoreGroupService implements IBaseService {
   sort(upItemId, downItemId): Promise<boolean> {
     return undefined;
   }
+
+  /**
+   * 获得所有的评分组集合
+   */
+  getAllGroup(): Promise<any> {
+    return this.httpUtil.get(AppApi.WORDS.score_group_all).then(response => {
+      return Promise.resolve(response);
+    });
+  }
 }

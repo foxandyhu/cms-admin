@@ -63,10 +63,19 @@ export class MemberConfigService implements IBaseService {
   }
 
   /**
-   * 获得配置
+   * 获得登录配置
    */
-  getConfig(): Promise<any> {
-    return this.httpUtil.get(AppApi.MEMBER.member_config).then(response => {
+  getLoginConfig(): Promise<any> {
+    return this.httpUtil.get(AppApi.MEMBER.member_login_config).then(response => {
+      return Promise.resolve(response);
+    });
+  }
+
+  /**
+   * 获得注册配置
+   */
+  getRegistConfig(): Promise<any> {
+    return this.httpUtil.get(AppApi.MEMBER.member_regist_config).then(response => {
       return Promise.resolve(response);
     });
   }

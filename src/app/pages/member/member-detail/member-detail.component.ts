@@ -24,10 +24,10 @@ export class MemberDetailComponent extends BaseComponent implements OnInit {
 
   private formId: string = 'memberForm';              //  表单ID
   member: any = {   //  会员信息
-    userName: '', email: '', password: '', status: '', group: {id: ''},
+    userName: '', password: '', status: '', group: {id: ''},
     memberExt: {
       realName: '', girl: 'false', birthday: '', intro: '', comeFrom: '',
-      qq: '', weixin: '', phone: '', mobile: '', face: '', signature: '',
+      qq: '', weixin: '', phone: '', mobile: '', email: '', face: '', signature: '',
     },
   };
   statuss: any = [{id: 0, name: '待审核'}, {id: 1, name: '正常'}, {id: 2, name: '已禁用'}];
