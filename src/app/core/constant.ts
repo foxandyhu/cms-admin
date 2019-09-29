@@ -36,4 +36,14 @@ export class Constant {
    */
   static ARTICLE_STATUS: Array<any> = [{id: 0, name: '草稿'}, {id: 1, name: '待审核'},
     {id: 2, name: '审核通过'}, {id: 3, name: '审核未通过'}];
+
+  /**
+   * 邮件服务协议
+   */
+  static PROTOCOLS: Array<string> = ['SMTP', 'POP3', 'IMAP'];
+
+  /**
+   * 编码
+   */
+  static CHARSETS: Array<string> = ['UTF-8', 'GBK', 'GB2312', 'GB18030', 'iso-8859-1'];
 }

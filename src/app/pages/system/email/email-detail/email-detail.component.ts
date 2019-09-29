@@ -1,6 +1,7 @@
 import {Component, Injector, OnInit} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import {BaseComponent} from '../../../base-component';
+import {Constant} from '../../../../core/constant';
 
 @Component({
   selector: 'ngx-email-provider-detail',
@@ -14,9 +15,11 @@ export class EmailProviderDetailComponent extends BaseComponent implements OnIni
   }
 
   emailProvider: any = {// 短信服务商
-    name: '', host: '', encoding: '',
+    name: '', host: '', port: 25, encoding: '', protocol: '',
     userName: '', password: '', personal: '', enable: false, remark: '',
   };
+  protocols: any = Constant.PROTOCOLS;
+  charsets: any = Constant.CHARSETS;
   private formId: string = 'emailProviderForm';     //   表单ID
 
   ngOnInit() {
@@ -41,6 +44,11 @@ export class EmailProviderDetailComponent extends BaseComponent implements OnIni
       encoding: {
         validators: {
           notEmpty: {message: '编码不能为空!'},
+        },
+      },
+      protocol: {
+        validators: {
+          notEmpty: {message: '请选择服务协议'},
         },
       },
       userName: {

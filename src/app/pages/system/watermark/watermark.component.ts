@@ -79,7 +79,9 @@ export class WatermarkConfigComponent extends BaseComponent implements OnInit {
     this.watermarkService.getWatermarkConfig().then(result => {
       if (result) {
         this.watermarkConfig = result;
-        this.preview = this.watermarkConfig.img;
+        if (this.watermarkConfig.img) {
+          this.preview = this.watermarkConfig.img;
+        }
         this.watermarkConfig.openWaterMark = this.watermarkConfig.openWaterMark + '';
       }
     });

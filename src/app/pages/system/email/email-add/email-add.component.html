@@ -17,10 +17,26 @@
           <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.host"
                  name="host"/>
         </div>
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 端口</label>
+        <div class="form-group col-md-4">
+          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.port"
+                 name="port" value="UTF-8" maxlength="5"/>
+        </div>
+      </div>
+      <div class="row">
+        <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 服务器协议</label>
+        <div class="form-group col-md-4">
+          <select class="form-control" [(ngModel)]="emailProvider.protocol" name="protocol">
+            <option value="">请选择服务协议</option>
+            <option *ngFor="let item of protocols" [value]="item">{{item}}</option>
+          </select>
+        </div>
         <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 编码</label>
         <div class="form-group col-md-4">
-          <input type="text" autocomplete="off" class="form-control" [(ngModel)]="emailProvider.encoding"
-                 name="encoding" value="UTF-8"/>
+          <select class="form-control" [(ngModel)]="emailProvider.encoding" name="encoding">
+            <option value="">请选择编码</option>
+            <option *ngFor="let item of charsets" [value]="item">{{item}}</option>
+          </select>
         </div>
       </div>
       <div class="row">
@@ -55,11 +71,11 @@
     </form>
   </nb-card-body>
   <nb-card-footer class="modal-footer">
-      <button type="buttom" class="btn btn-success" (click)="submit()">
-        <i class="ion-checkmark"></i> 确 认
-      </button>&nbsp;&nbsp;&nbsp;
-      <button type="buttom" class="btn btn-default" (click)="cancel()">
-        <i class="ion-checkmark"></i> 取 消
-      </button>
-    </nb-card-footer>
+    <button type="buttom" class="btn btn-success" (click)="submit()">
+      <i class="ion-checkmark"></i> 确 认
+    </button>&nbsp;&nbsp;&nbsp;
+    <button type="buttom" class="btn btn-default" (click)="cancel()">
+      <i class="ion-checkmark"></i> 取 消
+    </button>
+  </nb-card-footer>
 </nb-card>

@@ -187,25 +187,25 @@
     <!--Txt-->
     <ng-template #txtTemplate let-item>
       <editor [(ngModel)]="article.articleTxt.txt" name="txt"
-              [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
     </ng-template>
 
     <!--Txt1-->
     <ng-template #txt1Template let-item>
       <editor [(ngModel)]="article.articleTxt.txt1" name="txt1"
-              [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
     </ng-template>
 
     <!--Txt2-->
     <ng-template #txt2Template let-item>
       <editor [(ngModel)]="article.articleTxt.txt2" name="txt2"
-              [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
     </ng-template>
 
     <!--Txt3-->
     <ng-template #txt3Template let-item>
       <editor [(ngModel)]="article.articleTxt.txt3" name="txt3"
-              [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
     </ng-template>
 
     <!--作者-->
@@ -601,7 +601,7 @@
         <!--富文本-->
         <ng-container *ngSwitchCase="9">
           <editor [(ngModel)]="article.attr[item.field]" [name]="item.field"
-                  [init]="{height:200,plugins: 'print preview fullpage lists advlist table textcolor fullscreen',toolbar: 'formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+                  [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
         </ng-container>
       </ng-container>
     </ng-template>
