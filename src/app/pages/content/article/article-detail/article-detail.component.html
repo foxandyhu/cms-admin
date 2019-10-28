@@ -85,15 +85,6 @@
             <ng-container *ngSwitchCase="'txt'">
               <ng-container *ngTemplateOutlet="txtTemplate;context:{$implicit:item}"></ng-container>
             </ng-container>
-            <ng-container *ngSwitchCase="'txt1'">
-              <ng-container *ngTemplateOutlet="txt1Template;context:{$implicit:item}"></ng-container>
-            </ng-container>
-            <ng-container *ngSwitchCase="'txt2'">
-              <ng-container *ngTemplateOutlet="txt2Template;context:{$implicit:item}"></ng-container>
-            </ng-container>
-            <ng-container *ngSwitchCase="'txt3'">
-              <ng-container *ngTemplateOutlet="txt3Template;context:{$implicit:item}"></ng-container>
-            </ng-container>
             <ng-container *ngSwitchCase="'pictures'">
               <ng-container *ngTemplateOutlet="picturesTemplate;context:{$implicit:item}"></ng-container>
             </ng-container>
@@ -187,24 +178,6 @@
     <!--Txt-->
     <ng-template #txtTemplate let-item>
       <editor [(ngModel)]="article.articleTxt.txt" name="txt"
-              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
-    </ng-template>
-
-    <!--Txt1-->
-    <ng-template #txt1Template let-item>
-      <editor [(ngModel)]="article.articleTxt.txt1" name="txt1"
-              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
-    </ng-template>
-
-    <!--Txt2-->
-    <ng-template #txt2Template let-item>
-      <editor [(ngModel)]="article.articleTxt.txt2" name="txt2"
-              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
-    </ng-template>
-
-    <!--Txt3-->
-    <ng-template #txt3Template let-item>
-      <editor [(ngModel)]="article.articleTxt.txt3" name="txt3"
               [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
     </ng-template>
 

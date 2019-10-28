@@ -153,4 +153,17 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
       }
     });
   }
+
+  /**
+   * 重构索引库
+   */
+  resetAllIndex() {
+    this.modalUtil.confirm('提示', '重构索引库将会耗费一分钟时间,是否继续?').then(r => {
+      if (r) {
+        this.articleService.resetIndex().then(() => {
+          this.toastUtil.showSuccess('正在重构索引库请稍候...');
+        });
+      }
+    });
+  }
 }

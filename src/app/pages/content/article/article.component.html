@@ -92,6 +92,8 @@
     </div>
   </nb-card-body>
   <nb-card-footer class="text-left">
+    <button class="btn btn-outline-primary" (click)="resetAllIndex()">重构索引库
+    </button>&nbsp;&nbsp;
     <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="showRelatedTopic()">关联专题
     </button>&nbsp;&nbsp;
     <button class="btn btn-outline-primary" [disabled]="!(selectItems?.length>0)" (click)="recommendMutil(true)">推荐

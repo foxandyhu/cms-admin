@@ -55,7 +55,7 @@ export class ArticleDetailComponent extends BaseComponent implements OnInit {
       postDate: '', filePath: '', fileType: '', titleColor: '', bold: false, titleImg: '',
       contentImg: '', typeImg: '', link: '', tplPc: '', tplMobile: '', tags: '',
     },
-    articleTxt: {txt: '', txt1: '', txt2: '', txt3: ''},
+    articleTxt: {txt: ''},
     viewGroups: [],
     pictures: [],
     attachments: [],

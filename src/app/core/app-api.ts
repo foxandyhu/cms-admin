@@ -327,5 +327,6 @@ export class AppApi {
     article_del_related_topic: '/manage/article/del/{:articleId}-{:topicId}.html',
     article_picture_del: '/manage/article/picture/del/{:picId}.html',
     article_attachment_del: '/manage/article/attachment/del/{:attaId}.html',
+    article_index_reset: '/manage/article/reset/index.html',
   };
 }

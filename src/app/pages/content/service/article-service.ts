@@ -138,4 +138,13 @@ export class ArticleService implements IBaseService {
       return Promise.resolve(true);
     });
   }
+
+  /**
+   * 重构索引
+   */
+  resetIndex(): Promise<boolean> {
+    return this.httpUtil.get(AppApi.CONTENT.article_index_reset).then(() => {
+      return Promise.resolve(true);
+    });
+  }
 }
