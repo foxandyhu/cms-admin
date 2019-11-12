@@ -7,10 +7,13 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">选择栏目</label>
         <div class="form-group col-md-4">
-          <select class="form-control" [(ngModel)]="channel.parentId" name="parentId">
-            <option value="">根栏目</option>
-            <option *ngFor="let item of channels" [value]="item.id">{{item.name}}</option>
-          </select>
+          <button class="btn btn-success" id="channelSelBtn" type="button" (click)="showChannels()">
+            <i class="ion-plus-round"></i>{{selectChannel.name}}
+          </button>
+          <div id="channelCc" class="menuContent"
+               style="display:none; position: fixed;background:#3d3780;z-index:9999;">
+            <ul id="channelTree" class="ztree" style="margin-top:0; width:160px;"></ul>
+          </div>
         </div>
         <label class="col-md-2 col-form-label text-right"><i class="font-red">*</i> 模型</label>
         <div class="form-group col-md-4">
@@ -107,11 +110,11 @@
     </form>
   </nb-card-body>
   <nb-card-footer class="modal-footer">
-      <button type="buttom" class="btn btn-success" (click)="submit()">
-        <i class="ion-checkmark"></i> 确 认
-      </button>&nbsp;&nbsp;&nbsp;
-      <button type="buttom" class="btn btn-default" (click)="cancel()">
-        <i class="ion-checkmark"></i> 取 消
-      </button>
-    </nb-card-footer>
+    <button type="buttom" class="btn btn-success" (click)="submit()">
+      <i class="ion-checkmark"></i> 确 认
+    </button>&nbsp;&nbsp;&nbsp;
+    <button type="buttom" class="btn btn-default" (click)="cancel()">
+      <i class="ion-checkmark"></i> 取 消
+    </button>
+  </nb-card-footer>
 </nb-card>

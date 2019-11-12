@@ -30,28 +30,41 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of list">
-          <td>
-            <nb-checkbox #selectBox status="success" [value]="isSelectAll"
-                         (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
-          </td>
-          <td>{{item.name}}</td>
-          <td>{{item.path}}</td>
-          <td>{{item.link}}</td>
-          <td>{{item.display ? "是" : "否"}}</td>
-          <td>
-            <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </td>
-          <td>
-            <button class="btn btn-info btn-smaller" (click)="showEditChannel(item.id)">
-              <i class="ion-edit"></i> 编辑
-            </button>&nbsp;&nbsp;
-            <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
-              <i class="ion-trash-a"></i> 删除
-            </button>
-          </td>
-        </tr>
+        <ng-template #recursiveList let-list>
+          <ng-template ngFor let-item [ngForOf]="list">
+            <tr (click)="item.open=!item.open">
+              <td>
+                <nb-checkbox #selectBox status="success" [value]="isSelectAll"
+                             (change)="changeBox(selectBox.value,item.id)"></nb-checkbox>
+              </td>
+              <td [ngStyle]="{'padding-left':item.level*20+'px'}">
+                <span class="icon" *ngIf="item.children?.length>0">
+                  <i class="fa" [ngClass]="{'fa-minus':item.open,'fa-plus':!item.open}"></i>
+                </span>
+                {{item.name}}
+              </td>
+              <td>{{item.path}}</td>
+              <td>{{item.link}}</td>
+              <td>{{item.display ? "是" : "否"}}</td>
+              <td>
+                <i class="sort-op ion-arrow-down-a pointer" (click)="sort(item.id,false)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="sort-op ion-arrow-up-a pointer" (click)="sort(item.id,true)"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </td>
+              <td>
+                <button class="btn btn-info btn-smaller" (click)="showEditChannel(item.id)">
+                  <i class="ion-edit"></i> 编辑
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-danger btn-smaller" (click)="del(item.id)">
+                  <i class="ion-trash-a"></i> 删除
+                </button>
+              </td>
+            </tr>
+            <ng-container *ngIf="item.children?.length>0 && item.open">
+              <ng-container *ngTemplateOutlet="recursiveList; context:{$implicit:item.children}"></ng-container>
+            </ng-container>
+          </ng-template>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{$implicit:list}"></ng-container>
         </tbody>
       </table>
     </nb-list-item>

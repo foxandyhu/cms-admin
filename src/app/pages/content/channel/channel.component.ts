@@ -22,6 +22,44 @@ export class ChannelComponent extends BaseComponent implements OnInit, OnDestroy
 
   private dialog: NbDialogRef<any>;
 
+
+  getPager(pageNo: number): Promise<any> {
+    return super.getPager(1).then(result => {
+      const list: Array<any> = new Array();
+      if (result) {
+        result.data.forEach(item => {
+          if (item.parentId === 0) {
+            item.children = new Array();
+            item.open = false;
+            item.level = 0;
+            list.push(item);
+          }
+        });
+
+        const fun = function (current, array) {
+          array.forEach(child => {
+            if (!child.children) {
+              child.children = new Array();
+            }
+            child.open = false;
+            if (child.parentId === current.id) {
+              current.children.push(child);
+              if (!child.level) {
+                child.level = current.level + 1;
+              }
+              fun(child, array);
+            }
+          });
+        };
+
+        list.forEach(parent => {
+          fun(parent, result.data);
+        });
+      }
+      this.list = list;
+    });
+  }
+
   ngOnInit() {
     this.getPager(1);
   }

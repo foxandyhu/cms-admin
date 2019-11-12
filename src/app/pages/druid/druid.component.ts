@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import {AppApi} from '../../core/app-api';
 
 @Component({
   selector: 'ngx-druid',
@@ -14,7 +15,7 @@ export class DruidComponent implements OnInit {
   iframe: any;
 
   ngOnInit() {
-    this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl('http://192.168.8.113/druid');
+    this.iframe = this.sanitizer.bypassSecurityTrustResourceUrl(AppApi.ROOT_URI.concat('/druid'));
   }
 
 }

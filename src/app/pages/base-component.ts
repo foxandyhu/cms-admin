@@ -44,7 +44,11 @@ export class BaseComponent {
   }
 
   set list(value: Array<any>) {
-    this._list = value;
+    if (this.pager) {
+      this.pager.data = value;
+    } else {
+      this._list = value;
+    }
   }
 
   get pager(): any {
@@ -160,7 +164,7 @@ export class BaseComponent {
    */
   getPager(pageNo: number): Promise<any> {
     this._queryParams.forEach((value, key, map) => {
-      if (!value) {     // 去掉空值
+      if (value instanceof String && !value) {     // 去掉空值
         map.delete(key);
       }
     });

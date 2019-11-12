@@ -12,12 +12,9 @@
           <div class="form-group">
             当前栏目: {{channel?.name}}&nbsp;&nbsp;
             <div class="dropdown" ngbDropdown>
-              <button class="btn btn-success" type="button" ngbDropdownToggle>
+              <button [disabled]="!channel || channel.id===0" class="btn btn-success" type="button" (click)="toAddArticle()">
                 <i class="ion-plus-round"></i> 添加内容
               </button>
-              <ul class="dropdown-menu" ngbDropdownMenu>
-                <li><a href="#content/article/add/{{item.id}}" class="dropdown-item" *ngFor="let item of channels">{{item.name}}</a></li>
-              </ul>
             </div>&nbsp;&nbsp;
             <select class="form-control" [(ngModel)]="searchType" name="searchType" (change)="search()">
               <option value="">所有类型</option>

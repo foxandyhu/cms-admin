@@ -181,7 +181,7 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
   private hasItem(key: string): boolean {
     let exist: boolean = false;
     for (const item of this.modelItems) {
-      if (item.field === 'tplpc' || item.field === 'tplmobile') {
+      if (item.field === key) {
         exist = true;
         break;
       }
@@ -384,7 +384,7 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
     this.dictionaryService.getDictionaryByType('doc_type').then(result => {
       this.docTypes = result;
     });
-    this.dictionaryService.getDictionaryByType('industry').then(result => {
+    this.dictionaryService.getDictionaryByType('media_type').then(result => {
       this.mediaTypes = result;
     });
   }

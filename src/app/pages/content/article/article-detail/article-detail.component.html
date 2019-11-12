@@ -421,9 +421,9 @@
         </nb-alert>
       </div>
       <div class="margin-top-1p">
-        <div class="form-group col-md-12 form-inline" (change)="fileCategoryChange($event.target.value)">
+        <div class="form-group col-md-12 form-inline">
           <div class="float-left">类型:&nbsp;</div>
-          <select class="form-control" [(ngModel)]="categoryId">
+          <select class="form-control" [(ngModel)]="categoryId" (change)="fileCategoryChange($event.target.value)">
               <option value="">选择</option>
               <option *ngFor="let c of fileCategory" [value]="c.id">{{c.name}}</option>
           </select>&nbsp;

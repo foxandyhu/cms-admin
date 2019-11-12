@@ -42,6 +42,9 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
     }
   }
 
+  toAddArticle() {
+    this.router.navigate(['/content/article/add/'.concat(this.channel.id)]);
+  }
 
   /**
    * 得到选中的栏目
