@@ -31,8 +31,10 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
               private modelItemService: ModelItemService, private modelService: ModelService,
               private scoreGroupService: ScoreGroupService, private dictionaryService: DictionaryService) {
     super(articleService, injector);
+    ArticleAddComponent.component = this;
   }
 
+  private static component: ArticleAddComponent;
   channel: any;  //  栏目对象
   modelItems: Array<any>;  //  模型项集合
   typeImgPreview: any = Constant.DEFAULT_PIC; //  类型图
@@ -63,6 +65,33 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
     attachments: [],
     attr: {},
   };
+  editParam = {
+    height: 200, language: 'zh_CN', image_caption: true, paste_data_images: true,
+    plugins: `link lists image code table colorpicker fullscreen fullpage help textcolor ` +
+      `wordcount contextmenu codesample importcss media preview print textpattern tabfocus ` +
+      `hr directionality imagetools autosave paste`,
+    toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
+      + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
+      + '| link unlink image code | removeformat | h2 h4 | fullscreen preview paste',
+    codesample_languages: [
+      {text: 'JavaScript', value: 'javascript'},
+      {text: 'HTML/XML', value: 'markup'},
+      {text: 'CSS', value: 'css'},
+      {text: 'TypeScript', value: 'typescript'},
+      {text: 'Java', value: 'java'},
+    ],
+    imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+    images_upload_handler: function (blobInfo, success, failure) {
+      ArticleAddComponent.component.commonService.uploadContentFile(blobInfo.blob()).then(result => {
+        if (result) {
+          success(result.url);
+        } else {
+          failure('上传失败');
+        }
+      });
+    },
+  };
+
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

@@ -28,7 +28,6 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
   searchType: string = '';        //  搜索类型
   searchStatus: string = '';      //  搜索状态
   searchTitle: string = '';       //  搜索标题
-  searchChannel: string = '';     //  搜索栏目
   dialog: NbDialogRef<any>;    //  文章置顶框
 
   ngOnInit() {
@@ -52,8 +51,6 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
    */
   getChannel(channel: string) {
     this.channel = channel;
-    const channelId = this.channel ? this.channel['id'] : null;
-    this.searchChannel = channelId === 0 ? null : channelId;
     this.search();
   }
 
@@ -72,7 +69,10 @@ export class ArticleComponent extends BaseComponent implements OnInit, OnDestroy
     this.setQueryParams('type', this.searchType);
     this.setQueryParams('status', this.searchStatus);
     this.setQueryParams('title', this.searchTitle);
-    this.setQueryParams('channelId', this.searchChannel);
+
+    let channelId = this.channel ? this.channel['id'] : null;
+    channelId = channelId === 0 ? null : channelId;
+    this.setQueryParams('channelId', channelId);
     this.getPager(1);
   }
 

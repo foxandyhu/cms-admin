@@ -50,6 +50,7 @@ export class AppApi {
    */
   static FILES = {
     file_upload: '/manage/file/upload.html',
+    content_file_upload: '/manage/file/content/upload.html',
   };
 
   /**

@@ -151,7 +151,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '站点设置',
-        link: '/system/setting/config',
+        link: '/system/setting/config/site',
       },
       {
         title: '登录注册设置',

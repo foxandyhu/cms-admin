@@ -177,8 +177,7 @@
 
     <!--Txt-->
     <ng-template #txtTemplate let-item>
-      <editor [(ngModel)]="article.articleTxt.txt" name="txt"
-              [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+      <editor [(ngModel)]="article.articleTxt.txt" name="txt" [init]=editParam></editor>
     </ng-template>
 
     <!--作者-->
@@ -569,8 +568,7 @@
 
         <!--富文本-->
         <ng-container *ngSwitchCase="9">
-          <editor [(ngModel)]="article.attr[item.field]" [name]="item.field"
-                  [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+          <editor [(ngModel)]="article.attr[item.field]" [name]="item.field" [init]=editParam></editor>
         </ng-container>
       </ng-container>
     </ng-template>

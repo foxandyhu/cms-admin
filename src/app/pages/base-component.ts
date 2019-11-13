@@ -167,6 +167,9 @@ export class BaseComponent {
       if (value instanceof String && !value) {     // 去掉空值
         map.delete(key);
       }
+      if (value === null || value === undefined) {     // 去掉空值
+        map.delete(key);
+      }
     });
     this.setQueryParams('pageNo', pageNo);
     const result: Promise<any> = this.baseService.getPager(this._queryParams);

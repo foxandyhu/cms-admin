@@ -37,9 +37,11 @@ export class CompanyComponent extends BaseComponent implements OnInit {
 
     observable.subscribe(() => {
       this.companyService.getCompany().then(result => {
-        this.company = result;
-        if (this.company.weixin) {
-          this.preview = this.company.weixin;
+        if (result) {
+          this.company = result;
+          if (this.company.weixin) {
+            this.preview = this.company.weixin;
+          }
         }
       });
     });
