@@ -59,8 +59,7 @@
       <div class="row">
         <label class="col-md-2 col-form-label text-right">公司简介</label>
         <div class="form-group col-md-10">
-          <editor [(ngModel)]="company.remark" name="remark"
-            [init]="{language:'zh_CN',height:200,plugins: 'image insertdatetime media link code print preview fullpage table textcolor fullscreen wordcount colorpicker emoticons',toolbar: 'emoticons formatselect | bold italic forecolor backcolor permanentpen link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent'}"></editor>
+          <editor [(ngModel)]="company.remark" name="remark" [init]=editParam></editor>
         </div>
       </div>
     </form>

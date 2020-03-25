@@ -67,7 +67,7 @@ export class ArticleAddComponent extends BaseComponent implements OnInit {
   };
   editParam = {
     height: 200, language: 'zh_CN', image_caption: true, paste_data_images: true,
-    plugins: `link lists image code table colorpicker fullscreen fullpage help textcolor ` +
+    plugins: `link lists image code table colorpicker fullscreen help textcolor ` +
       `wordcount contextmenu codesample importcss media preview print textpattern tabfocus ` +
       `hr directionality imagetools autosave paste`,
     toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'

@@ -19,8 +19,10 @@ export class CompanyComponent extends BaseComponent implements OnInit {
               private commonService: CommonService, private domSanitizer: DomSanitizer,
               private dictionaryService: DictionaryService) {
     super(companyService, injector);
+    CompanyComponent.component = this;
   }
 
+  private static component: CompanyComponent;
   preview: any;   //  预览
   company: any = {
     name: '', scale: '', nature: '', industry: '',
@@ -29,6 +31,32 @@ export class CompanyComponent extends BaseComponent implements OnInit {
   scales: any;   //  企业规模
   natures: any;  //  企业性质
   industrys: any;  //  企业所属行业
+  editParam = {
+    height: 200, language: 'zh_CN', image_caption: true, paste_data_images: true,
+    plugins: `link lists image code table colorpicker fullscreen help textcolor ` +
+      `wordcount contextmenu codesample importcss media preview print textpattern tabfocus ` +
+      `hr directionality imagetools autosave paste`,
+    toolbar: 'codesample | bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft'
+      + ' aligncenter alignright alignjustify | bullist numlist | outdent indent blockquote | undo redo '
+      + '| link unlink image code | removeformat | h2 h4 | fullscreen preview paste',
+    codesample_languages: [
+      {text: 'JavaScript', value: 'javascript'},
+      {text: 'HTML/XML', value: 'markup'},
+      {text: 'CSS', value: 'css'},
+      {text: 'TypeScript', value: 'typescript'},
+      {text: 'Java', value: 'java'},
+    ],
+    imagetools_toolbar: 'rotateleft rotateright | flipv fliph | editimage imageoptions',
+    images_upload_handler: function (blobInfo, success, failure) {
+      CompanyComponent.component.commonService.uploadContentFile(blobInfo.blob()).then(result => {
+        if (result) {
+          success(result.url);
+        } else {
+          failure('上传失败');
+        }
+      });
+    },
+  };
 
   ngOnInit() {
     this.preview = Constant.DEFAULT_PIC;
